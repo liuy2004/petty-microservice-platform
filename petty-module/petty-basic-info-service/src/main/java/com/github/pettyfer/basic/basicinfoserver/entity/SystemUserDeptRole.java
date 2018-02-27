@@ -1,10 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -44,7 +44,7 @@ public class SystemUserDeptRole extends Model<SystemUserDeptRole> {
      * 是否默认选中@枚举 0-否；1-是
      */
     @TableField("IS_DEFAULT")
-    private BigDecimal isDefault;
+    private Integer isDefault;
 
 
     public String getId() {
@@ -79,11 +79,11 @@ public class SystemUserDeptRole extends Model<SystemUserDeptRole> {
         this.roleId = roleId;
     }
 
-    public BigDecimal getIsDefault() {
+    public Integer getIsDefault() {
         return isDefault;
     }
 
-    public void setIsDefault(BigDecimal isDefault) {
+    public void setIsDefault(Integer isDefault) {
         this.isDefault = isDefault;
     }
 
@@ -95,11 +95,11 @@ public class SystemUserDeptRole extends Model<SystemUserDeptRole> {
     @Override
     public String toString() {
         return "SystemUserDeptRole{" +
-        ", id=" + id +
-        ", userId=" + userId +
-        ", deptId=" + deptId +
-        ", roleId=" + roleId +
-        ", isDefault=" + isDefault +
-        "}";
+                ", id=" + id +
+                ", userId=" + userId +
+                ", deptId=" + deptId +
+                ", roleId=" + roleId +
+                ", isDefault=" + isDefault +
+                "}";
     }
 }

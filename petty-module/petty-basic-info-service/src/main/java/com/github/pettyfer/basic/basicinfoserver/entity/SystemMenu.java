@@ -1,10 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -59,7 +59,7 @@ public class SystemMenu extends Model<SystemMenu> {
      * 是否启用 @枚举 0-否；1-是
      */
     @TableField("IS_SHOW")
-    private BigDecimal isShow;
+    private Integer isShow;
     /**
      * 按钮标识
      */
@@ -69,17 +69,17 @@ public class SystemMenu extends Model<SystemMenu> {
      * 类型 @枚举 1-菜单；2-按钮；3-数据权限
      */
     @TableField("MENU_TYPE")
-    private BigDecimal menuType;
+    private Integer menuType;
     /**
      * 是否隐藏@枚举 0-否；1-是
      */
     @TableField("IS_HIDDEN")
-    private BigDecimal isHidden;
+    private Integer isHidden;
     /**
      * 是否第三方@枚举 0-否；1-是
      */
     @TableField("IS_EXTERNAL")
-    private BigDecimal isExternal;
+    private Integer isExternal;
     /**
      * 备注
      */
@@ -89,7 +89,7 @@ public class SystemMenu extends Model<SystemMenu> {
      * 菜单/按钮排序号
      */
     @TableField("SORT_NO")
-    private BigDecimal sortNo;
+    private Integer sortNo;
     /**
      * 创建人
      */
@@ -114,7 +114,7 @@ public class SystemMenu extends Model<SystemMenu> {
      * 删除标记  @枚举 0-否；1-是
      */
     @TableField("DEL_FLAG")
-    private BigDecimal delFlag;
+    private Integer delFlag;
 
 
     public String getMenuId() {
@@ -173,11 +173,11 @@ public class SystemMenu extends Model<SystemMenu> {
         this.icon = icon;
     }
 
-    public BigDecimal getIsShow() {
+    public Integer getIsShow() {
         return isShow;
     }
 
-    public void setIsShow(BigDecimal isShow) {
+    public void setIsShow(Integer isShow) {
         this.isShow = isShow;
     }
 
@@ -189,27 +189,27 @@ public class SystemMenu extends Model<SystemMenu> {
         this.permission = permission;
     }
 
-    public BigDecimal getMenuType() {
+    public Integer getMenuType() {
         return menuType;
     }
 
-    public void setMenuType(BigDecimal menuType) {
+    public void setMenuType(Integer menuType) {
         this.menuType = menuType;
     }
 
-    public BigDecimal getIsHidden() {
+    public Integer getIsHidden() {
         return isHidden;
     }
 
-    public void setIsHidden(BigDecimal isHidden) {
+    public void setIsHidden(Integer isHidden) {
         this.isHidden = isHidden;
     }
 
-    public BigDecimal getIsExternal() {
+    public Integer getIsExternal() {
         return isExternal;
     }
 
-    public void setIsExternal(BigDecimal isExternal) {
+    public void setIsExternal(Integer isExternal) {
         this.isExternal = isExternal;
     }
 
@@ -221,11 +221,11 @@ public class SystemMenu extends Model<SystemMenu> {
         this.remark = remark;
     }
 
-    public BigDecimal getSortNo() {
+    public Integer getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(BigDecimal sortNo) {
+    public void setSortNo(Integer sortNo) {
         this.sortNo = sortNo;
     }
 
@@ -261,11 +261,11 @@ public class SystemMenu extends Model<SystemMenu> {
         this.modifyDate = modifyDate;
     }
 
-    public BigDecimal getDelFlag() {
+    public Integer getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(BigDecimal delFlag) {
+    public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
     }
 
@@ -277,25 +277,25 @@ public class SystemMenu extends Model<SystemMenu> {
     @Override
     public String toString() {
         return "SystemMenu{" +
-        ", menuId=" + menuId +
-        ", code=" + code +
-        ", parentCode=" + parentCode +
-        ", menuName=" + menuName +
-        ", href=" + href +
-        ", target=" + target +
-        ", icon=" + icon +
-        ", isShow=" + isShow +
-        ", permission=" + permission +
-        ", menuType=" + menuType +
-        ", isHidden=" + isHidden +
-        ", isExternal=" + isExternal +
-        ", remark=" + remark +
-        ", sortNo=" + sortNo +
-        ", creator=" + creator +
-        ", createDate=" + createDate +
-        ", modifier=" + modifier +
-        ", modifyDate=" + modifyDate +
-        ", delFlag=" + delFlag +
-        "}";
+                ", menuId=" + menuId +
+                ", code=" + code +
+                ", parentCode=" + parentCode +
+                ", menuName=" + menuName +
+                ", href=" + href +
+                ", target=" + target +
+                ", icon=" + icon +
+                ", isShow=" + isShow +
+                ", permission=" + permission +
+                ", menuType=" + menuType +
+                ", isHidden=" + isHidden +
+                ", isExternal=" + isExternal +
+                ", remark=" + remark +
+                ", sortNo=" + sortNo +
+                ", creator=" + creator +
+                ", createDate=" + createDate +
+                ", modifier=" + modifier +
+                ", modifyDate=" + modifyDate +
+                ", delFlag=" + delFlag +
+                "}";
     }
 }

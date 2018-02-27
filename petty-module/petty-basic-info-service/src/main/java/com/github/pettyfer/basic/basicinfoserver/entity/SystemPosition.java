@@ -1,10 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -49,12 +49,12 @@ public class SystemPosition extends Model<SystemPosition> {
      * 是否启用  @枚举  0:否；1:是
      */
     @TableField("STATUS")
-    private BigDecimal status;
+    private Integer status;
     /**
      * 排序号
      */
     @TableField("SORT_NO")
-    private BigDecimal sortNo;
+    private Integer sortNo;
     /**
      * 创建人
      */
@@ -79,7 +79,7 @@ public class SystemPosition extends Model<SystemPosition> {
      * 删除标记  @枚举  0:否；1:是
      */
     @TableField("DEL_FLAG")
-    private BigDecimal delFlag;
+    private Integer delFlag;
 
 
     public String getPositionId() {
@@ -122,19 +122,19 @@ public class SystemPosition extends Model<SystemPosition> {
         this.positionName = positionName;
     }
 
-    public BigDecimal getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(BigDecimal status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public BigDecimal getSortNo() {
+    public Integer getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(BigDecimal sortNo) {
+    public void setSortNo(Integer sortNo) {
         this.sortNo = sortNo;
     }
 
@@ -170,11 +170,11 @@ public class SystemPosition extends Model<SystemPosition> {
         this.modifyDate = modifyDate;
     }
 
-    public BigDecimal getDelFlag() {
+    public Integer getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(BigDecimal delFlag) {
+    public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
     }
 
@@ -186,18 +186,18 @@ public class SystemPosition extends Model<SystemPosition> {
     @Override
     public String toString() {
         return "SystemPosition{" +
-        ", positionId=" + positionId +
-        ", deptCode=" + deptCode +
-        ", code=" + code +
-        ", positionCode=" + positionCode +
-        ", positionName=" + positionName +
-        ", status=" + status +
-        ", sortNo=" + sortNo +
-        ", creator=" + creator +
-        ", createDate=" + createDate +
-        ", modifier=" + modifier +
-        ", modifyDate=" + modifyDate +
-        ", delFlag=" + delFlag +
-        "}";
+                ", positionId=" + positionId +
+                ", deptCode=" + deptCode +
+                ", code=" + code +
+                ", positionCode=" + positionCode +
+                ", positionName=" + positionName +
+                ", status=" + status +
+                ", sortNo=" + sortNo +
+                ", creator=" + creator +
+                ", createDate=" + createDate +
+                ", modifier=" + modifier +
+                ", modifyDate=" + modifyDate +
+                ", delFlag=" + delFlag +
+                "}";
     }
 }

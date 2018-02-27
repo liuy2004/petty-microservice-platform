@@ -14,12 +14,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class PettyBasicInfoServerApplicationTests {
 
 	@Autowired
-	private ISystemUserService systemUserServiceImpl;
+	private ISystemUserService systemUserService;
 
 
 	@Test
 	public void contextLoads() {
-		UserVo userVo = systemUserServiceImpl.findUserByUsername("admin");
+		UserVo userVo = systemUserService.findUserByUsername("admin");
 		System.out.println(JSONObject.toJSON(userVo));
 	}
 

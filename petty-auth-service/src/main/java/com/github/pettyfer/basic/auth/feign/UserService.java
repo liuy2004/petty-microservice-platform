@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 /**
  * @author Petty
  */
-@FeignClient(name = "petty-basic-info-server", fallback = UserServiceFallbackImpl.class)
+@FeignClient(name = "petty-basic-info-service", fallback = UserServiceFallbackImpl.class)
 public interface UserService {
     /**
      * 通过用户名查询用户、角色信息

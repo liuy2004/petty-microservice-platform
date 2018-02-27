@@ -1,10 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -39,12 +39,12 @@ public class SystemRole extends Model<SystemRole> {
      * 是否启用
      */
     @TableField("STATUS")
-    private BigDecimal status;
+    private Integer status;
     /**
      * 排序号
      */
     @TableField("SORT_NO")
-    private BigDecimal sortNo;
+    private Integer sortNo;
     /**
      * 创建人
      */
@@ -69,7 +69,7 @@ public class SystemRole extends Model<SystemRole> {
      * 删除标记
      */
     @TableField("DEL_FLAG")
-    private BigDecimal delFlag;
+    private Integer delFlag;
 
 
     public String getRoleId() {
@@ -96,19 +96,19 @@ public class SystemRole extends Model<SystemRole> {
         this.roleType = roleType;
     }
 
-    public BigDecimal getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(BigDecimal status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public BigDecimal getSortNo() {
+    public Integer getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(BigDecimal sortNo) {
+    public void setSortNo(Integer sortNo) {
         this.sortNo = sortNo;
     }
 
@@ -144,11 +144,11 @@ public class SystemRole extends Model<SystemRole> {
         this.modifyDate = modifyDate;
     }
 
-    public BigDecimal getDelFlag() {
+    public Integer getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(BigDecimal delFlag) {
+    public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
     }
 
@@ -160,16 +160,16 @@ public class SystemRole extends Model<SystemRole> {
     @Override
     public String toString() {
         return "SystemRole{" +
-        ", roleId=" + roleId +
-        ", roleName=" + roleName +
-        ", roleType=" + roleType +
-        ", status=" + status +
-        ", sortNo=" + sortNo +
-        ", creator=" + creator +
-        ", createDate=" + createDate +
-        ", modifier=" + modifier +
-        ", modifyDate=" + modifyDate +
-        ", delFlag=" + delFlag +
-        "}";
+                ", roleId=" + roleId +
+                ", roleName=" + roleName +
+                ", roleType=" + roleType +
+                ", status=" + status +
+                ", sortNo=" + sortNo +
+                ", creator=" + creator +
+                ", createDate=" + createDate +
+                ", modifier=" + modifier +
+                ", modifyDate=" + modifyDate +
+                ", delFlag=" + delFlag +
+                "}";
     }
 }

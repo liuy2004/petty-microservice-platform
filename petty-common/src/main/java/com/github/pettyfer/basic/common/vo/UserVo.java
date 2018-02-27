@@ -21,13 +21,13 @@ public class UserVo implements Serializable {
     private String userName;
     private String userPwd;
     private String fullName;
-    private BigDecimal sortNo;
-    private BigDecimal isAdmin;
-    private BigDecimal status;
+    private Integer sortNo;
+    private Integer isAdmin;
+    private Integer status;
     private String creator;
     private String createDate;
     private String modifier;
     private String modifyDate;
-    private BigDecimal delFlag;
+    private Integer delFlag;
     List<RoleVo> roleVoList = new ArrayList<>();
 }
