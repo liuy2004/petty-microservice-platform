@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
  * @author Petty
  */
 @Component
-public class WebResponseExceptionTranslator extends DefaultWebResponseExceptionTranslator {
+public class ResponseExceptionTranslator extends DefaultWebResponseExceptionTranslator {
 
     public static final String BAD_MSG = "坏的凭证";
 

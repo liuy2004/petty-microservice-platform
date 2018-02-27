@@ -1,7 +1,7 @@
 package com.github.pettyfer.basic.auth.adapter;
 
 import com.github.pettyfer.basic.auth.config.AuthServerConfig;
-import com.github.pettyfer.basic.auth.translator.WebResponseExceptionTranslator;
+import com.github.pettyfer.basic.auth.translator.ResponseExceptionTranslator;
 import com.github.pettyfer.basic.common.constant.CommonConstant;
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class PettyAuthorizationAdapter extends AuthorizationServerConfigurerAdap
     private RedisConnectionFactory redisConnectionFactory;
 
     @Autowired
-    private WebResponseExceptionTranslator webResponseExceptionTranslator;
+    private ResponseExceptionTranslator responseExceptionTranslator;
 
     /**
      * 配置客户端信息
@@ -67,7 +67,7 @@ public class PettyAuthorizationAdapter extends AuthorizationServerConfigurerAdap
                 .tokenStore(new RedisTokenStore(redisConnectionFactory))
                 .accessTokenConverter(jwtAccessTokenConverter())
                 .authenticationManager(authenticationManager)
-                .exceptionTranslator(webResponseExceptionTranslator)
+                .exceptionTranslator(responseExceptionTranslator)
                 .reuseRefreshTokens(false)
                 .userDetailsService(userDetailsService);
     }
