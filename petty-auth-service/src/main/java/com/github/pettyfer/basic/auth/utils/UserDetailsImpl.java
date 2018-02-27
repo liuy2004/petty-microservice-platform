@@ -70,6 +70,6 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return CommonConstant.STATUS_LOCK.equals(status) ? true : false;
+        return CommonConstant.STATUS_NORMAL.equals(status) ? true : false;
     }
 }

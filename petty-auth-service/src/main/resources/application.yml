@@ -9,6 +9,10 @@ eureka:
       defaultZone: http://127.0.0.1:30151/eureka
 petty:
   auth:
-    clientId: 123456
-    clientSecret: 123456
+    clientId: demoApp
+    clientSecret: demoAppSecret
     scope: server
+urls:
+  anon:
+    - /signin
+    - /signup

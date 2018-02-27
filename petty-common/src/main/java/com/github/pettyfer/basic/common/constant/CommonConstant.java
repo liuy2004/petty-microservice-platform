@@ -20,14 +20,13 @@ public interface CommonConstant {
      */
     String SIGN_KEY = "PETTYFER";
     /**
-     * 删除
+     * 无效
      */
-    Integer STATUS_DEL = 1;
+    Integer STATUS_INVALID = 1;
     /**
      * 正常
      */
     Integer STATUS_NORMAL = 0;
-
     /**
      * 锁定
      */
