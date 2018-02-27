@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>petty-microservice-platform</artifactId>
+        <groupId>com.github.pettyfer.basic</groupId>
+        <version>${petty.version}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>petty-gateway</name>
+    <description>Demo project for Spring Boot</description>
+
+    <modules>
+        <module>petty-gateway-ratelimit</module>
+        <module>petty-gateway-service</module>
+    </modules>
+
+    <artifactId>petty-gateway</artifactId>
+    <version>${petty.version}</version>
+    <packaging>pom</packaging>
+
+</project>

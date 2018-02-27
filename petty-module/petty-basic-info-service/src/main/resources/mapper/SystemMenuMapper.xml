@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.pettyfer.basic.basicinfoserver.mapper.SystemMenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemMenu">
+        <id column="MENU_ID" property="menuId" />
+        <result column="CODE" property="code" />
+        <result column="PARENT_CODE" property="parentCode" />
+        <result column="MENU_NAME" property="menuName" />
+        <result column="HREF" property="href" />
+        <result column="TARGET" property="target" />
+        <result column="ICON" property="icon" />
+        <result column="IS_SHOW" property="isShow" />
+        <result column="PERMISSION" property="permission" />
+        <result column="MENU_TYPE" property="menuType" />
+        <result column="IS_HIDDEN" property="isHidden" />
+        <result column="IS_EXTERNAL" property="isExternal" />
+        <result column="REMARK" property="remark" />
+        <result column="SORT_NO" property="sortNo" />
+        <result column="CREATOR" property="creator" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="MODIFIER" property="modifier" />
+        <result column="MODIFY_DATE" property="modifyDate" />
+        <result column="DEL_FLAG" property="delFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        MENU_ID AS menuId, CODE AS code, PARENT_CODE AS parentCode, MENU_NAME AS menuName, HREF AS href, TARGET AS target, ICON AS icon, IS_SHOW AS isShow, PERMISSION AS permission, MENU_TYPE AS menuType, IS_HIDDEN AS isHidden, IS_EXTERNAL AS isExternal, REMARK AS remark, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
+    </sql>
+
+</mapper>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.pettyfer.basic.basicinfoserver.mapper.SystemUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemUser">
+        <id column="USER_ID" property="userId" />
+        <result column="USER_NAME" property="userName" />
+        <result column="USER_PWD" property="userPwd" />
+        <result column="FULL_NAME" property="fullName" />
+        <result column="USER_SEX" property="userSex" />
+        <result column="USER_BIRTHDAY" property="userBirthday" />
+        <result column="IN_DATE" property="inDate" />
+        <result column="PHOTO" property="photo" />
+        <result column="USER_NUM" property="userNum" />
+        <result column="EMAIL" property="email" />
+        <result column="QQ_NUM" property="qqNum" />
+        <result column="USER_TEL" property="userTel" />
+        <result column="USER_ADDR" property="userAddr" />
+        <result column="USER_DESC" property="userDesc" />
+        <result column="USER_PHONE_TEL" property="userPhoneTel" />
+        <result column="USER_SOURCE" property="userSource" />
+        <result column="USER_IDEN_TYPE" property="userIdenType" />
+        <result column="USER_IDEN" property="userIden" />
+        <result column="SORT_NO" property="sortNo" />
+        <result column="IS_ADMIN" property="isAdmin" />
+        <result column="STATUS" property="status" />
+        <result column="CREATOR" property="creator" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="MODIFIER" property="modifier" />
+        <result column="MODIFY_DATE" property="modifyDate" />
+        <result column="DEL_FLAG" property="delFlag" />
+    </resultMap>
+
+    <resultMap id="UserVoMap" type="com.github.pettyfer.basic.common.vo.UserVo">
+        <id column="USER_ID" property="userId"/>
+        <result column="USER_NAME" property="userName"/>
+        <result column="USER_PWD" property="userPwd"/>
+        <result column="FULL_NAME" property="fullName"/>
+        <result column="IS_ADMIN" property="isAdmin"/>
+        <result column="STATUS" property="status"/>
+        <result column="CREATOR" property="creator"/>
+        <result column="CREATE_DATE" property="createDate"/>
+        <result column="MODIFIER" property="modifier"/>
+        <result column="MODIFY_DATE" property="modifyDate"/>
+        <result column="DEL_FLAG" property="delFlag"/>
+        <collection property="roleVoList" ofType="com.github.pettyfer.basic.common.vo.RoleVo">
+            <id column="ROLE_ID" property="roleId"/>
+            <result column="ROLE_NAME" property="roleName"/>
+            <result column="ROLE_TYPE" property="roleType"/>
+            <result column="STATUS" property="status"/>
+            <result column="SORT_NO" property="sortNo"/>
+        </collection>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        USER_ID AS userId, USER_NAME AS userName, USER_PWD AS userPwd, FULL_NAME AS fullName, USER_SEX AS userSex, USER_BIRTHDAY AS userBirthday, IN_DATE AS inDate, PHOTO AS photo, USER_NUM AS userNum, EMAIL AS email, QQ_NUM AS qqNum, USER_TEL AS userTel, USER_ADDR AS userAddr, USER_DESC AS userDesc, USER_PHONE_TEL AS userPhoneTel, USER_SOURCE AS userSource, USER_IDEN_TYPE AS userIdenType, USER_IDEN AS userIden, SORT_NO AS sortNo, IS_ADMIN AS isAdmin, STATUS AS status, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
+    </sql>
+
+    <sql id="selectUserVo">
+        SELECT
+        `USER`.USER_ID,
+        `USER`.USER_NAME,
+        `USER`.USER_PWD,
+        `USER`.FULL_NAME,
+        `USER`.IS_ADMIN,
+        `USER`.STATUS,
+        `USER`.IS_ADMIN,
+        `USER`.CREATOR,
+        `USER`.CREATE_DATE,
+        `USER`.MODIFIER,
+        `USER`.MODIFY_DATE,
+        `USER`.DEL_FLAG,
+        R.ROLE_ID,
+        R.ROLE_NAME,
+        R.ROLE_TYPE,
+        R.STATUS,
+        R.SORT_NO
+        FROM
+        SYSTEM_USER AS `USER`
+        LEFT JOIN SYSTEM_USER_DEPT_ROLE AS UDR ON UDR.USER_ID = `USER`.USER_ID
+        LEFT JOIN SYSTEM_ROLE AS R ON R.ROLE_ID = UDR.ROLE_ID
+    </sql>
+
+    <select id="selectUserVoByUsername" resultMap="UserVoMap">
+        <include refid="selectUserVo"/>
+        WHERE `USER`.USER_NAME = #{username}
+    </select>
+
+</mapper>

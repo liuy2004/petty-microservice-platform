@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: petty-auth-service
+server:
+  port: 40151
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:30151/eureka
+petty:
+  auth:
+    clientId: 123456
+    clientSecret: 123456
+    scope: server
