@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @author Petty
+ * 远程调用基础信息服务-->用户接口
  */
 @FeignClient(name = "petty-basic-info-service", fallback = UserServiceFallbackImpl.class)
 public interface UserService {

@@ -3,7 +3,7 @@ package com.github.pettyfer.basic.auth.adapter;
 import com.github.pettyfer.basic.auth.config.AuthServerConfig;
 import com.github.pettyfer.basic.auth.translator.WebResponseExceptionTranslator;
 import com.github.pettyfer.basic.common.constant.CommonConstant;
-import com.github.pettyfer.basic.common.constant.SecurityConstants;
+import com.github.pettyfer.basic.common.constant.SecurityConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,12 +24,12 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 /**
  * @author Petty
  * @since 2018年2月27日
- * 认证服务
+ * 用户认证服务
  */
 @Configuration
 @Order(Integer.MIN_VALUE)
 @EnableAuthorizationServer
-public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
+public class PettyAuthorizationAdapter extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private AuthServerConfig authServerConfig;
@@ -57,7 +57,7 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
         clients.inMemory()
                 .withClient(authServerConfig.getClientId())
                 .secret(authServerConfig.getClientSecret())
-                .authorizedGrantTypes(SecurityConstants.REFRESH_TOKEN, SecurityConstants.PASSWORD, SecurityConstants.AUTHORIZATION_CODE)
+                .authorizedGrantTypes(SecurityConstant.REFRESH_TOKEN, SecurityConstant.PASSWORD, SecurityConstant.AUTHORIZATION_CODE)
                 .scopes(authServerConfig.getScope());
     }
 
@@ -91,7 +91,7 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
     }
 
     /**
-     * Jwt验证
+     * 转换JWT
      *
      * @return
      */

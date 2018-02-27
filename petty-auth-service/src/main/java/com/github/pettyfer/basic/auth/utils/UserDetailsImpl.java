@@ -1,11 +1,10 @@
 package com.github.pettyfer.basic.auth.utils;
 
 import com.github.pettyfer.basic.common.constant.CommonConstant;
-import com.github.pettyfer.basic.common.constant.SecurityConstants;
+import com.github.pettyfer.basic.common.constant.SecurityConstant;
 import com.github.pettyfer.basic.common.vo.RoleVo;
 import com.github.pettyfer.basic.common.vo.UserVo;
 import lombok.Data;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +15,7 @@ import java.util.List;
 
 /**
  * @author Petty
+ * UserDetails接口实现
  */
 @Data
 public class UserDetailsImpl implements UserDetails {
@@ -39,7 +39,7 @@ public class UserDetailsImpl implements UserDetails {
         for (RoleVo role : roleList) {
             authorityList.add(new SimpleGrantedAuthority(role.getRoleName()));
         }
-        authorityList.add(new SimpleGrantedAuthority(SecurityConstants.BASE_ROLE));
+        authorityList.add(new SimpleGrantedAuthority(SecurityConstant.BASE_ROLE));
         return authorityList;
     }
 
@@ -58,6 +58,11 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 
+    /**
+     * 用户是否锁定
+     *
+     * @return
+     */
     @Override
     public boolean isAccountNonLocked() {
         return CommonConstant.STATUS_LOCK.equals(status) ? false : true;
@@ -68,6 +73,11 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 
+    /**
+     * 用户是否有效
+     *
+     * @return
+     */
     @Override
     public boolean isEnabled() {
         return CommonConstant.STATUS_NORMAL.equals(status) ? true : false;

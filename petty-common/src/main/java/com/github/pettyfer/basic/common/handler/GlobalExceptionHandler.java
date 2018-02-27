@@ -1,6 +1,5 @@
 package com.github.pettyfer.basic.common.handler;
 
-import com.github.pettyfer.basic.common.constant.CommonConstants;
 import com.github.pettyfer.basic.common.exception.BaseException;
 import com.github.pettyfer.basic.common.exception.BaseRuntimeException;
 import com.github.pettyfer.basic.common.response.BaseResponse;

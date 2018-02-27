@@ -4,14 +4,25 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author lengleng
- * @date 2017/10/28
+ * 认证服务基本配置
+ *
+ * @author Petty
+ * @date 2018年2月27日
  */
 @Configuration
 @ConfigurationProperties(prefix = "petty.auth")
 public class AuthServerConfig {
+    /**
+     * 客户端ID
+     */
     private String clientId;
+    /**
+     * 客户端密钥
+     */
     private String clientSecret;
+    /**
+     * 客户端范围
+     */
     private String scope;
 
     public String getClientId() {

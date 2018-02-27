@@ -3,13 +3,13 @@ package com.github.pettyfer.basic.common.constant;
 /**
  * @author Petty
  */
-public interface SecurityConstants {
+public interface SecurityConstant {
     /**
-     * 基础角色
+     * 基础用户角色
      */
     String BASE_ROLE = "ROLE_USER";
     /**
-     * 授权码模式
+     * oauth2 授权码模式
      */
     String AUTHORIZATION_CODE = "authorization_code";
     /**
@@ -20,11 +20,6 @@ public interface SecurityConstants {
      * 刷新token
      */
     String REFRESH_TOKEN = "refresh_token";
-
-    /**
-     * oauth token
-     */
-    String OAUTH_TOKEN_URL = "/oauth/token";
 
     /**
      * 默认的处理验证码的url前缀

@@ -12,7 +12,3 @@ petty:
     clientId: demoApp
     clientSecret: demoAppSecret
     scope: server
-urls:
-  anon:
-    - /signin
-    - /signup

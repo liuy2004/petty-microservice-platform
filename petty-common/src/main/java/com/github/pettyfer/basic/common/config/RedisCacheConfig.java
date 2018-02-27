@@ -12,15 +12,18 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+
 /**
- * @author lengleng
- * @date 2017-12-31 22:59:37
- * 增强redis
+ * Redis缓存配置
+ * @author Petty
  */
 @Configuration
 @EnableCaching
 public class RedisCacheConfig extends CachingConfigurerSupport {
-    @Value("${redis.cache.expiration:3600}")
+    /**
+     * 缓存过期时间
+     */
+    @Value("${redis.cache.expira:3600}")
     private Long expiration;
 
     @Bean
