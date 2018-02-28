@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "demo")
+@RequestMapping(value = "/demo")
 public class DemoController {
     @RequestMapping(value = "get",method = RequestMethod.GET)
     public String get(){
         return "Demo";
     }
 
-    @GetMapping("/user")
+    @GetMapping("user")
     public Authentication user(Authentication authentication) {
         return authentication;
     }
