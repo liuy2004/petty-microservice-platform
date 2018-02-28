@@ -9,11 +9,11 @@ endpoints:
 security:
   oauth2:
     client:
-      client-id: demoApp
-      client-secret: demoAppSecret
+      client-id: demo
+      client-secret: demoSecret
       user-authorization-uri: http://localhost:40151/oauth/authorize
       access-token-uri: http://localhost:40151/oauth/token
-      scope: server
+      scope: application
     resource:
       jwt:
         key-uri: http://localhost:40151/oauth/token_key

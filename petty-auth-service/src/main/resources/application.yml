@@ -9,7 +9,7 @@ eureka:
       defaultZone: http://127.0.0.1:30151/eureka
 petty:
   auth:
-    clientId: demoApp
-    clientSecret: demoAppSecret
-    scope: server
+    clientId: demo
+    clientSecret: demoSecret
+    scope: application
 logging.level.org.springframework.security: DEBUG
