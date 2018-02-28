@@ -7,10 +7,12 @@
         <groupId>com.github.pettyfer.basic</groupId>
         <version>${petty.version}</version>
     </parent>
-    <version>${petty.version}</version>
-
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>petty-application-module</artifactId>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>demo</module>
+    </modules>
 
 </project>

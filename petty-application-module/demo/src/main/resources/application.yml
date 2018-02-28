@@ -1,0 +1,29 @@
+management:
+  security:
+    enabled: false
+endpoints:
+  actuator:
+    enabled: true
+  shutdown:
+    enabled: false
+security:
+  oauth2:
+    client:
+      client-id: demoApp
+      client-secret: demoAppSecret
+      user-authorization-uri: http://localhost:40151/oauth/authorize
+      access-token-uri: http://localhost:40151/oauth/token
+      scope: server
+    resource:
+      jwt:
+        key-uri: http://localhost:40151/oauth/token_key
+spring:
+  application:
+    name: pig-sso-client-demo
+  profiles:
+    active: dev
+  redis:
+    remote: true
+    host: 127.0.0.1
+    port: 6379
+    password:
