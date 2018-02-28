@@ -30,8 +30,8 @@ zuul:
           - url
   routes:
         petty-auth:
-          path: "/auth/**"
-          serviceId: "petty-auth-server"
+          path: "/**"
+          serviceId: "petty-auth-service"
 ribbon:
   eureka:
     enabled: true

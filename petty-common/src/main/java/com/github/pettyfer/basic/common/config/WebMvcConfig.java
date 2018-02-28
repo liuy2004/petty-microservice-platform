@@ -9,10 +9,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import java.util.List;
 
+
 /**
- * @author lengleng
- * @date 2017/12/21
- * mvc配置
+ * @author Petty
+ * @date 2018年2月28日
+ * 配置Token转换
  */
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
