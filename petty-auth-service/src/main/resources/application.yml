@@ -12,3 +12,4 @@ petty:
     clientId: demoApp
     clientSecret: demoAppSecret
     scope: server
+logging.level.org.springframework.security: DEBUG

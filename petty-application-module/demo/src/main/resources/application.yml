@@ -30,3 +30,4 @@ spring:
 urls:
   anon:
     - /demo/**
+logging.level.org.springframework.security: DEBUG
