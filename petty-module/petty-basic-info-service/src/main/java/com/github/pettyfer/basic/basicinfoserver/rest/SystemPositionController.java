@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-27
+ * @since 2018-02-28
  */
 @Controller
 @RequestMapping("/systemPosition")

@@ -9,59 +9,39 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 系统字典信息
+ * 用户组信息
  * </p>
  *
  * @author Pettyfer
  * @since 2018-02-28
  */
-@TableName("system_dict")
-public class SystemDict extends Model<SystemDict> {
+@TableName("system_group")
+public class SystemGroup extends Model<SystemGroup> {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 主键
      */
-    @TableId("DICT_ID")
-    private String dictId;
+    @TableId("GROUP_ID")
+    private String groupId;
     /**
-     * 编码
+     * 用户组名称
      */
-    @TableField("CODE")
-    private String code;
+    @TableField("GROUP_NAME")
+    private String groupName;
     /**
-     * 类型
+     * 用户组父编号，顶级父编号为0
      */
-    @TableField("DICT_TYPE")
-    private String dictType;
+    @TableField("PARENT_ID")
+    private String parentId;
     /**
-     * 字典键
+     * 用户组类型@1-访问安全控制用户组 2-基础资料子系统用户组
      */
-    @TableField("DICT_KEY")
-    private String dictKey;
+    @TableField("GROUP_TYPE")
+    private BigDecimal groupType;
     /**
-     * 字典值
-     */
-    @TableField("DICT_VALUE")
-    private String dictValue;
-    /**
-     * 字典描述
-     */
-    @TableField("DICT_DESC")
-    private String dictDesc;
-    /**
-     * 父级编码
-     */
-    @TableField("PARENT_CODE")
-    private String parentCode;
-    /**
-     * 是否默认显示值  @枚举 1、是，0、否
-     */
-    @TableField("IS_DEFAULT")
-    private BigDecimal isDefault;
-    /**
-     * 排序号
+     * 排序
      */
     @TableField("SORT_NO")
     private BigDecimal sortNo;
@@ -91,74 +71,42 @@ public class SystemDict extends Model<SystemDict> {
     @TableField("MODIFY_DATE")
     private String modifyDate;
     /**
-     * 删除标记 @枚举 0-否  1-是
+     * 删除标记  @枚举  0:否；1:是
      */
     @TableField("DEL_FLAG")
     private BigDecimal delFlag;
 
 
-    public String getDictId() {
-        return dictId;
+    public String getGroupId() {
+        return groupId;
     }
 
-    public void setDictId(String dictId) {
-        this.dictId = dictId;
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
-    public String getCode() {
-        return code;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
-    public String getDictType() {
-        return dictType;
+    public String getParentId() {
+        return parentId;
     }
 
-    public void setDictType(String dictType) {
-        this.dictType = dictType;
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
-    public String getDictKey() {
-        return dictKey;
+    public BigDecimal getGroupType() {
+        return groupType;
     }
 
-    public void setDictKey(String dictKey) {
-        this.dictKey = dictKey;
-    }
-
-    public String getDictValue() {
-        return dictValue;
-    }
-
-    public void setDictValue(String dictValue) {
-        this.dictValue = dictValue;
-    }
-
-    public String getDictDesc() {
-        return dictDesc;
-    }
-
-    public void setDictDesc(String dictDesc) {
-        this.dictDesc = dictDesc;
-    }
-
-    public String getParentCode() {
-        return parentCode;
-    }
-
-    public void setParentCode(String parentCode) {
-        this.parentCode = parentCode;
-    }
-
-    public BigDecimal getIsDefault() {
-        return isDefault;
-    }
-
-    public void setIsDefault(BigDecimal isDefault) {
-        this.isDefault = isDefault;
+    public void setGroupType(BigDecimal groupType) {
+        this.groupType = groupType;
     }
 
     public BigDecimal getSortNo() {
@@ -219,20 +167,16 @@ public class SystemDict extends Model<SystemDict> {
 
     @Override
     protected Serializable pkVal() {
-        return this.dictId;
+        return this.groupId;
     }
 
     @Override
     public String toString() {
-        return "SystemDict{" +
-        ", dictId=" + dictId +
-        ", code=" + code +
-        ", dictType=" + dictType +
-        ", dictKey=" + dictKey +
-        ", dictValue=" + dictValue +
-        ", dictDesc=" + dictDesc +
-        ", parentCode=" + parentCode +
-        ", isDefault=" + isDefault +
+        return "SystemGroup{" +
+        ", groupId=" + groupId +
+        ", groupName=" + groupName +
+        ", parentId=" + parentId +
+        ", groupType=" + groupType +
         ", sortNo=" + sortNo +
         ", status=" + status +
         ", creator=" + creator +

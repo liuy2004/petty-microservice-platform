@@ -10,14 +10,8 @@ import com.github.pettyfer.basic.common.vo.UserVo;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-27
+ * @since 2018-02-28
  */
 public interface ISystemUserService extends IService<SystemUser> {
-    /**
-     * 根据用户名查询用户角色信息
-     *
-     * @param username 用户名
-     * @return userVo
-     */
     UserVo findUserByUsername(String username);
 }

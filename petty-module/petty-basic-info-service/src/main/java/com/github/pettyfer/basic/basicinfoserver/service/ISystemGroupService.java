@@ -1,16 +1,16 @@
 package com.github.pettyfer.basic.basicinfoserver.service;
 
-import com.github.pettyfer.basic.basicinfoserver.entity.SystemRole;
+import com.github.pettyfer.basic.basicinfoserver.entity.SystemGroup;
 import com.baomidou.mybatisplus.service.IService;
 
 /**
  * <p>
- * 角色信息 服务类
+ * 用户组信息 服务类
  * </p>
  *
  * @author Pettyfer
  * @since 2018-02-28
  */
-public interface ISystemRoleService extends IService<SystemRole> {
+public interface ISystemGroupService extends IService<SystemGroup> {
 
 }

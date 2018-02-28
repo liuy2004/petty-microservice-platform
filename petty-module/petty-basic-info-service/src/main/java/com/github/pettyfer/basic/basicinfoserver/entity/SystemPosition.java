@@ -1,10 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
+import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
-
 import java.io.Serializable;
 
 /**
@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-27
+ * @since 2018-02-28
  */
 @TableName("system_position")
 public class SystemPosition extends Model<SystemPosition> {
@@ -28,13 +28,8 @@ public class SystemPosition extends Model<SystemPosition> {
     /**
      * 部门CODE
      */
-    @TableField("DEPT_CODE")
-    private String deptCode;
-    /**
-     * 岗位代码
-     */
-    @TableField("CODE")
-    private String code;
+    @TableField("DEPT_ID")
+    private String deptId;
     /**
      * 岗位标识
      */
@@ -49,12 +44,12 @@ public class SystemPosition extends Model<SystemPosition> {
      * 是否启用  @枚举  0:否；1:是
      */
     @TableField("STATUS")
-    private Integer status;
+    private BigDecimal status;
     /**
      * 排序号
      */
     @TableField("SORT_NO")
-    private Integer sortNo;
+    private BigDecimal sortNo;
     /**
      * 创建人
      */
@@ -79,7 +74,7 @@ public class SystemPosition extends Model<SystemPosition> {
      * 删除标记  @枚举  0:否；1:是
      */
     @TableField("DEL_FLAG")
-    private Integer delFlag;
+    private BigDecimal delFlag;
 
 
     public String getPositionId() {
@@ -90,20 +85,12 @@ public class SystemPosition extends Model<SystemPosition> {
         this.positionId = positionId;
     }
 
-    public String getDeptCode() {
-        return deptCode;
+    public String getDeptId() {
+        return deptId;
     }
 
-    public void setDeptCode(String deptCode) {
-        this.deptCode = deptCode;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
     }
 
     public String getPositionCode() {
@@ -122,19 +109,19 @@ public class SystemPosition extends Model<SystemPosition> {
         this.positionName = positionName;
     }
 
-    public Integer getStatus() {
+    public BigDecimal getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(BigDecimal status) {
         this.status = status;
     }
 
-    public Integer getSortNo() {
+    public BigDecimal getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(Integer sortNo) {
+    public void setSortNo(BigDecimal sortNo) {
         this.sortNo = sortNo;
     }
 
@@ -170,11 +157,11 @@ public class SystemPosition extends Model<SystemPosition> {
         this.modifyDate = modifyDate;
     }
 
-    public Integer getDelFlag() {
+    public BigDecimal getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(Integer delFlag) {
+    public void setDelFlag(BigDecimal delFlag) {
         this.delFlag = delFlag;
     }
 
@@ -186,18 +173,17 @@ public class SystemPosition extends Model<SystemPosition> {
     @Override
     public String toString() {
         return "SystemPosition{" +
-                ", positionId=" + positionId +
-                ", deptCode=" + deptCode +
-                ", code=" + code +
-                ", positionCode=" + positionCode +
-                ", positionName=" + positionName +
-                ", status=" + status +
-                ", sortNo=" + sortNo +
-                ", creator=" + creator +
-                ", createDate=" + createDate +
-                ", modifier=" + modifier +
-                ", modifyDate=" + modifyDate +
-                ", delFlag=" + delFlag +
-                "}";
+        ", positionId=" + positionId +
+        ", deptId=" + deptId +
+        ", positionCode=" + positionCode +
+        ", positionName=" + positionName +
+        ", status=" + status +
+        ", sortNo=" + sortNo +
+        ", creator=" + creator +
+        ", createDate=" + createDate +
+        ", modifier=" + modifier +
+        ", modifyDate=" + modifyDate +
+        ", delFlag=" + delFlag +
+        "}";
     }
 }

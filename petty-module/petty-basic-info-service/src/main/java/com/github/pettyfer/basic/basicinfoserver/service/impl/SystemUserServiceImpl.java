@@ -14,9 +14,8 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-27
+ * @since 2018-02-28
  */
-@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service("systemUserService")
 public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemUser> implements ISystemUserService {
 

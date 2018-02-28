@@ -1,5 +1,6 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
+import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
@@ -12,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-27
+ * @since 2018-02-28
  */
 @TableName("system_dept")
 public class SystemDept extends Model<SystemDept> {
@@ -83,7 +84,7 @@ public class SystemDept extends Model<SystemDept> {
      * 同层部门等级
      */
     @TableField("DEPT_GRADE")
-    private Integer deptGrade;
+    private BigDecimal deptGrade;
     /**
      * 区域编号
      */
@@ -93,12 +94,12 @@ public class SystemDept extends Model<SystemDept> {
      * 排序
      */
     @TableField("SORT_NO")
-    private Integer sortNo;
+    private BigDecimal sortNo;
     /**
      * 部门状态
      */
     @TableField("STATUS")
-    private Integer status;
+    private BigDecimal status;
     /**
      * 创建人
      */
@@ -123,7 +124,7 @@ public class SystemDept extends Model<SystemDept> {
      * 删除标记
      */
     @TableField("DEL_FLAG")
-    private Integer delFlag;
+    private BigDecimal delFlag;
 
 
     public String getDeptId() {
@@ -222,11 +223,11 @@ public class SystemDept extends Model<SystemDept> {
         this.address = address;
     }
 
-    public Integer getDeptGrade() {
+    public BigDecimal getDeptGrade() {
         return deptGrade;
     }
 
-    public void setDeptGrade(Integer deptGrade) {
+    public void setDeptGrade(BigDecimal deptGrade) {
         this.deptGrade = deptGrade;
     }
 
@@ -238,19 +239,19 @@ public class SystemDept extends Model<SystemDept> {
         this.areaCode = areaCode;
     }
 
-    public Integer getSortNo() {
+    public BigDecimal getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(Integer sortNo) {
+    public void setSortNo(BigDecimal sortNo) {
         this.sortNo = sortNo;
     }
 
-    public Integer getStatus() {
+    public BigDecimal getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(BigDecimal status) {
         this.status = status;
     }
 
@@ -286,11 +287,11 @@ public class SystemDept extends Model<SystemDept> {
         this.modifyDate = modifyDate;
     }
 
-    public Integer getDelFlag() {
+    public BigDecimal getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(Integer delFlag) {
+    public void setDelFlag(BigDecimal delFlag) {
         this.delFlag = delFlag;
     }
 

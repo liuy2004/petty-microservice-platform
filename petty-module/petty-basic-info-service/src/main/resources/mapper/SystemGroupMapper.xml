@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.pettyfer.basic.basicinfoserver.mapper.SystemGroupMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemGroup">
+        <id column="GROUP_ID" property="groupId" />
+        <result column="GROUP_NAME" property="groupName" />
+        <result column="PARENT_ID" property="parentId" />
+        <result column="GROUP_TYPE" property="groupType" />
+        <result column="SORT_NO" property="sortNo" />
+        <result column="STATUS" property="status" />
+        <result column="CREATOR" property="creator" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="MODIFIER" property="modifier" />
+        <result column="MODIFY_DATE" property="modifyDate" />
+        <result column="DEL_FLAG" property="delFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        GROUP_ID AS groupId, GROUP_NAME AS groupName, PARENT_ID AS parentId, GROUP_TYPE AS groupType, SORT_NO AS sortNo, STATUS AS status, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
+    </sql>
+
+</mapper>

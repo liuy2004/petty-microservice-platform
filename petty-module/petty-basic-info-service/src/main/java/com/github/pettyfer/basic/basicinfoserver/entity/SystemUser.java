@@ -1,10 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
+import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
-
 import java.io.Serializable;
 
 /**
@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-27
+ * @since 2018-02-28
  */
 @TableName("system_user")
 public class SystemUser extends Model<SystemUser> {
@@ -99,12 +99,12 @@ public class SystemUser extends Model<SystemUser> {
      * 用户来源
      */
     @TableField("USER_SOURCE")
-    private Integer userSource;
+    private BigDecimal userSource;
     /**
      * 证件类型
      */
     @TableField("USER_IDEN_TYPE")
-    private Integer userIdenType;
+    private BigDecimal userIdenType;
     /**
      * 证件号
      */
@@ -114,17 +114,17 @@ public class SystemUser extends Model<SystemUser> {
      * 排序号
      */
     @TableField("SORT_NO")
-    private Integer sortNo;
+    private BigDecimal sortNo;
     /**
      * 管理员类型
      */
     @TableField("IS_ADMIN")
-    private Integer isAdmin;
+    private BigDecimal isAdmin;
     /**
      * 是否启用  @枚举  0:否；1:是
      */
     @TableField("STATUS")
-    private Integer status;
+    private BigDecimal status;
     /**
      * 创建人
      */
@@ -149,7 +149,7 @@ public class SystemUser extends Model<SystemUser> {
      * 删除标记  @枚举  0:否；1:是
      */
     @TableField("DEL_FLAG")
-    private Integer delFlag;
+    private BigDecimal delFlag;
 
 
     public String getUserId() {
@@ -272,19 +272,19 @@ public class SystemUser extends Model<SystemUser> {
         this.userPhoneTel = userPhoneTel;
     }
 
-    public Integer getUserSource() {
+    public BigDecimal getUserSource() {
         return userSource;
     }
 
-    public void setUserSource(Integer userSource) {
+    public void setUserSource(BigDecimal userSource) {
         this.userSource = userSource;
     }
 
-    public Integer getUserIdenType() {
+    public BigDecimal getUserIdenType() {
         return userIdenType;
     }
 
-    public void setUserIdenType(Integer userIdenType) {
+    public void setUserIdenType(BigDecimal userIdenType) {
         this.userIdenType = userIdenType;
     }
 
@@ -296,27 +296,27 @@ public class SystemUser extends Model<SystemUser> {
         this.userIden = userIden;
     }
 
-    public Integer getSortNo() {
+    public BigDecimal getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(Integer sortNo) {
+    public void setSortNo(BigDecimal sortNo) {
         this.sortNo = sortNo;
     }
 
-    public Integer getIsAdmin() {
+    public BigDecimal getIsAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(Integer isAdmin) {
+    public void setIsAdmin(BigDecimal isAdmin) {
         this.isAdmin = isAdmin;
     }
 
-    public Integer getStatus() {
+    public BigDecimal getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(BigDecimal status) {
         this.status = status;
     }
 
@@ -352,11 +352,11 @@ public class SystemUser extends Model<SystemUser> {
         this.modifyDate = modifyDate;
     }
 
-    public Integer getDelFlag() {
+    public BigDecimal getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(Integer delFlag) {
+    public void setDelFlag(BigDecimal delFlag) {
         this.delFlag = delFlag;
     }
 
@@ -368,32 +368,32 @@ public class SystemUser extends Model<SystemUser> {
     @Override
     public String toString() {
         return "SystemUser{" +
-                ", userId=" + userId +
-                ", userName=" + userName +
-                ", userPwd=" + userPwd +
-                ", fullName=" + fullName +
-                ", userSex=" + userSex +
-                ", userBirthday=" + userBirthday +
-                ", inDate=" + inDate +
-                ", photo=" + photo +
-                ", userNum=" + userNum +
-                ", email=" + email +
-                ", qqNum=" + qqNum +
-                ", userTel=" + userTel +
-                ", userAddr=" + userAddr +
-                ", userDesc=" + userDesc +
-                ", userPhoneTel=" + userPhoneTel +
-                ", userSource=" + userSource +
-                ", userIdenType=" + userIdenType +
-                ", userIden=" + userIden +
-                ", sortNo=" + sortNo +
-                ", isAdmin=" + isAdmin +
-                ", status=" + status +
-                ", creator=" + creator +
-                ", createDate=" + createDate +
-                ", modifier=" + modifier +
-                ", modifyDate=" + modifyDate +
-                ", delFlag=" + delFlag +
-                "}";
+        ", userId=" + userId +
+        ", userName=" + userName +
+        ", userPwd=" + userPwd +
+        ", fullName=" + fullName +
+        ", userSex=" + userSex +
+        ", userBirthday=" + userBirthday +
+        ", inDate=" + inDate +
+        ", photo=" + photo +
+        ", userNum=" + userNum +
+        ", email=" + email +
+        ", qqNum=" + qqNum +
+        ", userTel=" + userTel +
+        ", userAddr=" + userAddr +
+        ", userDesc=" + userDesc +
+        ", userPhoneTel=" + userPhoneTel +
+        ", userSource=" + userSource +
+        ", userIdenType=" + userIdenType +
+        ", userIden=" + userIden +
+        ", sortNo=" + sortNo +
+        ", isAdmin=" + isAdmin +
+        ", status=" + status +
+        ", creator=" + creator +
+        ", createDate=" + createDate +
+        ", modifier=" + modifier +
+        ", modifyDate=" + modifyDate +
+        ", delFlag=" + delFlag +
+        "}";
     }
 }

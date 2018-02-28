@@ -1,10 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
+import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
-
 import java.io.Serializable;
 
 /**
@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-27
+ * @since 2018-02-28
  */
 @TableName("system_role")
 public class SystemRole extends Model<SystemRole> {
@@ -39,12 +39,12 @@ public class SystemRole extends Model<SystemRole> {
      * 是否启用
      */
     @TableField("STATUS")
-    private Integer status;
+    private BigDecimal status;
     /**
      * 排序号
      */
     @TableField("SORT_NO")
-    private Integer sortNo;
+    private BigDecimal sortNo;
     /**
      * 创建人
      */
@@ -69,7 +69,7 @@ public class SystemRole extends Model<SystemRole> {
      * 删除标记
      */
     @TableField("DEL_FLAG")
-    private Integer delFlag;
+    private BigDecimal delFlag;
 
 
     public String getRoleId() {
@@ -96,19 +96,19 @@ public class SystemRole extends Model<SystemRole> {
         this.roleType = roleType;
     }
 
-    public Integer getStatus() {
+    public BigDecimal getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(BigDecimal status) {
         this.status = status;
     }
 
-    public Integer getSortNo() {
+    public BigDecimal getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(Integer sortNo) {
+    public void setSortNo(BigDecimal sortNo) {
         this.sortNo = sortNo;
     }
 
@@ -144,11 +144,11 @@ public class SystemRole extends Model<SystemRole> {
         this.modifyDate = modifyDate;
     }
 
-    public Integer getDelFlag() {
+    public BigDecimal getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(Integer delFlag) {
+    public void setDelFlag(BigDecimal delFlag) {
         this.delFlag = delFlag;
     }
 
@@ -160,16 +160,16 @@ public class SystemRole extends Model<SystemRole> {
     @Override
     public String toString() {
         return "SystemRole{" +
-                ", roleId=" + roleId +
-                ", roleName=" + roleName +
-                ", roleType=" + roleType +
-                ", status=" + status +
-                ", sortNo=" + sortNo +
-                ", creator=" + creator +
-                ", createDate=" + createDate +
-                ", modifier=" + modifier +
-                ", modifyDate=" + modifyDate +
-                ", delFlag=" + delFlag +
-                "}";
+        ", roleId=" + roleId +
+        ", roleName=" + roleName +
+        ", roleType=" + roleType +
+        ", status=" + status +
+        ", sortNo=" + sortNo +
+        ", creator=" + creator +
+        ", createDate=" + createDate +
+        ", modifier=" + modifier +
+        ", modifyDate=" + modifyDate +
+        ", delFlag=" + delFlag +
+        "}";
     }
 }

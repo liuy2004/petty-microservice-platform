@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.github.pettyfer.basic.basicinfoserver.mapper.SystemUserDeptRoleMapper">
+<mapper namespace="com.github.pettyfer.basic.basicinfoserver.mapper.SystemDeptRoleMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemUserDeptRole">
+    <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemDeptRole">
         <id column="ID" property="id" />
-        <result column="USER_ID" property="userId" />
         <result column="DEPT_ID" property="deptId" />
         <result column="ROLE_ID" property="roleId" />
-        <result column="IS_DEFAULT" property="isDefault" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID AS id, USER_ID AS userId, DEPT_ID AS deptId, ROLE_ID AS roleId, IS_DEFAULT AS isDefault
+        ID AS id, DEPT_ID AS deptId, ROLE_ID AS roleId
     </sql>
 
 </mapper>

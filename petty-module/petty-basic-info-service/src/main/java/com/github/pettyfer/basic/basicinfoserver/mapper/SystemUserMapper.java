@@ -10,14 +10,8 @@ import com.github.pettyfer.basic.common.vo.UserVo;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-27
+ * @since 2018-02-28
  */
 public interface SystemUserMapper extends BaseMapper<SystemUser> {
-    /**
-     * 通过用户名查询用户信息（含有角色信息）
-     *
-     * @param username 用户名
-     * @return userVo
-     */
     UserVo selectUserVoByUsername(String username);
 }
