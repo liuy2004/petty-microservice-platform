@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 
 /**
  * 用户资源服务
+ *
  * @author Petty
  */
 @Configuration

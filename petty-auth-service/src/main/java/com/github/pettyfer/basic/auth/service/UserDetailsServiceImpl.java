@@ -1,6 +1,5 @@
 package com.github.pettyfer.basic.auth.service;
 
-import com.alibaba.fastjson.JSONObject;
 import com.github.pettyfer.basic.auth.feign.UserService;
 import com.github.pettyfer.basic.auth.utils.UserDetailsImpl;
 import com.github.pettyfer.basic.common.vo.UserVo;
@@ -10,6 +9,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author Petty
+ */
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
