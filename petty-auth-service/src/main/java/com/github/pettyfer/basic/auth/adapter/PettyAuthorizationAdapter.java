@@ -57,7 +57,7 @@ public class PettyAuthorizationAdapter extends AuthorizationServerConfigurerAdap
         clients.inMemory()
                 .withClient(authServerConfig.getClientId())
                 .secret(authServerConfig.getClientSecret())
-                .authorizedGrantTypes(SecurityConstant.REFRESH_TOKEN, SecurityConstant.PASSWORD, SecurityConstant.AUTHORIZATION_CODE)
+                .authorizedGrantTypes(SecurityConstant.REFRESH_TOKEN, SecurityConstant.PASSWORD, SecurityConstant.AUTHORIZATION_CODE, SecurityConstant.CLIENT)
                 .scopes(authServerConfig.getScope())
                 .autoApprove(true);
     }

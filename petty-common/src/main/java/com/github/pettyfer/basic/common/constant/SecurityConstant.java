@@ -12,6 +12,11 @@ public interface SecurityConstant {
      * oauth2 授权码模式
      */
     String AUTHORIZATION_CODE = "authorization_code";
+
+    /**
+     * 客户端授权模式
+     */
+    String CLIENT = "client_credentials";
     /**
      * 密码模式
      */
