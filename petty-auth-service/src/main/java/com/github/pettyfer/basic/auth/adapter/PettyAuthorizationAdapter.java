@@ -18,8 +18,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.endpoint.AuthorizationEndpoint;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+
+import javax.annotation.PostConstruct;
 
 /**
  * @author Petty
@@ -46,6 +49,16 @@ public class PettyAuthorizationAdapter extends AuthorizationServerConfigurerAdap
     @Autowired
     private ResponseExceptionTranslator responseExceptionTranslator;
 
+    @Autowired
+    private AuthorizationEndpoint authorizationEndpoint;
+
+    @PostConstruct
+    public void init() {
+        authorizationEndpoint.setUserApprovalPage("forward:/oauth/my_approval_page");
+        authorizationEndpoint.setErrorPage("forward:/oauth/my_error_page");
+    }
+
+
     /**
      * 配置客户端信息
      *
@@ -59,7 +72,7 @@ public class PettyAuthorizationAdapter extends AuthorizationServerConfigurerAdap
                 .secret(authServerConfig.getClientSecret())
                 .authorizedGrantTypes(SecurityConstant.REFRESH_TOKEN, SecurityConstant.PASSWORD, SecurityConstant.AUTHORIZATION_CODE, SecurityConstant.CLIENT)
                 .scopes(authServerConfig.getScope())
-                .autoApprove(true);
+                .autoApprove(false);
     }
 
     @Override

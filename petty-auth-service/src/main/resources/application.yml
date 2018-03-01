@@ -1,6 +1,13 @@
 spring:
   application:
     name: petty-auth-service
+  thymeleaf:
+    cache: false
+    prefix: classpath:/tepmlates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
 server:
   port: 40151
 eureka:
