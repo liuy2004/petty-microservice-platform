@@ -1,30 +1,36 @@
 package com.github.pettyfer.basic.common.response;
 
-
-import lombok.AllArgsConstructor;
+import com.github.pettyfer.basic.common.constant.CommonConstant;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 /**
  * @author Petty
- * @date 2018年2月24日
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class BaseResponse implements Serializable {
-    private static final long serialVersionUID = -8655755752235388053L;
-    private int status = 200;
-    private String message;
-    private String path;
-    private long timestamp;
+public class BaseResponse<T> implements Serializable {
 
-    public BaseResponse(int status, String message, String path) {
-        this.status = status;
-        this.message = message;
-        this.path = path;
-        this.timestamp = System.currentTimeMillis();
+    private String message = "Success";
+
+    private long timestamp = System.currentTimeMillis();
+
+    private int status = CommonConstant.SUCCESS;
+
+    private T data;
+
+    public BaseResponse() {
+        super();
+    }
+
+    public BaseResponse(T data) {
+        super();
+        this.data = data;
+    }
+
+    public BaseResponse(Throwable e) {
+        super();
+        this.message = e.getMessage();
+        this.status = CommonConstant.FAIL;
     }
 }

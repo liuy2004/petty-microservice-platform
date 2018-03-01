@@ -5,6 +5,15 @@ package com.github.pettyfer.basic.common.constant;
  * @author Petty
  */
 public interface CommonConstant {
+
+    int NO_LOGIN = 403;
+
+    int SUCCESS = 200;
+
+    int FAIL = 500;
+
+    int NO_PERMISSION = 403;
+
     /**
      * 没有权限
      */

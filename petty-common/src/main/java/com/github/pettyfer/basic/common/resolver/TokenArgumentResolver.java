@@ -1,9 +1,9 @@
 package com.github.pettyfer.basic.common.resolver;
 
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
+import com.github.pettyfer.basic.common.vo.UserVo;
 import com.github.pettyfer.basic.common.utils.UserUtils;
 import com.github.pettyfer.basic.common.vo.RoleVo;
-import com.github.pettyfer.basic.common.vo.UserVo;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
