@@ -20,7 +20,7 @@ security:
         key-uri: http://localhost:40151/oauth/token_key
 spring:
   application:
-    name: pig-sso-client-demo
+    name: sso-client-demo
   profiles:
     active: dev
   redis:
