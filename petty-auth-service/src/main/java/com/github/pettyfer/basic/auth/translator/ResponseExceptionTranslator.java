@@ -40,7 +40,7 @@ public class ResponseExceptionTranslator extends DefaultWebResponseExceptionTran
         } else if (e instanceof InternalAuthenticationServiceException) {
             oAuth2Exception = new InvalidGrantException("用户名不存在", e);
         } else {
-            oAuth2Exception = new UnsupportedResponseTypeException("服务处理异常", e);
+            oAuth2Exception = new UnsupportedResponseTypeException("服务处理异常,请检查请求参数", e);
         }
         return super.translate(oAuth2Exception);
     }
