@@ -1,4 +1,4 @@
-package com.github.pettyfer.basic.auth.adapter;
+package com.github.pettyfer.basic.auth.config;
 
 import com.github.pettyfer.basic.auth.config.AuthServerConfig;
 import com.github.pettyfer.basic.auth.translator.ResponseExceptionTranslator;
@@ -29,7 +29,7 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 @Configuration
 @Order(Integer.MIN_VALUE)
 @EnableAuthorizationServer
-public class PettyAuthorizationAdapter extends AuthorizationServerConfigurerAdapter {
+public class PettyAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private AuthServerConfig authServerConfig;

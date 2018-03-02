@@ -1,4 +1,4 @@
-package com.github.pettyfer.basic.auth.adapter;
+package com.github.pettyfer.basic.auth.config;
 
 import com.github.pettyfer.basic.common.config.FilterUrlsPropertiesConifg;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
  */
 @Configuration
 @EnableResourceServer
-public class PettyResourceServerAdapter extends ResourceServerConfigurerAdapter {
+public class PettyResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;
