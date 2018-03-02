@@ -18,6 +18,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.approval.ApprovalStore;
+import org.springframework.security.oauth2.provider.approval.TokenApprovalStore;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
@@ -59,14 +62,13 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
                 .secret(authServerConfig.getClientSecret())
                 .authorizedGrantTypes(SecurityConstant.REFRESH_TOKEN, SecurityConstant.PASSWORD, SecurityConstant.AUTHORIZATION_CODE, SecurityConstant.CLIENT)
                 .scopes(authServerConfig.getScope())
-                .autoApprove(true);
+                //时候开启自动授权
+                .autoApprove(false);
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-        endpoints
-                .tokenStore(new RedisTokenStore(redisConnectionFactory))
-                .accessTokenConverter(jwtAccessTokenConverter())
+        endpoints.accessTokenConverter(jwtAccessTokenConverter())
                 .authenticationManager(authenticationManager)
                 .exceptionTranslator(responseExceptionTranslator)
                 .reuseRefreshTokens(false)
@@ -75,8 +77,7 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security
-                .allowFormAuthenticationForClients()
+        security.allowFormAuthenticationForClients()
                 .tokenKeyAccess("isAuthenticated()")
                 .checkTokenAccess("permitAll()");
     }
@@ -103,4 +104,15 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
         return jwtAccessTokenConverter;
     }
 
+    @Bean
+    public TokenStore tokenStore() {
+        return new RedisTokenStore(redisConnectionFactory);
+    }
+
+    @Bean
+    public ApprovalStore approvalStore() {
+        TokenApprovalStore store = new TokenApprovalStore();
+        store.setTokenStore(tokenStore());
+        return store;
+    }
 }
