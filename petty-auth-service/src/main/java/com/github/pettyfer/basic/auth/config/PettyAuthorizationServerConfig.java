@@ -60,9 +60,9 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
                 .withClient(authServerConfig.getClientId())
                 .secret(authServerConfig.getClientSecret())
                 .authorizedGrantTypes(SecurityConstant.REFRESH_TOKEN, SecurityConstant.PASSWORD, SecurityConstant.AUTHORIZATION_CODE, SecurityConstant.CLIENT)
+                //时候开启自动授权
+                .autoApprove(true)
                 .scopes(authServerConfig.getScope());
-        //时候开启自动授权
-        //.autoApprove(true);
     }
 
     @Override
