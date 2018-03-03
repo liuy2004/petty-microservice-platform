@@ -1,6 +1,5 @@
 package com.github.pettyfer.basic.auth.config;
 
-import com.github.pettyfer.basic.auth.config.AuthServerConfig;
 import com.github.pettyfer.basic.auth.translator.ResponseExceptionTranslator;
 import com.github.pettyfer.basic.common.constant.CommonConstant;
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
@@ -61,14 +60,16 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
                 .withClient(authServerConfig.getClientId())
                 .secret(authServerConfig.getClientSecret())
                 .authorizedGrantTypes(SecurityConstant.REFRESH_TOKEN, SecurityConstant.PASSWORD, SecurityConstant.AUTHORIZATION_CODE, SecurityConstant.CLIENT)
-                .scopes(authServerConfig.getScope())
-                //时候开启自动授权
-                .autoApprove(false);
+                .scopes(authServerConfig.getScope());
+        //时候开启自动授权
+        //.autoApprove(true);
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-        endpoints.accessTokenConverter(jwtAccessTokenConverter())
+        endpoints.tokenStore(tokenStore())
+                .approvalStore(approvalStore())
+                .accessTokenConverter(jwtAccessTokenConverter())
                 .authenticationManager(authenticationManager)
                 .exceptionTranslator(responseExceptionTranslator)
                 .reuseRefreshTokens(false)
