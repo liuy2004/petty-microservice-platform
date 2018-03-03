@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import org.springframework.security.oauth2.common.exceptions.UnsupportedResponseTypeException;
 import org.springframework.security.oauth2.provider.error.DefaultWebResponseExceptionTranslator;
 import org.springframework.stereotype.Component;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 
 /**
  * spring security 异常转化器
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Component;
  * LdapAuthenticationProvider.emptyUsername=用户名不允许为空
  * LdapAuthenticationProvider.onlySupports=仅仅支持UsernamePasswordAuthenticationToken
  * PasswordComparisonAuthenticator.badCredentials=坏的凭证
+ *
  * @author Petty
  */
 @Component
@@ -39,6 +41,8 @@ public class ResponseExceptionTranslator extends DefaultWebResponseExceptionTran
             oAuth2Exception = new InvalidGrantException("密码错误", e);
         } else if (e instanceof InternalAuthenticationServiceException) {
             oAuth2Exception = new InvalidGrantException("用户名不存在", e);
+        } else if (e instanceof HttpRequestMethodNotSupportedException) {
+            oAuth2Exception = new InvalidGrantException("不支持的请求方式", e);
         } else {
             oAuth2Exception = new UnsupportedResponseTypeException("服务处理异常,请检查请求参数", e);
         }
