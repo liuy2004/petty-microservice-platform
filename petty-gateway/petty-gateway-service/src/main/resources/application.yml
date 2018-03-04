@@ -32,7 +32,6 @@ zuul:
     petty-auth:
       path: "/**"
       serviceId: "petty-auth-service"
-      ignoredHeaders: Cookie,Set-Cookie,Authorization
 ribbon:
   eureka:
     enabled: true
