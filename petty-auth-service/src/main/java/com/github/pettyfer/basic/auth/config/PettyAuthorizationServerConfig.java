@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,9 +20,16 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.approval.TokenApprovalStore;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Petty
@@ -66,14 +74,25 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
     }
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-        endpoints.tokenStore(tokenStore())
-                .approvalStore(approvalStore())
-                .accessTokenConverter(jwtAccessTokenConverter())
-                .authenticationManager(authenticationManager)
-                .exceptionTranslator(responseExceptionTranslator)
-                .reuseRefreshTokens(false)
-                .userDetailsService(userDetailsService);
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        //Token存储位置
+        endpoints.tokenStore(tokenStore());
+        endpoints.approvalStore(approvalStore());
+        endpoints.authenticationManager(authenticationManager);
+        endpoints.userDetailsService(userDetailsService);
+        //配置Token增强器
+        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(customerEnhancer(), jwtAccessTokenConverter()));
+        endpoints.tokenEnhancer(tokenEnhancerChain);
+        //配置Token相关参数
+        DefaultTokenServices tokenServices = (DefaultTokenServices) endpoints.getDefaultAuthorizationServerTokenServices();
+        tokenServices.setSupportRefreshToken(true);
+        tokenServices.setClientDetailsService(endpoints.getClientDetailsService());
+        tokenServices.setTokenEnhancer(endpoints.getTokenEnhancer());
+        //定义Token有效期
+        tokenServices.setAccessTokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(1));
+        endpoints.tokenServices(tokenServices);
+        super.configure(endpoints);
     }
 
     @Override
@@ -93,18 +112,6 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
         return new BCryptPasswordEncoder();
     }
 
-    /**
-     * 转换JWT
-     *
-     * @return
-     */
-    @Bean
-    public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-        jwtAccessTokenConverter.setSigningKey(CommonConstant.SIGN_KEY);
-        return jwtAccessTokenConverter;
-    }
-
     @Bean
     public TokenStore tokenStore() {
         return new RedisTokenStore(redisConnectionFactory);
@@ -115,5 +122,31 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
         TokenApprovalStore store = new TokenApprovalStore();
         store.setTokenStore(tokenStore());
         return store;
+    }
+
+    /**
+     * 注入自定义token生成方式
+     *
+     * @return
+     */
+    @Bean
+    public TokenEnhancer customerEnhancer() {
+        return new CustomTokenEnhancer();
+    }
+
+
+    /**
+     * 配置Jwt转换器
+     * @return
+     */
+    @Bean
+    public JwtAccessTokenConverter jwtAccessTokenConverter() {
+        final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+        converter.setSigningKey(CommonConstant.SIGN_KEY);
+        //非对称加密配置
+        /*KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("mytest.jks"), "mypass".toCharArray());
+        converter.setKeyPair(keyStoreKeyFactory.getKeyPair("mytest"));*/
+        converter.setAccessTokenConverter(new CustomerAccessTokenConverter());
+        return converter;
     }
 }

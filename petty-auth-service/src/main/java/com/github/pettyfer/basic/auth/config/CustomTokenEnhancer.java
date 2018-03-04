@@ -1,0 +1,27 @@
+package com.github.pettyfer.basic.auth.config;
+
+import com.github.pettyfer.basic.auth.utils.UserDetailsImpl;
+import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Jwt增强
+ * @author Petty
+ * @date 2018年3月4日
+ */
+public class CustomTokenEnhancer implements TokenEnhancer{
+    @Override
+    public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
+        final Map<String, Object> additionalInfo = new HashMap<>();
+        UserDetailsImpl user = (UserDetailsImpl) authentication.getUserAuthentication().getPrincipal();
+        additionalInfo.put("username", user.getUsername());
+        additionalInfo.put("authorities", user.getAuthorities());
+        ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
+        return accessToken;
+    }
+}
