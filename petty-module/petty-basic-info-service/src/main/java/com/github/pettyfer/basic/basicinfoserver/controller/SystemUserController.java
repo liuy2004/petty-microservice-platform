@@ -1,4 +1,4 @@
-package com.github.pettyfer.basic.basicinfoserver.rest;
+package com.github.pettyfer.basic.basicinfoserver.controller;
 
 
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;

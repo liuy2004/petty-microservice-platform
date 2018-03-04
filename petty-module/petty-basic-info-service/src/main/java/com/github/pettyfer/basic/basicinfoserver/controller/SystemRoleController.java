@@ -1,4 +1,4 @@
-package com.github.pettyfer.basic.basicinfoserver.rest;
+package com.github.pettyfer.basic.basicinfoserver.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;

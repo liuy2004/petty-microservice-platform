@@ -29,9 +29,10 @@ zuul:
           - origin
           - url
   routes:
-        petty-auth:
-          path: "/**"
-          serviceId: "petty-auth-service"
+    petty-auth:
+      path: "/**"
+      serviceId: "petty-auth-service"
+      ignoredHeaders: Cookie,Set-Cookie,Authorization
 ribbon:
   eureka:
     enabled: true

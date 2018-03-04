@@ -49,7 +49,7 @@ public class PettyMybatisGenerator {
         // 配置包路径
         PackageConfig pc = new PackageConfig();
         pc.setParent("com.github.pettyfer.basic.basicinfoserver");
-        pc.setController("rest");
+        pc.setController("controller");
         mpg.setPackageInfo(pc);
         mpg.execute();
     }
