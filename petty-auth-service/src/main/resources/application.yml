@@ -1,6 +1,12 @@
 spring:
   application:
     name: petty-auth-service
+info:
+  build:
+    artifact: @project.artifactId@
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
 server:
   port: 40151
 eureka:
