@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-28
+ * @since 2018-03-08
  */
 public interface SystemMenuMapper extends BaseMapper<SystemMenu> {
 

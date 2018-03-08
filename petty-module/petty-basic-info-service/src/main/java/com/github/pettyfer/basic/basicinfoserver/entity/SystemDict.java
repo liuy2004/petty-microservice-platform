@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-28
+ * @since 2018-03-08
  */
 @TableName("system_dict")
 public class SystemDict extends Model<SystemDict> {
@@ -25,11 +25,6 @@ public class SystemDict extends Model<SystemDict> {
      */
     @TableId("DICT_ID")
     private String dictId;
-    /**
-     * 编码
-     */
-    @TableField("CODE")
-    private String code;
     /**
      * 类型
      */
@@ -103,14 +98,6 @@ public class SystemDict extends Model<SystemDict> {
 
     public void setDictId(String dictId) {
         this.dictId = dictId;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public String getDictType() {
@@ -226,7 +213,6 @@ public class SystemDict extends Model<SystemDict> {
     public String toString() {
         return "SystemDict{" +
         ", dictId=" + dictId +
-        ", code=" + code +
         ", dictType=" + dictType +
         ", dictKey=" + dictKey +
         ", dictValue=" + dictValue +

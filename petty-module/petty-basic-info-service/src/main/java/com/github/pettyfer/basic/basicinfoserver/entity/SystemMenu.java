@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-28
+ * @since 2018-03-08
  */
 @TableName("system_menu")
 public class SystemMenu extends Model<SystemMenu> {
@@ -26,15 +26,10 @@ public class SystemMenu extends Model<SystemMenu> {
     @TableId("MENU_ID")
     private String menuId;
     /**
-     * 菜单/按钮编码
-     */
-    @TableField("CODE")
-    private String code;
-    /**
      * 父节点
      */
-    @TableField("PARENT_CODE")
-    private String parentCode;
+    @TableField("PARENT_ID")
+    private String parentId;
     /**
      * 菜单/按钮名称
      */
@@ -125,20 +120,12 @@ public class SystemMenu extends Model<SystemMenu> {
         this.menuId = menuId;
     }
 
-    public String getCode() {
-        return code;
+    public String getParentId() {
+        return parentId;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getParentCode() {
-        return parentCode;
-    }
-
-    public void setParentCode(String parentCode) {
-        this.parentCode = parentCode;
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
     public String getMenuName() {
@@ -278,8 +265,7 @@ public class SystemMenu extends Model<SystemMenu> {
     public String toString() {
         return "SystemMenu{" +
         ", menuId=" + menuId +
-        ", code=" + code +
-        ", parentCode=" + parentCode +
+        ", parentId=" + parentId +
         ", menuName=" + menuName +
         ", href=" + href +
         ", target=" + target +
