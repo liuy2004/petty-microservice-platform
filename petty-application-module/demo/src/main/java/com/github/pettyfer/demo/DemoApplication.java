@@ -1,14 +1,14 @@
 package com.github.pettyfer.demo;
 
+import com.github.pettyfer.basic.common.annotation.PettyConfigure;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 @EnableOAuth2Sso
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.github.pettyfer"})
+@PettyConfigure
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class DemoApplication {
 
