@@ -28,11 +28,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>com.github.pettyfer.basic</groupId>
 			<artifactId>petty-gateway-ratelimit</artifactId>
 			<version>${petty.version}</version>

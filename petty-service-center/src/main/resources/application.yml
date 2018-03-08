@@ -17,3 +17,11 @@ info:
     name: @project.name@
     description: @project.description@
     version: @project.version@
+management:
+  security:
+    enabled: false
+endpoints:
+  actuator:
+    enabled: true
+  shutdown:
+    enabled: false

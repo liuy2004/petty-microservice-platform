@@ -52,3 +52,11 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 50000
+management:
+  security:
+    enabled: false
+endpoints:
+  actuator:
+    enabled: true
+  shutdown:
+    enabled: false

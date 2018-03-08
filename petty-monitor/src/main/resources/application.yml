@@ -4,6 +4,12 @@ info:
     name: @project.name@
     description: @project.description@
     version: @project.version@
+server:
+  port: 40154
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:30151/eureka
 management:
   security:
     enabled: false
@@ -13,20 +19,8 @@ endpoints:
   shutdown:
     enabled: false
 spring:
-  cloud:
-    bus:
-      trace:
-        enabled: true
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: pettyfer
-    password: liuyang19950123
   application:
-    name: petty-config
-server:
-  port: 40152
-eureka:
-  client:
-    service-url:
-      defaultZone: http://127.0.0.1:30151/eureka
+    name: petty-monitor
+  boot:
+    admin:
+      context-path: /admin

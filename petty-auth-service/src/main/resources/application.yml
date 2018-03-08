@@ -1,6 +1,14 @@
 spring:
   application:
     name: petty-auth-service
+management:
+  security:
+    enabled: false
+endpoints:
+  actuator:
+    enabled: true
+  shutdown:
+    enabled: false
 info:
   build:
     artifact: @project.artifactId@
