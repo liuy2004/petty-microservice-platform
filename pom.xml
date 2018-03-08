@@ -14,6 +14,7 @@
         <module>petty-common</module>
         <module>petty-module</module>
         <module>petty-auth-service</module>
+        <module>petty-config</module>
         <module>petty-application-module</module>
     </modules>
 

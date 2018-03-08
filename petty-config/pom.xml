@@ -3,55 +3,34 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>petty-gateway-service</artifactId>
-	<version>${petty.version}</version>
+	<groupId>com.github.pettyfer.basic.config</groupId>
+	<artifactId>petty-config</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>petty-gateway-service</name>
-	<description>Petty Gateway 网关服务</description>
+	<name>petty-config</name>
+	<description>服务配置中心</description>
 
 	<parent>
+		<artifactId>petty-microservice-platform</artifactId>
 		<groupId>com.github.pettyfer.basic</groupId>
-		<artifactId>petty-gateway</artifactId>
 		<version>${petty.version}</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-zuul</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>com.github.pettyfer.basic</groupId>
-			<artifactId>petty-gateway-ratelimit</artifactId>
-			<version>${petty.version}</version>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-ribbon</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-feign</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.netflix.feign</groupId>
-			<artifactId>feign-jackson</artifactId>
-			<version>8.18.0</version>
+			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
 
 		<dependency>
@@ -65,9 +44,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.github.pettyfer.basic</groupId>
-			<artifactId>petty-common</artifactId>
-			<version>${petty.version}</version>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-ribbon</artifactId>
 		</dependency>
 
 		<dependency>
@@ -75,7 +53,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>

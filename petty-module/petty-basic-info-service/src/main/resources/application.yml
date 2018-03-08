@@ -9,7 +9,7 @@ eureka:
     service-url:
       defaultZone: http://127.0.0.1:30151/eureka
 server:
-  port: 40152
+  port: 40153
 spring:
   application:
     name: petty-basic-info-service
