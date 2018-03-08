@@ -16,7 +16,7 @@
     <!-- 定义日志文件名称 -->
     <property name="log_name" value="petty-auth-service" />
 
-    <property name="console_log_pattern" value="%date{yyyy-MM-dd HH:mm:ss} %highlight(%-5level) [%boldYellow(%thread)] %boldGreen(%logger) %msg%n"/>
+    <property name="console_log_pattern" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger -%msg%n"/>
 
     <!-- ConsoleAppender 控制台输出日志 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
