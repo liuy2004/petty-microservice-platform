@@ -3,9 +3,8 @@ package com.github.pettyfer.basic.common.utils;
 import com.github.pettyfer.basic.common.constant.CommonConstant;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +15,8 @@ import java.util.List;
  * @author Petty
  * 用户信息解析
  */
+@Slf4j
 public class UserUtils {
-    private static Logger logger = LoggerFactory.getLogger(UserUtils.class);
     private static final ThreadLocal<String> THREAD_LOCAL_USER = new ThreadLocal<>();
     private static final String KEY_USER = "user";
 
@@ -53,13 +52,14 @@ public class UserUtils {
             Claims claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
             username = claims.get("user_name").toString();
         } catch (Exception ex) {
-            logger.error("Username resolve exception,token:{},key:{}", token, key);
+            log.error("Username resolve exception,token:{},key:{}", token, key);
         }
         return username;
     }
 
     /**
      * 通过token 获取用户名
+     *
      * @param authorization
      * @return
      */
@@ -74,13 +74,14 @@ public class UserUtils {
             Claims claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
             username = claims.get("user_name").toString();
         } catch (Exception ex) {
-            logger.error("Username resolve exception,token:{},key:{}", token, key);
+            log.error("Username resolve exception,token:{},key:{}", token, key);
         }
         return username;
     }
 
     /**
      * 直接根据请求头中的Token解析角色信息
+     *
      * @param httpServletRequest
      * @return
      */

@@ -1,15 +1,14 @@
 package com.github.pettyfer.basic.common.aop;
 
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
-import com.github.pettyfer.basic.common.vo.UserVo;
 import com.github.pettyfer.basic.common.utils.UserUtils;
+import com.github.pettyfer.basic.common.vo.UserVo;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Component;
@@ -22,14 +21,14 @@ import java.util.Arrays;
 
 /**
  * 通过Aop对Controller返回数据进行包装
+ *
  * @author Petty
  * @date 2018年3月1日
  */
 @Aspect
 @Component
+@Slf4j
 public class ControllerAop {
-    private static final Logger logger = LoggerFactory.getLogger(ControllerAop.class);
-
     @Autowired
     private CacheManager cacheManager;
 
@@ -39,6 +38,7 @@ public class ControllerAop {
 
     /**
      * 处理切点
+     *
      * @param pjp
      * @return
      */
@@ -84,21 +84,21 @@ public class ControllerAop {
             username = userVo.getUserName();
             UserUtils.setUser(username);
         }
-        logger.info("Controller AOP get username:{}", username);
+        log.info("Controller AOP get username:{}", username);
 
-        logger.info("URL : " + request.getRequestURL().toString());
-        logger.info("HTTP_METHOD : " + request.getMethod());
-        logger.info("IP : " + request.getRemoteAddr());
-        logger.info("CLASS_METHOD : " + pjp.getSignature().getDeclaringTypeName() + "." + pjp.getSignature().getName());
-        logger.info("ARGS : " + Arrays.toString(pjp.getArgs()));
+        log.info("URL : " + request.getRequestURL().toString());
+        log.info("HTTP_METHOD : " + request.getMethod());
+        log.info("IP : " + request.getRemoteAddr());
+        log.info("CLASS_METHOD : " + pjp.getSignature().getDeclaringTypeName() + "." + pjp.getSignature().getName());
+        log.info("ARGS : " + Arrays.toString(pjp.getArgs()));
 
         Object result;
 
         try {
             result = pjp.proceed();
-            logger.info(pjp.getSignature() + "use time:" + (System.currentTimeMillis() - startTime));
+            log.info(pjp.getSignature() + "use time:" + (System.currentTimeMillis() - startTime));
         } catch (Throwable e) {
-            logger.error("异常信息：", e);
+            log.error("异常信息：", e);
             throw new RuntimeException(e);
         } finally {
             if (StringUtils.isNotEmpty(username)) {

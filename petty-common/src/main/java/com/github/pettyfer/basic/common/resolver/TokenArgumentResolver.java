@@ -1,12 +1,11 @@
 package com.github.pettyfer.basic.common.resolver;
 
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
-import com.github.pettyfer.basic.common.vo.UserVo;
 import com.github.pettyfer.basic.common.utils.UserUtils;
 import com.github.pettyfer.basic.common.vo.RoleVo;
+import com.github.pettyfer.basic.common.vo.UserVo;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.MethodParameter;
@@ -25,9 +24,9 @@ import java.util.Optional;
  * @date 2018年2月27日
  * Token转化UserVo
  */
+@Slf4j
 @Configuration
 public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
-    private Logger logger = LoggerFactory.getLogger(TokenArgumentResolver.class);
     private CacheManager cacheManager;
 
     /**
@@ -40,7 +39,7 @@ public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
     private UserVo generatorByToken(HttpServletRequest request, String token) {
         String username = UserUtils.getUserName(request);
         List<String> roles = UserUtils.getRole(request);
-        logger.info("Auth-Token-User:{}-Roles:{}", username, roles);
+        log.info("Auth-Token-User:{}-Roles:{}", username, roles);
         UserVo userVo = new UserVo();
         userVo.setUserName(username);
         List<RoleVo> sysRoleList = new ArrayList<>();
@@ -84,12 +83,12 @@ public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
         HttpServletRequest request = nativeWebRequest.getNativeRequest(HttpServletRequest.class);
         String token = UserUtils.getToken(request);
         if (StringUtils.isBlank(token)) {
-            logger.error("resolveArgument error token is empty");
+            log.error("resolveArgument error token is empty");
             return null;
         }
         Optional<UserVo> optional = Optional.ofNullable(cacheManager.getCache(SecurityConstant.TOKEN_USER_DETAIL).get(token, UserVo.class));
         if (optional.isPresent()) {
-            logger.info("return cache user vo,token :{}", token);
+            log.info("return cache user vo,token :{}", token);
             return optional.get();
         }
         return optional.orElseGet(() -> generatorByToken(request, token));
