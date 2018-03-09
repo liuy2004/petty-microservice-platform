@@ -17,6 +17,12 @@ spring:
     bus:
       trace:
         enabled: true
+    config:
+      server:
+        git:
+          uri: http://git.minstone.com.cn/liuyang/petty-microservice-config.git
+  profiles:
+    active: dev
   rabbitmq:
     host: 127.0.0.1
     port: 5672
@@ -26,6 +32,10 @@ spring:
     name: petty-config
 server:
   port: 40152
+---
+spring:
+ profiles:
+   active: dev
 eureka:
   client:
     service-url:
