@@ -26,7 +26,7 @@ security:
     enabled: false
 spring:
   application:
-    name: petty-monitor
+    name: petty-monitor-service
   boot:
     admin:
       context-path: /admin

@@ -1,29 +1,6 @@
-spring:
-  application:
-    name: petty-auth-service
-management:
-  security:
-    enabled: false
-endpoints:
-  actuator:
-    enabled: true
-  shutdown:
-    enabled: false
 info:
   build:
     artifact: @project.artifactId@
     name: @project.name@
     description: @project.description@
     version: @project.version@
-server:
-  port: 40151
-eureka:
-  client:
-    service-url:
-      defaultZone: http://127.0.0.1:30151/eureka
-petty:
-  auth:
-    clientId: demo
-    clientSecret: demoSecret
-    scope: application
-logging.level.org.springframework.security: DEBUG

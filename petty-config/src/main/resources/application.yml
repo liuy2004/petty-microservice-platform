@@ -13,6 +13,15 @@ endpoints:
   shutdown:
     enabled: false
 spring:
+  application:
+    name: petty-config-service
+  profiles:
+    active: dev
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: pettyfer
+    password: liuyang19950123
   cloud:
     bus:
       trace:
@@ -21,22 +30,16 @@ spring:
       server:
         git:
           uri: http://git.minstone.com.cn/liuyang/petty-microservice-config.git
-  profiles:
-    active: dev
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: pettyfer
-    password: liuyang19950123
-  application:
-    name: petty-config
 server:
   port: 40152
 ---
 spring:
- profiles:
-   active: dev
+  profiles: dev
 eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 20
   client:
     service-url:
       defaultZone: http://127.0.0.1:30151/eureka
