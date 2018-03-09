@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 
 	<name>petty-basic-info-service</name>
-	<description>Demo project for Spring Boot</description>
+	<description>基础服务</description>
 
 	<parent>
 		<artifactId>petty-module</artifactId>
