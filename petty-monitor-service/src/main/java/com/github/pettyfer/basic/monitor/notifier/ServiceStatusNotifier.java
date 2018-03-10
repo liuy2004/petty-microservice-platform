@@ -1,5 +1,6 @@
 package com.github.pettyfer.basic.monitor.notifier;
 
+import com.github.pettyfer.basic.common.constant.MqQueueConstant;
 import de.codecentric.boot.admin.event.ClientApplicationEvent;
 import de.codecentric.boot.admin.event.ClientApplicationStatusChangedEvent;
 import de.codecentric.boot.admin.notify.AbstractStatusChangeNotifier;
@@ -40,7 +41,7 @@ public class ServiceStatusNotifier extends AbstractStatusChangeNotifier {
             log.info("Service {} ({}) is {}", clientApplicationEvent.getApplication().getName(),
                     clientApplicationEvent.getApplication().getId(), ((ClientApplicationStatusChangedEvent) clientApplicationEvent).getTo().getStatus());
             String message = String.format("服务:%s 下线，时间：%s", clientApplicationEvent.getApplication().getName(), simpleDateFormat.format(clientApplicationEvent.getTimestamp()));
-            rabbitTemplate.convertAndSend(message);
+            rabbitTemplate.convertAndSend(MqQueueConstant.SERVICE_STATUS_CHANGE_QUEUE,message);
         } else {
             log.info("Service {} ({}) {}", clientApplicationEvent.getApplication().getName(),
                     clientApplicationEvent.getApplication().getId(), clientApplicationEvent.getType());

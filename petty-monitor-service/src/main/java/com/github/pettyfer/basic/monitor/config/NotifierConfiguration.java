@@ -35,7 +35,7 @@ public class NotifierConfiguration {
         return new ServiceStatusNotifier(rabbitTemplate);
     }
 
-    @Scheduled(fixedRate = 60_000L)
+    @Scheduled(fixedRate = 1_000L)
     public void remind() {
         remindingNotifier().sendReminders();
     }
