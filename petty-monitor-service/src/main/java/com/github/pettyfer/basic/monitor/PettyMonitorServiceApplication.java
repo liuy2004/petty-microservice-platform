@@ -17,10 +17,10 @@ import org.springframework.web.client.RestTemplate;
 @EnableHystrix
 @EnableHystrixDashboard
 @EnableTurbine
-public class PettyMonitorApplication {
+public class PettyMonitorServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PettyMonitorApplication.class, args);
+		SpringApplication.run(PettyMonitorServiceApplication.class, args);
 	}
 
 	@Bean
