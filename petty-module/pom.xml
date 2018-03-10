@@ -8,12 +8,25 @@
         <version>${petty.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <description>微服务架构系统基础模块集</description>
     <artifactId>petty-module</artifactId>
     <packaging>pom</packaging>
 
     <modules>
         <module>petty-basic-info-service</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.pettyfer.basic</groupId>
+            <artifactId>petty-common</artifactId>
+            <version>${petty.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
