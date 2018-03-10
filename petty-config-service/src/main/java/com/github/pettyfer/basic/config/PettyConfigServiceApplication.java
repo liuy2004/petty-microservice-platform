@@ -11,10 +11,10 @@ import org.springframework.web.client.RestTemplate;
 @EnableConfigServer
 @SpringBootApplication
 @EnableDiscoveryClient
-public class PettyConfigApplication {
+public class PettyConfigServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PettyConfigApplication.class, args);
+		SpringApplication.run(PettyConfigServiceApplication.class, args);
 	}
 
 	@Bean
