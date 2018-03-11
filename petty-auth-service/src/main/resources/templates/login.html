@@ -11,7 +11,7 @@
 <div class="login-box">
     <div class="logo">
         <a href="javascript:void(0);">微服务开发平台</a>
-        <small>用户登陆</small>
+        <small>统一认证</small>
     </div>
     <div th:if="${param.error}" class="alert bg-red alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
@@ -21,6 +21,7 @@
     <div class="card">
         <div class="body">
             <form id="sign_in" method="POST" th:action="@{/login}">
+                <div class="msg">用户登陆</div>
                 <div class="input-group">
           <span class="input-group-addon">
               <i class="material-icons">person</i>
