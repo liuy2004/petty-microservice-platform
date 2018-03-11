@@ -1,6 +1,7 @@
 package com.github.pettyfer.basic.common.resolver;
 
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
+import com.github.pettyfer.basic.common.exception.auth.TokenErrorException;
 import com.github.pettyfer.basic.common.utils.UserUtils;
 import com.github.pettyfer.basic.common.vo.RoleVo;
 import com.github.pettyfer.basic.common.vo.UserVo;
@@ -84,7 +85,7 @@ public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
         String token = UserUtils.getToken(request);
         if (StringUtils.isBlank(token)) {
             log.error("resolveArgument error token is empty");
-            return null;
+            throw new TokenErrorException("invalid token");
         }
         Optional<UserVo> optional = Optional.ofNullable(cacheManager.getCache(SecurityConstant.TOKEN_USER_DETAIL).get(token, UserVo.class));
         if (optional.isPresent()) {
