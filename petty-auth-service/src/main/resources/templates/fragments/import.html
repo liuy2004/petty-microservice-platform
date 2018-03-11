@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+</head>
+<body class="theme-teal">
+<th:block th:fragment="core-css">
+    <link rel="icon" th:href="@{/static/favicon.ico}" type="image/x-icon"/>
+    <link th:href="@{/webjars/material-design-icons/material-icons.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/animate.css/animate.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/waves/dist/waves.css}" rel="stylesheet"/>
+    <link th:href="@{/static/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{/static/css/themes/all-themes.css}" rel="stylesheet"/>
+</th:block>
+
+<th:block th:fragment="login-js">
+    <script th:src="@{/webjars/jquery/1.12.4/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.js}"></script>
+    <script th:src="@{/webjars/waves/dist/waves.js}"></script>
+    <script th:src="@{/webjars/jquery-validation/jquery.validate.js}"></script>
+    <script th:src="@{/static/js/admin.js}"></script>
+    <script th:src="@{/static/js/validate.js}"></script>
+</th:block>
+</body>
+</html>
