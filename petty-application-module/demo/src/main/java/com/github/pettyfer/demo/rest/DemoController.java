@@ -16,7 +16,6 @@ public class DemoController {
     }
 
     @GetMapping("user")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Authentication user(Authentication authentication) {
         return authentication;
     }

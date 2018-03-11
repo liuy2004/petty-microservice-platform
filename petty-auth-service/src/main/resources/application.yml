@@ -4,3 +4,12 @@ info:
     name: @project.name@
     description: @project.description@
     version: @project.version@
+logging.level.org.springframework.security: DEBUG
+spring:
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+    content-type: text/html
+    suffix: .html
+  mvc:
+    static-path-pattern: /static/**

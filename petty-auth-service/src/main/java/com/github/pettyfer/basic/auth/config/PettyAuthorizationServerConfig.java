@@ -69,7 +69,8 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
                 .secret(authServerConfig.getClientSecret())
                 .authorizedGrantTypes(SecurityConstant.REFRESH_TOKEN, SecurityConstant.PASSWORD, SecurityConstant.AUTHORIZATION_CODE, SecurityConstant.CLIENT)
                 //时候开启自动授权
-                .autoApprove(true)
+                .autoApprove(false)
+                .redirectUris("http://127.0.0.1:40351/")
                 .scopes(authServerConfig.getScope());
     }
 
