@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 
 /**
  * 配置用户验证
@@ -57,6 +59,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().loginPage("/login").successHandler(new SuccessHandler())
                 .and()
+                //开启记住密码
+                .rememberMe()
+                .tokenRepository(tokenRepository())
+                .tokenValiditySeconds(1209600)
+                .and()
                 .logout();
     }
 
@@ -64,6 +71,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+
+    @Bean
+    public InMemoryTokenRepositoryImpl tokenRepository(){
+        InMemoryTokenRepositoryImpl repository=new InMemoryTokenRepositoryImpl();
+        return repository;
     }
 
 }
