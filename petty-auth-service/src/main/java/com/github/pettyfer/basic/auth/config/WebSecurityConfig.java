@@ -62,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //开启记住密码
                 .rememberMe()
                 .tokenRepository(tokenRepository())
-                .tokenValiditySeconds(1209600)
+                .tokenValiditySeconds(604800)
                 .and()
                 .logout();
     }
