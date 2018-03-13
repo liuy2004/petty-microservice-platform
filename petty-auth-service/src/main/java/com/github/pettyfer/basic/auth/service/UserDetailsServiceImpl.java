@@ -2,7 +2,7 @@ package com.github.pettyfer.basic.auth.service;
 
 import com.github.pettyfer.basic.auth.feign.UserService;
 import com.github.pettyfer.basic.auth.utils.UserDetailsImpl;
-import com.github.pettyfer.basic.common.dto.UserDto;
+import com.github.pettyfer.basic.common.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDto userDto = userService.findUserByUsername(username);
-        return new UserDetailsImpl(userDto);
+        User user = userService.findUserByUsername(username);
+        return new UserDetailsImpl(user);
     }
 }

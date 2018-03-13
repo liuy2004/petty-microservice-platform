@@ -1,4 +1,4 @@
-package com.github.pettyfer.basic.common.vo;
+package com.github.pettyfer.basic.common.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

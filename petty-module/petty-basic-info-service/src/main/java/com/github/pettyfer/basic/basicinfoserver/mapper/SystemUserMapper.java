@@ -1,9 +1,8 @@
 package com.github.pettyfer.basic.basicinfoserver.mapper;
 
-import com.github.pettyfer.basic.basicinfoserver.entity.SystemUser;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.github.pettyfer.basic.common.dto.UserDto;
-import com.github.pettyfer.basic.common.vo.UserInfo;
+import com.github.pettyfer.basic.basicinfoserver.entity.SystemUser;
+import com.github.pettyfer.basic.common.entity.User;
 
 /**
  * <p>
@@ -14,7 +13,5 @@ import com.github.pettyfer.basic.common.vo.UserInfo;
  * @since 2018-02-28
  */
 public interface SystemUserMapper extends BaseMapper<SystemUser> {
-    UserDto selectUserDtoByUsername(String username);
-
-    UserInfo selectUserInfo(String username);
+    User selectUserByUsername(String username);
 }

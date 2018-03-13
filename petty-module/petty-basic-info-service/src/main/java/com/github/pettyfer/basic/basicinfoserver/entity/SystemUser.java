@@ -1,6 +1,5 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
@@ -99,12 +98,12 @@ public class SystemUser extends Model<SystemUser> {
      * 用户来源
      */
     @TableField("USER_SOURCE")
-    private BigDecimal userSource;
+    private Integer userSource;
     /**
      * 证件类型
      */
     @TableField("USER_IDEN_TYPE")
-    private BigDecimal userIdenType;
+    private Integer userIdenType;
     /**
      * 证件号
      */
@@ -114,17 +113,17 @@ public class SystemUser extends Model<SystemUser> {
      * 排序号
      */
     @TableField("SORT_NO")
-    private BigDecimal sortNo;
+    private Integer sortNo;
     /**
      * 管理员类型
      */
     @TableField("IS_ADMIN")
-    private BigDecimal isAdmin;
+    private Integer isAdmin;
     /**
      * 是否启用  @枚举  0:否；1:是
      */
     @TableField("STATUS")
-    private BigDecimal status;
+    private Integer status;
     /**
      * 创建人
      */
@@ -149,7 +148,7 @@ public class SystemUser extends Model<SystemUser> {
      * 删除标记  @枚举  0:否；1:是
      */
     @TableField("DEL_FLAG")
-    private BigDecimal delFlag;
+    private Integer delFlag;
 
 
     public String getUserId() {
@@ -272,19 +271,19 @@ public class SystemUser extends Model<SystemUser> {
         this.userPhoneTel = userPhoneTel;
     }
 
-    public BigDecimal getUserSource() {
+    public Integer getUserSource() {
         return userSource;
     }
 
-    public void setUserSource(BigDecimal userSource) {
+    public void setUserSource(Integer userSource) {
         this.userSource = userSource;
     }
 
-    public BigDecimal getUserIdenType() {
+    public Integer getUserIdenType() {
         return userIdenType;
     }
 
-    public void setUserIdenType(BigDecimal userIdenType) {
+    public void setUserIdenType(Integer userIdenType) {
         this.userIdenType = userIdenType;
     }
 
@@ -296,27 +295,27 @@ public class SystemUser extends Model<SystemUser> {
         this.userIden = userIden;
     }
 
-    public BigDecimal getSortNo() {
+    public Integer getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(BigDecimal sortNo) {
+    public void setSortNo(Integer sortNo) {
         this.sortNo = sortNo;
     }
 
-    public BigDecimal getIsAdmin() {
+    public Integer getIsAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(BigDecimal isAdmin) {
+    public void setIsAdmin(Integer isAdmin) {
         this.isAdmin = isAdmin;
     }
 
-    public BigDecimal getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(BigDecimal status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -352,11 +351,11 @@ public class SystemUser extends Model<SystemUser> {
         this.modifyDate = modifyDate;
     }
 
-    public BigDecimal getDelFlag() {
+    public Integer getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(BigDecimal delFlag) {
+    public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
     }
 

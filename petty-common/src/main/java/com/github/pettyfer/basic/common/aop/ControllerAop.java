@@ -1,7 +1,7 @@
 package com.github.pettyfer.basic.common.aop;
 
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
-import com.github.pettyfer.basic.common.dto.UserDto;
+import com.github.pettyfer.basic.common.entity.User;
 import com.github.pettyfer.basic.common.utils.UserUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -70,18 +70,18 @@ public class ControllerAop {
         HttpServletRequest request = attributes.getRequest();
 
         String token = UserUtils.getToken(request);
-        UserDto userDto = null;
+        User user = null;
         if (StringUtils.isNotEmpty(token)) {
-            userDto = cacheManager.getCache(SecurityConstant.TOKEN_USER_DETAIL).get(token, UserDto.class);
+            user = cacheManager.getCache(SecurityConstant.TOKEN_USER_DETAIL).get(token, User.class);
         }
         String username;
-        if (userDto == null) {
+        if (user == null) {
             username = UserUtils.getUserName(request);
             if (StringUtils.isNotEmpty(username)) {
                 UserUtils.setUser(username);
             }
         } else {
-            username = userDto.getUserName();
+            username = user.getUserName();
             UserUtils.setUser(username);
         }
         log.info("Controller AOP get username:{}", username);

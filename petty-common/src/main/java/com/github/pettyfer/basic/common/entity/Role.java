@@ -1,11 +1,10 @@
-package com.github.pettyfer.basic.common.dto;
+package com.github.pettyfer.basic.common.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * 角色信息
@@ -14,7 +13,7 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleDto implements Serializable {
+public class Role implements Serializable {
     private String roleId;
     private String roleName;
     private String roleType;

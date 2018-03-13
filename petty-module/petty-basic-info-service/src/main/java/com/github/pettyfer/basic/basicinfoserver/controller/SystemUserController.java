@@ -2,8 +2,8 @@ package com.github.pettyfer.basic.basicinfoserver.controller;
 
 
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
-import com.github.pettyfer.basic.common.dto.UserDto;
-import com.github.pettyfer.basic.common.vo.UserInfo;
+import com.github.pettyfer.basic.common.entity.User;
+import com.github.pettyfer.basic.common.model.UserInfo;
 import com.github.pettyfer.basic.common.response.BaseResponse;
 import com.github.pettyfer.basic.common.web.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +29,8 @@ public class SystemUserController extends BaseController {
     private ISystemUserService systemUserService;
 
     @GetMapping("/info")
-    public BaseResponse<UserDto> user(UserDto userDto) {
-        return new BaseResponse<>(userDto);
+    public BaseResponse<User> user(User user) {
+        return new BaseResponse<>(user);
     }
 
     /**
@@ -40,7 +40,7 @@ public class SystemUserController extends BaseController {
      * @return UseVo 对象
      */
     @GetMapping("/findUserByUsername/{username}")
-    public UserDto findUserByUsername(@PathVariable String username) {
+    public User findUserByUsername(@PathVariable String username) {
         return systemUserService.findUserByUsername(username);
     }
 

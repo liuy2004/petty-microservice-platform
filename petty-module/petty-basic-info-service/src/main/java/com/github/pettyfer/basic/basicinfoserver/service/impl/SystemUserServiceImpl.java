@@ -1,11 +1,12 @@
 package com.github.pettyfer.basic.basicinfoserver.service.impl;
 
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.github.pettyfer.basic.basicinfoserver.entity.SystemUser;
 import com.github.pettyfer.basic.basicinfoserver.mapper.SystemUserMapper;
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.github.pettyfer.basic.common.dto.UserDto;
-import com.github.pettyfer.basic.common.vo.UserInfo;
+import com.github.pettyfer.basic.common.entity.User;
+import com.github.pettyfer.basic.common.model.UserInfo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,12 +26,18 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     private SystemUserMapper systemUserMapper;
 
     @Override
-    public UserDto findUserByUsername(String username) {
-        return systemUserMapper.selectUserDtoByUsername(username);
+    public User findUserByUsername(String username) {
+        return systemUserMapper.selectUserByUsername(username);
     }
 
     @Override
     public UserInfo findUserInfo(String username) {
-        return systemUserMapper.selectUserInfo(username);
+        UserInfo userInfo = new UserInfo();
+        SystemUser systemUser_query = new SystemUser();
+        systemUser_query.setUserName(username);
+        systemUser_query.setDelFlag(0);
+        SystemUser systemUser = systemUserMapper.selectOne(systemUser_query);
+        BeanUtils.copyProperties(userInfo,systemUser);
+        return userInfo;
     }
 }

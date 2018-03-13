@@ -2,7 +2,7 @@ package com.github.pettyfer.basic.basicinfoserver;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
-import com.github.pettyfer.basic.common.vo.UserInfo;
+import com.github.pettyfer.basic.common.model.UserInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

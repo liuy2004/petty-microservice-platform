@@ -1,7 +1,7 @@
 package com.github.pettyfer.basic.auth.feign.fallback;
 
 import com.github.pettyfer.basic.auth.feign.UserService;
-import com.github.pettyfer.basic.common.dto.UserDto;
+import com.github.pettyfer.basic.common.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class UserServiceFallbackImpl implements UserService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
-    public UserDto findUserByUsername(String username) {
+    public User findUserByUsername(String username) {
         logger.error("调用{}异常:{}", "findUserByUsername", username);
         return null;
     }
