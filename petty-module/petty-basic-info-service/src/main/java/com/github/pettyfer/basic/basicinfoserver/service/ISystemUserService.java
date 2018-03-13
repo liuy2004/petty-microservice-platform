@@ -16,5 +16,5 @@ import com.github.pettyfer.basic.common.model.UserInfo;
 public interface ISystemUserService extends IService<SystemUser> {
     User findUserByUsername(String username);
 
-    UserInfo findUserInfo(String username);
+    UserInfo findUserInfoByUsername(String username);
 }

@@ -51,7 +51,7 @@ public class SystemUserController extends BaseController {
      */
     @GetMapping("/findUserInfoByUsername/{username}")
     public UserInfo findUserInfoByUsername(@PathVariable String username) {
-        return systemUserService.findUserInfo(username);
+        return systemUserService.findUserInfoByUsername(username);
     }
 }
 

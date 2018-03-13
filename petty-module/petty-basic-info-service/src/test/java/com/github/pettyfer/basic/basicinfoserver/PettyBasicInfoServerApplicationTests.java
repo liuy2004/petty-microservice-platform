@@ -19,8 +19,7 @@ public class PettyBasicInfoServerApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		UserInfo userInfo = systemUserService.findUserInfo("pettyfer");
-		System.out.println(JSONObject.toJSON(userInfo));
+		UserInfo userInfo = systemUserService.findUserInfoByUsername("pettyfer");
 	}
 
 }

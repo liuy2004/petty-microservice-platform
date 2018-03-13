@@ -1,14 +1,17 @@
 package com.github.pettyfer.basic.basicinfoserver.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.github.pettyfer.basic.basicinfoserver.entity.SystemUser;
 import com.github.pettyfer.basic.basicinfoserver.mapper.SystemUserMapper;
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
 import com.github.pettyfer.basic.common.entity.User;
 import com.github.pettyfer.basic.common.model.UserInfo;
-import org.springframework.beans.BeanUtils;
+import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * <p>
@@ -31,13 +34,19 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     }
 
     @Override
-    public UserInfo findUserInfo(String username) {
+    public UserInfo findUserInfoByUsername(String username) {
         UserInfo userInfo = new UserInfo();
         SystemUser systemUser_query = new SystemUser();
         systemUser_query.setUserName(username);
         systemUser_query.setDelFlag(0);
         SystemUser systemUser = systemUserMapper.selectOne(systemUser_query);
-        BeanUtils.copyProperties(userInfo,systemUser);
+        System.out.println(JSONObject.toJSON(systemUser));
+        try {
+            BeanUtils.copyProperties(userInfo,systemUser);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        System.out.println(JSONObject.toJSON(userInfo));
         return userInfo;
     }
 }
