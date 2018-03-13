@@ -7,11 +7,9 @@ import com.github.pettyfer.basic.basicinfoserver.mapper.SystemUserMapper;
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
 import com.github.pettyfer.basic.common.entity.User;
 import com.github.pettyfer.basic.common.model.UserInfo;
-import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * <p>
@@ -40,13 +38,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
         systemUser_query.setUserName(username);
         systemUser_query.setDelFlag(0);
         SystemUser systemUser = systemUserMapper.selectOne(systemUser_query);
-        System.out.println(JSONObject.toJSON(systemUser));
-        try {
-            BeanUtils.copyProperties(userInfo,systemUser);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        System.out.println(JSONObject.toJSON(userInfo));
+        BeanUtils.copyProperties(systemUser,userInfo);
         return userInfo;
     }
 }

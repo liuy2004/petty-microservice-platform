@@ -148,7 +148,7 @@
     <!--<logger name="com.ibatis.common.jdbc.SimpleDataSource" value="DEBUG" />-->
     <!--<logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/>-->
     <!--<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" />-->
-    <logger name="com.github.pettyfer" level="DEBUG" additivity="true">
+    <logger name="java.sql" level="DEBUG">
         <appender-ref ref="STDOUT"/>
     </logger>
 

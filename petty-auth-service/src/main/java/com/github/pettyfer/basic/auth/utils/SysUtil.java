@@ -12,7 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @Slf4j
 public class SysUtil {
 
-    private static UserService userService = SpringContextHolder.getBean("userService",UserService.class);
+    private static UserService userService = SpringContextHolder.getBean(UserService.class);
 
     public static UserInfo getUser() {
         try {
