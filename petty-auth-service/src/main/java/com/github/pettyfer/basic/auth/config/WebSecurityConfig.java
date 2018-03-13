@@ -13,7 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
-import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 
 /**
  * 配置用户验证
@@ -51,6 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/login", "/register", "/swagger**/**", "/v2/api-docs").permitAll()
+                .antMatchers("/health", "/info", "/loggers", "/heapdump", "/metrics", "/hystrix.stream/**", "/mappings").permitAll()
+                .antMatchers("/trace", "/logfile").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/console/**").hasRole("DEVELOPER")
                 //todo add permission check
@@ -74,8 +75,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public InMemoryTokenRepositoryImpl tokenRepository(){
-        InMemoryTokenRepositoryImpl repository=new InMemoryTokenRepositoryImpl();
+    public InMemoryTokenRepositoryImpl tokenRepository() {
+        InMemoryTokenRepositoryImpl repository = new InMemoryTokenRepositoryImpl();
         return repository;
     }
 
