@@ -19,8 +19,7 @@ public class SysUtil {
             SecurityContext ctx = SecurityContextHolder.getContext();
             Authentication auth = ctx.getAuthentication();
             UserDetailsImpl userDetails = (UserDetailsImpl) auth.getPrincipal();
-            UserInfo userInfo = userService.findUserInfoByUsername(userDetails.getUsername());
-            return userInfo;
+            return userService.findUserInfoByUsername(userDetails.getUsername());
         } catch (Exception e) {
             log.error("获取用户信息异常", e);
         }

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @author Petty
  * Feign回调容错处理
  */
-@Service("userService")
+@Service
 public class UserServiceFallbackImpl implements UserService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
