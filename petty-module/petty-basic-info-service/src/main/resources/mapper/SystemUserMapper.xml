@@ -35,7 +35,6 @@
     <resultMap id="UserInfo" type="com.github.pettyfer.basic.common.vo.UserInfo">
         <id column="USER_ID" property="userId" />
         <result column="USER_NAME" property="userName" />
-        <result column="USER_PWD" property="userPwd" />
         <result column="FULL_NAME" property="fullName" />
         <result column="USER_SEX" property="userSex" />
         <result column="USER_BIRTHDAY" property="userBirthday" />

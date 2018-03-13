@@ -16,7 +16,6 @@ import java.io.Serializable;
 public class UserInfo implements Serializable {
     private String userId;
     private String userName;
-    private String userPwd;
     private String fullName;
     private String userSex;
     private String userBirthday;
