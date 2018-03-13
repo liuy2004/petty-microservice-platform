@@ -20,6 +20,6 @@ public class RoleVo implements Serializable {
     private String roleId;
     private String roleName;
     private String roleType;
-    private BigDecimal status;
+    private BigDecimal roleStatus;
     private BigDecimal sortNo;
 }

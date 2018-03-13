@@ -29,6 +29,8 @@ public class SuccessHandler extends SavedRequestAwareAuthenticationSuccessHandle
             setDefaultTargetUrl("/admin/dashboard");
         } else if (hasRole(authentication.getAuthorities(), "ROLE_DEVELOPER")) {
             setDefaultTargetUrl("/console/dashboard");
+        } else if (hasRole(authentication.getAuthorities(), "ROLE_USER")) {
+            setDefaultTargetUrl("/user/dashboard");
         }
         super.onAuthenticationSuccess(request, response, authentication);
     }

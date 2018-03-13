@@ -39,6 +39,7 @@ public class UserDetailsImpl implements UserDetails {
         for (RoleVo role : roleList) {
             authorityList.add(new SimpleGrantedAuthority(role.getRoleName()));
         }
+        //增加基础用户角色
         authorityList.add(new SimpleGrantedAuthority(SecurityConstant.BASE_ROLE));
         return authorityList;
     }

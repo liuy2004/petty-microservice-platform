@@ -9,6 +9,14 @@ public interface SecurityConstant {
      */
     String BASE_ROLE = "ROLE_USER";
     /**
+     * 基础管理员角色
+     */
+    String ADMIN_ROLE = "ROLE_ADMIN";
+    /**
+     * 基础开发者角色
+     */
+    String DEVELOPER_ROLE = "ROLE_DEVELOPER";
+    /**
      * oauth2 授权码模式
      */
     String AUTHORIZATION_CODE = "authorization_code";

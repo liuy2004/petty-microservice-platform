@@ -19,7 +19,7 @@ public class PettyBasicInfoServerApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		UserVo userVo = systemUserService.findUserByUsername("admin");
+		UserVo userVo = systemUserService.findUserByUsername("pettyfer");
 		System.out.println(JSONObject.toJSON(userVo));
 	}
 
