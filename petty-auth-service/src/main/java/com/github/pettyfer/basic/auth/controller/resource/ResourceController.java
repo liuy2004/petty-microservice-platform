@@ -1,4 +1,4 @@
-package com.github.pettyfer.basic.auth.controller;
+package com.github.pettyfer.basic.auth.controller.resource;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;

@@ -1,4 +1,4 @@
-package com.github.pettyfer.basic.auth.controller;
+package com.github.pettyfer.basic.auth.controller.oauth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.util.OAuth2Utils;
