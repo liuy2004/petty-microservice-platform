@@ -2,8 +2,8 @@ package com.github.pettyfer.basic.auth.utils;
 
 import com.github.pettyfer.basic.common.constant.CommonConstant;
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
-import com.github.pettyfer.basic.common.vo.RoleVo;
-import com.github.pettyfer.basic.common.vo.UserVo;
+import com.github.pettyfer.basic.common.dto.RoleDto;
+import com.github.pettyfer.basic.common.dto.UserDto;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,19 +24,19 @@ public class UserDetailsImpl implements UserDetails {
     private String username;
     private String password;
     private Integer status;
-    private List<RoleVo> roleList = new ArrayList<>();
+    private List<RoleDto> roleList = new ArrayList<>();
 
-    public UserDetailsImpl(UserVo userVo) {
-        this.username = userVo.getUserName();
-        this.password = userVo.getUserPwd();
-        this.status = userVo.getStatus();
-        roleList = userVo.getRoleVoList();
+    public UserDetailsImpl(UserDto userDto) {
+        this.username = userDto.getUserName();
+        this.password = userDto.getUserPwd();
+        this.status = userDto.getStatus();
+        roleList = userDto.getRoleDtoList();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorityList = new ArrayList<>();
-        for (RoleVo role : roleList) {
+        for (RoleDto role : roleList) {
             authorityList.add(new SimpleGrantedAuthority(role.getRoleName()));
         }
         //增加基础用户角色

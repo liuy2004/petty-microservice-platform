@@ -32,7 +32,30 @@
         <result column="DEL_FLAG" property="delFlag" />
     </resultMap>
 
-    <resultMap id="UserVoMap" type="com.github.pettyfer.basic.common.vo.UserVo">
+    <resultMap id="UserInfo" type="com.github.pettyfer.basic.common.vo.UserInfo">
+        <id column="USER_ID" property="userId" />
+        <result column="USER_NAME" property="userName" />
+        <result column="USER_PWD" property="userPwd" />
+        <result column="FULL_NAME" property="fullName" />
+        <result column="USER_SEX" property="userSex" />
+        <result column="USER_BIRTHDAY" property="userBirthday" />
+        <result column="IN_DATE" property="inDate" />
+        <result column="PHOTO" property="photo" />
+        <result column="USER_NUM" property="userNum" />
+        <result column="EMAIL" property="email" />
+        <result column="QQ_NUM" property="qqNum" />
+        <result column="USER_TEL" property="userTel" />
+        <result column="USER_ADDR" property="userAddr" />
+        <result column="USER_DESC" property="userDesc" />
+        <result column="USER_PHONE_TEL" property="userPhoneTel" />
+        <result column="USER_SOURCE" property="userSource" />
+        <result column="USER_IDEN_TYPE" property="userIdenType" />
+        <result column="USER_IDEN" property="userIden" />
+        <result column="IS_ADMIN" property="isAdmin" />
+        <result column="STATUS" property="status" />
+    </resultMap>
+
+    <resultMap id="UserDtoMap" type="com.github.pettyfer.basic.common.dto.UserDto">
         <id column="USER_ID" property="userId"/>
         <result column="USER_NAME" property="userName"/>
         <result column="USER_PWD" property="userPwd"/>
@@ -44,7 +67,7 @@
         <result column="MODIFIER" property="modifier"/>
         <result column="MODIFY_DATE" property="modifyDate"/>
         <result column="DEL_FLAG" property="delFlag"/>
-        <collection property="roleVoList" ofType="com.github.pettyfer.basic.common.vo.RoleVo">
+        <collection property="roleDtoList" ofType="com.github.pettyfer.basic.common.dto.RoleDto">
             <id column="ROLE_ID" property="roleId"/>
             <result column="ROLE_NAME" property="roleName"/>
             <result column="ROLE_TYPE" property="roleType"/>
@@ -55,10 +78,10 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        USER_ID AS userId, USER_NAME AS userName, USER_PWD AS userPwd, FULL_NAME AS fullName, USER_SEX AS userSex, USER_BIRTHDAY AS userBirthday, IN_DATE AS inDate, PHOTO AS photo, USER_NUM AS userNum, EMAIL AS email, QQ_NUM AS qqNum, USER_TEL AS userTel, USER_ADDR AS userAddr, USER_DESC AS userDesc, USER_PHONE_TEL AS userPhoneTel, USER_SOURCE AS userSource, USER_IDEN_TYPE AS userIdenType, USER_IDEN AS userIden, SORT_NO AS sortNo, IS_ADMIN AS isAdmin, STATUS AS status, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
+        USER_ID AS USER_ID, USER_NAME AS USER_NAME, USER_PWD AS USER_PWD, FULL_NAME AS FULL_NAME, USER_SEX AS USER_SEX, USER_BIRTHDAY AS USER_BIRTHDAY, IN_DATE AS IN_DATE, PHOTO AS PHOTO, USER_NUM AS USER_NUM, EMAIL AS EMAIL, QQ_NUM AS QQ_NUM, USER_TEL AS USER_TEL, USER_ADDR AS USER_ADDR, USER_DESC AS USER_DESC, USER_PHONE_TEL AS USER_PHONE_TEL, USER_SOURCE AS USER_SOURCE, USER_IDEN_TYPE AS USER_IDEN_TYPE, USER_IDEN AS USER_IDEN, SORT_NO AS SORT_NO, IS_ADMIN AS IS_ADMIN, STATUS AS STATUS, CREATOR AS CREATOR, CREATE_DATE AS CREATE_DATE, MODIFIER AS MODIFIER, MODIFY_DATE AS MODIFY_DATE, DEL_FLAG AS DEL_FLAG
     </sql>
 
-    <sql id="selectUserVo">
+    <sql id="selectUserDto">
         SELECT
         `USER`.USER_ID,
         `USER`.USER_NAME,
@@ -83,9 +106,16 @@
         LEFT JOIN SYSTEM_ROLE AS R ON R.ROLE_ID = UDR.ROLE_ID
     </sql>
 
-    <select id="selectUserVoByUsername" resultMap="UserVoMap">
-        <include refid="selectUserVo"/>
-        WHERE `USER`.USER_NAME = #{username}
+    <select id="selectUserDtoByUsername" resultMap="UserDtoMap">
+        <include refid="selectUserDto"/>
+        WHERE `USER`.USER_NAME = #{username} AND `USER`.DEL_FLAG = '0'
     </select>
 
+    <select id="selectUserInfo" resultMap="UserInfo">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        SYSTEM_USER
+        WHERE USER_NAME = #{username} AND DEL_FLAG = '0'
+    </select>
 </mapper>

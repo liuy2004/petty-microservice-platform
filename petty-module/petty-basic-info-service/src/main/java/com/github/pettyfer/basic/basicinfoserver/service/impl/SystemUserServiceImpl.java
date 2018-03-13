@@ -4,7 +4,8 @@ import com.github.pettyfer.basic.basicinfoserver.entity.SystemUser;
 import com.github.pettyfer.basic.basicinfoserver.mapper.SystemUserMapper;
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.github.pettyfer.basic.common.vo.UserVo;
+import com.github.pettyfer.basic.common.dto.UserDto;
+import com.github.pettyfer.basic.common.vo.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
  * @author Pettyfer
  * @since 2018-02-28
  */
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service("systemUserService")
 public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemUser> implements ISystemUserService {
 
@@ -23,7 +25,12 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     private SystemUserMapper systemUserMapper;
 
     @Override
-    public UserVo findUserByUsername(String username) {
-        return systemUserMapper.selectUserVoByUsername(username);
+    public UserDto findUserByUsername(String username) {
+        return systemUserMapper.selectUserDtoByUsername(username);
+    }
+
+    @Override
+    public UserInfo findUserInfo(String username) {
+        return systemUserMapper.selectUserInfo(username);
     }
 }

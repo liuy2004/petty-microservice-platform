@@ -2,7 +2,8 @@ package com.github.pettyfer.basic.basicinfoserver.service;
 
 import com.github.pettyfer.basic.basicinfoserver.entity.SystemUser;
 import com.baomidou.mybatisplus.service.IService;
-import com.github.pettyfer.basic.common.vo.UserVo;
+import com.github.pettyfer.basic.common.dto.UserDto;
+import com.github.pettyfer.basic.common.vo.UserInfo;
 
 /**
  * <p>
@@ -13,5 +14,7 @@ import com.github.pettyfer.basic.common.vo.UserVo;
  * @since 2018-02-28
  */
 public interface ISystemUserService extends IService<SystemUser> {
-    UserVo findUserByUsername(String username);
+    UserDto findUserByUsername(String username);
+
+    UserInfo findUserInfo(String username);
 }

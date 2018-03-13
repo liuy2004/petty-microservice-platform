@@ -1,7 +1,5 @@
-package com.github.pettyfer.basic.common.vo;
+package com.github.pettyfer.basic.common.dto;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,10 +14,10 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleVo implements Serializable {
+public class RoleDto implements Serializable {
     private String roleId;
     private String roleName;
     private String roleType;
-    private BigDecimal roleStatus;
-    private BigDecimal sortNo;
+    private Integer roleStatus;
+    private Integer sortNo;
 }

@@ -2,8 +2,9 @@ package com.github.pettyfer.basic.basicinfoserver.controller;
 
 
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
+import com.github.pettyfer.basic.common.dto.UserDto;
+import com.github.pettyfer.basic.common.vo.UserInfo;
 import com.github.pettyfer.basic.common.response.BaseResponse;
-import com.github.pettyfer.basic.common.vo.UserVo;
 import com.github.pettyfer.basic.common.web.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +29,8 @@ public class SystemUserController extends BaseController {
     private ISystemUserService systemUserService;
 
     @GetMapping("/info")
-    public BaseResponse<UserVo> user(UserVo userVo) {
-        return new BaseResponse<>(userVo);
+    public BaseResponse<UserDto> user(UserDto userDto) {
+        return new BaseResponse<>(userDto);
     }
 
     /**
@@ -39,8 +40,18 @@ public class SystemUserController extends BaseController {
      * @return UseVo 对象
      */
     @GetMapping("/findUserByUsername/{username}")
-    public UserVo findUserByUsername(@PathVariable String username) {
+    public UserDto findUserByUsername(@PathVariable String username) {
         return systemUserService.findUserByUsername(username);
+    }
+
+    /**
+     * 通过用户名查询用户详细信息
+     * @param username
+     * @return 用户信息详情对象
+     */
+    @GetMapping("/findUserInfoByUsername/{username}")
+    public UserInfo findUserInfoByUsername(@PathVariable String username) {
+        return systemUserService.findUserInfo(username);
     }
 }
 

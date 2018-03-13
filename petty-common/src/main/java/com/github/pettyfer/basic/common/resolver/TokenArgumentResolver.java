@@ -1,10 +1,10 @@
 package com.github.pettyfer.basic.common.resolver;
 
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
+import com.github.pettyfer.basic.common.dto.RoleDto;
+import com.github.pettyfer.basic.common.dto.UserDto;
 import com.github.pettyfer.basic.common.exception.auth.TokenErrorException;
 import com.github.pettyfer.basic.common.utils.UserUtils;
-import com.github.pettyfer.basic.common.vo.RoleVo;
-import com.github.pettyfer.basic.common.vo.UserVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.cache.CacheManager;
@@ -37,21 +37,21 @@ public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
      * @param token
      * @return
      */
-    private UserVo generatorByToken(HttpServletRequest request, String token) {
+    private UserDto generatorByToken(HttpServletRequest request, String token) {
         String username = UserUtils.getUserName(request);
         List<String> roles = UserUtils.getRole(request);
         log.info("Auth-Token-User:{}-Roles:{}", username, roles);
-        UserVo userVo = new UserVo();
-        userVo.setUserName(username);
-        List<RoleVo> sysRoleList = new ArrayList<>();
+        UserDto userDto = new UserDto();
+        userDto.setUserName(username);
+        List<RoleDto> sysRoleList = new ArrayList<>();
         roles.stream().forEach(role -> {
-            RoleVo sysRole = new RoleVo();
+            RoleDto sysRole = new RoleDto();
             sysRole.setRoleName(role);
             sysRoleList.add(sysRole);
         });
-        userVo.setRoleVoList(sysRoleList);
-        cacheManager.getCache(SecurityConstant.TOKEN_USER_DETAIL).put(token, userVo);
-        return userVo;
+        userDto.setRoleDtoList(sysRoleList);
+        cacheManager.getCache(SecurityConstant.TOKEN_USER_DETAIL).put(token, userDto);
+        return userDto;
     }
 
     public TokenArgumentResolver(CacheManager cacheManager) {
@@ -66,7 +66,7 @@ public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
      */
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
-        return methodParameter.getParameterType().equals(UserVo.class);
+        return methodParameter.getParameterType().equals(UserDto.class);
     }
 
     /**
@@ -87,9 +87,9 @@ public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
             log.error("resolveArgument error token is empty");
             throw new TokenErrorException("invalid token");
         }
-        Optional<UserVo> optional = Optional.ofNullable(cacheManager.getCache(SecurityConstant.TOKEN_USER_DETAIL).get(token, UserVo.class));
+        Optional<UserDto> optional = Optional.ofNullable(cacheManager.getCache(SecurityConstant.TOKEN_USER_DETAIL).get(token, UserDto.class));
         if (optional.isPresent()) {
-            log.info("return cache user vo,token :{}", token);
+            log.info("return cache user dto,token :{}", token);
             return optional.get();
         }
         return optional.orElseGet(() -> generatorByToken(request, token));

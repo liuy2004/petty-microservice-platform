@@ -1,4 +1,4 @@
-package com.github.pettyfer.basic.common.vo;
+package com.github.pettyfer.basic.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserVo implements Serializable {
+public class UserDto implements Serializable {
     private String userId;
     private String userName;
     private String userPwd;
@@ -28,5 +28,5 @@ public class UserVo implements Serializable {
     private String modifier;
     private String modifyDate;
     private Integer delFlag;
-    List<RoleVo> roleVoList = new ArrayList<>();
+    List<RoleDto> roleDtoList = new ArrayList<>();
 }

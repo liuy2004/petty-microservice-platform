@@ -2,7 +2,7 @@ package com.github.pettyfer.basic.basicinfoserver;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
-import com.github.pettyfer.basic.common.vo.UserVo;
+import com.github.pettyfer.basic.common.vo.UserInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +19,8 @@ public class PettyBasicInfoServerApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		UserVo userVo = systemUserService.findUserByUsername("pettyfer");
-		System.out.println(JSONObject.toJSON(userVo));
+		UserInfo userInfo = systemUserService.findUserInfo("pettyfer");
+		System.out.println(JSONObject.toJSON(userInfo));
 	}
 
 }
