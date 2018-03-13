@@ -8,6 +8,27 @@
 </head>
 
 <body class="theme-teal">
+// 页面加载
+<th:block th:fragment="common-div">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>请稍候...</p>
+        </div>
+    </div>
+    <div class="overlay"></div>
+    <form th:action="@{/logout}" method="post" id="logout-form"></form>
+</th:block>
 
 <th:block th:fragment="core-css">
     <link rel="icon" th:href="@{/static/favicon.ico}" type="image/x-icon"/>
@@ -32,32 +53,6 @@
     <script th:src="@{/static/js/app.js}"></script>
     <script th:src="@{/static/js/admin.js}"></script>
     <script th:src="@{/static/js/mcloud/mcloud.rest.js}"></script>
-</th:block>
-
-<th:block th:fragment="common-div">
-    <!-- Page Loader -->
-    <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="preloader">
-                <div class="spinner-layer pl-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
-            <p>Please wait...</p>
-        </div>
-    </div>
-    <!-- #END# Page Loader -->
-    <!-- Overlay For Sidebars -->
-    <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
-    <!--Logout Form-->
-    <form th:action="@{/logout}" method="post" id="logout-form"></form>
-    <!--#END# Logout Form-->
 </th:block>
 
 <th:block th:fragment="search-bar">
