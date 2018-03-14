@@ -51,7 +51,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login", "/register", "/swagger**/**", "/v2/api-docs").permitAll()
                 .antMatchers("/health", "/info", "/loggers", "/heapdump", "/metrics", "/hystrix.stream/**", "/mappings").permitAll()
-                .antMatchers("/trace", "/logfile").permitAll()
+                .antMatchers("/trace", "/logfile", "/env", "/refresh", "/dump", "/auditevents", "/flyway","/liquibase").permitAll()
+                .antMatchers("/jolokia").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/console/**").hasRole("DEVELOPER")
                 //todo add permission check
