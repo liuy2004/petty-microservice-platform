@@ -24,7 +24,7 @@ public class CustomerAccessTokenConverter extends DefaultAccessTokenConverter{
 
         @Override
         public Map<String, ?> convertUserAuthentication(Authentication authentication) {
-            LinkedHashMap response = new LinkedHashMap();
+            LinkedHashMap<String, Object> response = new LinkedHashMap<>();
             response.put("user_name", authentication.getName());
             response.put("name", ((UserDetailsImpl) authentication.getPrincipal()).getUsername());
             if (authentication.getAuthorities() != null && !authentication.getAuthorities().isEmpty()) {

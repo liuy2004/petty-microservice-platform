@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
+import sun.security.provider.certpath.UntrustedChecker;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
@@ -85,12 +86,12 @@ public class UserUtils {
      * @param httpServletRequest
      * @return
      */
+    @SuppressWarnings("unchecked")
     public static List<String> getRole(HttpServletRequest httpServletRequest) {
         String token = getToken(httpServletRequest);
         String key = Base64.getEncoder().encodeToString(CommonConstant.SIGN_KEY.getBytes());
         Claims claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
-        List<String> roleNames = (List<String>) claims.get("authorities");
-        return roleNames;
+        return (List<String>) claims.get("authorities");
     }
 
 
