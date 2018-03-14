@@ -2,14 +2,10 @@ package com.github.pettyfer.basic.auth.controller.home;
 
 import com.github.pettyfer.basic.auth.utils.SysUtil;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.CollectionUtils;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Collection;
-import java.util.Objects;
 
 @Controller
 @RequestMapping(value = "home")
@@ -21,8 +17,9 @@ public class HomeController {
      * @return
      */
     @GetMapping(value = "dashboard")
-    public String dashboard(Authentication authentication) {
+    public String dashboard(Model model, Authentication authentication) {
         String home_url = "";
+        model.addAttribute("userInfo",SysUtil.getUser());
         if (SysUtil.hasRole(authentication.getAuthorities(), "ROLE_ADMIN")) {
             home_url = "/admin/index";
         } else if (SysUtil.hasRole(authentication.getAuthorities(), "ROLE_DEVELOPER")) {
