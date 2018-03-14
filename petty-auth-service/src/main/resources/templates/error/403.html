@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>403 | MCloud</title>
+    <title>403 | 微服务开发平台</title>
     <th:block th:replace="fragments/layout::core-css"/>
     <th:block th:replace="fragments/layout::app-css"/>
 </head>
@@ -10,7 +10,7 @@
 <body class="four-zero-four">
     <div class="four-zero-four-container">
         <div class="error-code">403</div>
-        <div class="error-message">Forbidden</div>
+        <div class="error-message">权限不足</div>
         <div class="button-place">
             <a th:href="@{/admin/dashboard}" class="btn btn-default btn-lg waves-effect">GO TO HOMEPAGE</a>
         </div>
