@@ -52,7 +52,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http
                 .authorizeRequests();
         for (String url : filterUrlsPropertiesConifg.getAnon()) {
-            System.out.println(url);
             registry.antMatchers(url).permitAll();
         }
         http.httpBasic()
