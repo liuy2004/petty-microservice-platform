@@ -1,6 +1,7 @@
 package com.github.pettyfer.basic.auth.config;
 
 import com.github.pettyfer.basic.auth.handler.SuccessHandler;
+import com.github.pettyfer.basic.common.config.FilterUrlsPropertiesConifg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,13 +24,15 @@ import org.springframework.security.web.authentication.rememberme.InMemoryTokenR
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final FilterUrlsPropertiesConifg filterUrlsPropertiesConifg;
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public WebSecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+    public WebSecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, FilterUrlsPropertiesConifg filterUrlsPropertiesConifg) {
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
+        this.filterUrlsPropertiesConifg = filterUrlsPropertiesConifg;
     }
 
     @Override
@@ -46,13 +49,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic()
-                .and().csrf().ignoringAntMatchers("/api/**", "/admin-api/**", "/console-api/**")
+                .and().csrf().ignoringAntMatchers("/resource/**")
                 .and()
                 .authorizeRequests()
                 .antMatchers("/login", "/register", "/swagger**/**", "/v2/api-docs").permitAll()
                 .antMatchers("/health", "/info", "/loggers", "/heapdump", "/metrics", "/hystrix.stream/**", "/mappings").permitAll()
                 .antMatchers("/trace", "/logfile", "/env", "/refresh", "/dump", "/auditevents", "/flyway","/liquibase").permitAll()
                 .antMatchers("/jolokia").permitAll()
+                .antMatchers("/signin").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/console/**").hasRole("DEVELOPER")
                 //todo add permission check

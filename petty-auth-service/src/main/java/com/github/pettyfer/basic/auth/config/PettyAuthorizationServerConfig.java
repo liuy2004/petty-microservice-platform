@@ -1,13 +1,11 @@
 package com.github.pettyfer.basic.auth.config;
 
-import com.github.pettyfer.basic.auth.translator.ResponseExceptionTranslator;
 import com.github.pettyfer.basic.common.constant.CommonConstant;
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,7 +23,6 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import java.util.Arrays;
@@ -42,19 +39,21 @@ import java.util.concurrent.TimeUnit;
 public class PettyAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
-    private AuthServerConfig authServerConfig;
-
-    @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+    private final AuthServerConfig authServerConfig;
+
+    private final UserDetailsService userDetailsService;
+
+    private final RedisConnectionFactory redisConnectionFactory;
 
     @Autowired
-    private RedisConnectionFactory redisConnectionFactory;
+    public PettyAuthorizationServerConfig(AuthServerConfig authServerConfig, UserDetailsService userDetailsService, RedisConnectionFactory redisConnectionFactory) {
+        this.authServerConfig = authServerConfig;
+        this.userDetailsService = userDetailsService;
+        this.redisConnectionFactory = redisConnectionFactory;
+    }
 
-    @Autowired
-    private ResponseExceptionTranslator responseExceptionTranslator;
 
     /**
      * 配置客户端信息
@@ -68,7 +67,7 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
                 .withClient(authServerConfig.getClientId())
                 .secret(authServerConfig.getClientSecret())
                 .authorizedGrantTypes(SecurityConstant.REFRESH_TOKEN, SecurityConstant.PASSWORD, SecurityConstant.AUTHORIZATION_CODE, SecurityConstant.CLIENT)
-                //时候开启自动授权
+                //是否开启自动授权
                 .autoApprove(false)
                 .redirectUris("http://127.0.0.1:40351/")
                 .scopes(authServerConfig.getScope());
@@ -138,6 +137,7 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
 
     /**
      * 配置Jwt转换器
+     *
      * @return
      */
     @Bean

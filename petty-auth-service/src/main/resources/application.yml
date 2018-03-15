@@ -13,3 +13,19 @@ spring:
     suffix: .html
   mvc:
     static-path-pattern: /static/**
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+urls:
+  anon:
+    - /authentication/**
+    - /**/*.css
+    - /social
+    - /signin
+    - /signup
+    - /info
+    - /health
+    - /metrics/**
+    - /loggers/**
+    - /mobile/token
