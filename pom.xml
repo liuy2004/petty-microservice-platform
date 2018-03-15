@@ -13,7 +13,7 @@
         <module>petty-service-center</module>
         <module>petty-common</module>
         <module>petty-module</module>
-        <module>petty-auth-service</module>
+        <module>petty-auth</module>
         <module>petty-config-service</module>
         <module>petty-monitor-service</module>
         <module>petty-application-module</module>

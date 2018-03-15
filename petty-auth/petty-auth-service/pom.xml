@@ -11,7 +11,7 @@
 	<description>OAuth2认证服务</description>
 
 	<parent>
-		<artifactId>petty-microservice-platform</artifactId>
+		<artifactId>petty-auth</artifactId>
 		<groupId>com.github.pettyfer.basic</groupId>
 		<version>${petty.version}</version>
 	</parent>
