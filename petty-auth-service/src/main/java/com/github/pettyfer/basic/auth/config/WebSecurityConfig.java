@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
@@ -48,15 +49,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http
+                .authorizeRequests();
+        for (String url : filterUrlsPropertiesConifg.getAnon()) {
+            System.out.println(url);
+            registry.antMatchers(url).permitAll();
+        }
         http.httpBasic()
                 .and().csrf().ignoringAntMatchers("/resource/**")
                 .and()
                 .authorizeRequests()
                 .antMatchers("/login", "/register", "/swagger**/**", "/v2/api-docs").permitAll()
-                .antMatchers("/health", "/info", "/loggers", "/heapdump", "/metrics", "/hystrix.stream/**", "/mappings").permitAll()
-                .antMatchers("/trace", "/logfile", "/env", "/refresh", "/dump", "/auditevents", "/flyway","/liquibase").permitAll()
-                .antMatchers("/jolokia").permitAll()
-                .antMatchers("/signin").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/console/**").hasRole("DEVELOPER")
                 //todo add permission check

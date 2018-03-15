@@ -5,27 +5,3 @@ info:
     description: @project.description@
     version: @project.version@
 logging.level.org.springframework.security: DEBUG
-spring:
-  thymeleaf:
-    cache: false
-    mode: LEGACYHTML5
-    content-type: text/html
-    suffix: .html
-  mvc:
-    static-path-pattern: /static/**
-security:
-  oauth2:
-    resource:
-      filter-order: 3
-urls:
-  anon:
-    - /authentication/**
-    - /**/*.css
-    - /social
-    - /signin
-    - /signup
-    - /info
-    - /health
-    - /metrics/**
-    - /loggers/**
-    - /mobile/token
