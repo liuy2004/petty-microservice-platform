@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>petty-auth-service</module>
+        <module>petty-oauth2-service</module>
     </modules>
 
 

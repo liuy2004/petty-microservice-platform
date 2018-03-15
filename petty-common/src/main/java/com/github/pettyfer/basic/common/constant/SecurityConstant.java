@@ -17,7 +17,7 @@ public interface SecurityConstant {
      */
     String DEVELOPER_ROLE = "ROLE_DEVELOPER";
     /**
-     * oauth2 授权码模式
+     * oauth 授权码模式
      */
     String AUTHORIZATION_CODE = "authorization_code";
 
