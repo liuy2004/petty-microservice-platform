@@ -1,6 +1,6 @@
 info:
   build:
-    artifact: @project.artifactId@
-    name: @project.name@
-    description: @project.description@
-    version: @project.version@
+    artifact: petty-basic-info-service
+    name: petty-basic-info-service
+    description: 基础服务
+    version: 1.0.0-SNAPSHOT

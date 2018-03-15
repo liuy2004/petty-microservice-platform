@@ -1,6 +1,6 @@
 info:
   build:
-    artifact: @project.artifactId@
-    name: @project.name@
-    description: @project.description@
-    version: @project.version@
+    artifact: petty-monitor-service
+    name: petty-monitor-service
+    description: Spring Cloud监控服务
+    version: 1.0.0-SNAPSHOT

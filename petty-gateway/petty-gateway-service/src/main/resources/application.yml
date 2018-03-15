@@ -1,6 +1,6 @@
 info:
   build:
-    artifact: @project.artifactId@
-    name: @project.name@
-    description: @project.description@
-    version: @project.version@
+    artifact: petty-gateway-service
+    name: petty-gateway-service
+    description: Petty Gateway 网关服务
+    version: 1.0.0-SNAPSHOT

@@ -1,6 +1,6 @@
 info:
   build:
-    artifact: @project.artifactId@
-    name: @project.name@
-    description: @project.description@
-    version: @project.version@
+    artifact: petty-notice-service
+    name: petty-notice-service
+    description: 基础通知服务（Message、Email）
+    version: 1.0.0-SNAPSHOT

@@ -1,7 +1,7 @@
 info:
   build:
-    artifact: @project.artifactId@
-    name: @project.name@
-    description: @project.description@
-    version: @project.version@
+    artifact: petty-oauth2-service
+    name: petty-oauth2-service
+    description: OAuth2认证服务
+    version: 1.0.0-SNAPSHOT
 logging.level.org.springframework.security: DEBUG

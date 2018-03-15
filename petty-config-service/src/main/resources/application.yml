@@ -1,9 +1,9 @@
 info:
   build:
-    artifact: @project.artifactId@
-    name: @project.name@
-    description: @project.description@
-    version: @project.version@
+    artifact: petty-config-service
+    name: petty-config-service
+    description: 服务配置中心
+    version: 1.0.0-SNAPSHOT
 management:
   security:
     enabled: false

@@ -13,10 +13,10 @@ spring:
     name: petty-service-center
 info:
   build:
-    artifact: @project.artifactId@
-    name: @project.name@
-    description: @project.description@
-    version: @project.version@
+    artifact: petty-service-center
+    name: petty-service-center
+    description: Petty Service Center 服务注册中心
+    version: 1.0.0-SNAPSHOT
 management:
   security:
     enabled: false
