@@ -1,13 +1,12 @@
 package com.github.pettyfer.basic.auth.config;
 
-import com.github.pettyfer.basic.common.config.FilterUrlsPropertiesConifg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
@@ -24,22 +23,24 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 @EnableResourceServer
 public class PettyResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    @Autowired
-    private RedisConnectionFactory redisConnectionFactory;
+    private final RedisConnectionFactory redisConnectionFactory;
 
     @Autowired
-    private FilterUrlsPropertiesConifg filterUrlsPropertiesConifg;
+    public PettyResourceServerConfig(RedisConnectionFactory redisConnectionFactory) {
+        this.redisConnectionFactory = redisConnectionFactory;
+    }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http
-                .authorizeRequests();
-        for (String url : filterUrlsPropertiesConifg.getAnon()) {
-            registry.antMatchers(url).permitAll();
-        }
-        registry.anyRequest().authenticated()
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .csrf().disable();
+                .requestMatchers()
+                .antMatchers("/resource/**")
+                .and().authorizeRequests()
+                // todo add permission check
+                .antMatchers("/monitoring/**").permitAll()
+                .antMatchers("/resource/**")
+                .authenticated();
     }
 
     @Primary
