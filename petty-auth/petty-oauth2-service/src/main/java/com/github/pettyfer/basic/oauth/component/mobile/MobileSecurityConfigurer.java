@@ -32,7 +32,6 @@ public class MobileSecurityConfigurer extends SecurityConfigurerAdapter<DefaultS
         MobileAuthenticationFilter mobileAuthenticationFilter = new MobileAuthenticationFilter();
         mobileAuthenticationFilter.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
         mobileAuthenticationFilter.setAuthenticationSuccessHandler(mobileLoginSuccessHandler);
-
         MobileAuthenticationProvider mobileAuthenticationProvider = new MobileAuthenticationProvider();
         mobileAuthenticationProvider.setUserService(userService);
         http.authenticationProvider(mobileAuthenticationProvider)

@@ -49,12 +49,12 @@ public class MobileAuthenticationFilter extends AbstractAuthenticationProcessing
         return this.getAuthenticationManager().authenticate(mobileAuthenticationToken);
     }
 
-    protected String obtainMobile(HttpServletRequest request) {
+    private String obtainMobile(HttpServletRequest request) {
         return request.getParameter(mobileParameter);
     }
 
-    protected void setDetails(HttpServletRequest request,
-                              MobileAuthenticationToken authRequest) {
+    private void setDetails(HttpServletRequest request,
+                            MobileAuthenticationToken authRequest) {
         authRequest.setDetails(authenticationDetailsSource.buildDetails(request));
     }
 
