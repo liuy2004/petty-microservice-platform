@@ -34,6 +34,7 @@ public interface SecurityConstant {
      */
     String REFRESH_TOKEN = "refresh_token";
 
+    String MOBILE_TOKEN_URL = "/mobile/token";
     /**
      * 默认的处理验证码的url前缀
      */

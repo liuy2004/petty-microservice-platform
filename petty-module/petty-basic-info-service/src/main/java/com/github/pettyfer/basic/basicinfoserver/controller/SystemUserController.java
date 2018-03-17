@@ -46,12 +46,12 @@ public class SystemUserController extends BaseController {
 
     /**
      * 通过用户手机号码查询用户详细信息
-     * @param username
+     * @param mobile 手机号码
      * @return 用户信息详情对象
      */
-    @GetMapping("/findUserByMobile/{username}")
-    public User findUserByMobile(@PathVariable String username) {
-        return systemUserService.findUserByMobile(username);
+    @GetMapping("/findUserByMobile/{mobile}")
+    public User findUserByMobile(@PathVariable String mobile) {
+        return systemUserService.findUserByMobile(mobile);
     }
 
     /**

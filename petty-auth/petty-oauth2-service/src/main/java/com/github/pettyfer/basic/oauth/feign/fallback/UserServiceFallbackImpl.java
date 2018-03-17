@@ -23,6 +23,12 @@ public class UserServiceFallbackImpl implements UserService {
     }
 
     @Override
+    public User findUserByMobile(String mobile) {
+        logger.error("调用{}异常:{}", "findUserByMobile", mobile);
+        return null;
+    }
+
+    @Override
     public UserInfo findUserInfoByUsername(String username) {
         logger.error("调用{}异常:{}", "findUserInfoByUsername", username);
         return null;
