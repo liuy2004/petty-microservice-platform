@@ -23,12 +23,21 @@ import org.springframework.stereotype.Service;
 @Service("systemUserService")
 public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemUser> implements ISystemUserService {
 
+    private final SystemUserMapper systemUserMapper;
+
     @Autowired
-    private SystemUserMapper systemUserMapper;
+    public SystemUserServiceImpl(SystemUserMapper systemUserMapper) {
+        this.systemUserMapper = systemUserMapper;
+    }
 
     @Override
     public User findUserByUsername(String username) {
         return systemUserMapper.selectUserByUsername(username);
+    }
+
+    @Override
+    public User findUserByMobile(String mobile) {
+        return systemUserMapper.selectUserByMobile(mobile);
     }
 
     @Override

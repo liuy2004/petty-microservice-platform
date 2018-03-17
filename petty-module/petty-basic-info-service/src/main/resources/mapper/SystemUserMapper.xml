@@ -87,4 +87,9 @@
         <include refid="selectUser"/>
         WHERE `USER`.USER_NAME = #{username} AND `USER`.DEL_FLAG = '0'
     </select>
+
+    <select id="selectUserByMobile" resultMap="UserMap">
+        <include refid="selectUser"/>
+        WHERE `USER`.USER_PHONE_TEL = #{mobile} AND `USER`.DEL_FLAG = '0'
+    </select>
 </mapper>

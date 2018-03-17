@@ -14,4 +14,6 @@ import com.github.pettyfer.basic.common.entity.User;
  */
 public interface SystemUserMapper extends BaseMapper<SystemUser> {
     User selectUserByUsername(String username);
+
+    User selectUserByMobile(String mobile);
 }
