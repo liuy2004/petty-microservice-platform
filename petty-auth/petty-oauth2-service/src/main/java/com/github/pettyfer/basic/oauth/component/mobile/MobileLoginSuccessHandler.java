@@ -75,7 +75,7 @@ public class MobileLoginSuccessHandler implements AuthenticationSuccessHandler {
             params.put("authentication", authentication);
 
             ClientDetails clientDetails = clientDetailsService.loadClientByClientId(clientId);
-            TokenRequest tokenRequest = new TokenRequest(new HashMap<>(), clientId, clientDetails.getScope(), "mobile");
+            TokenRequest tokenRequest = new TokenRequest(new HashMap<>(256), clientId, clientDetails.getScope(), "mobile");
             OAuth2Request oAuth2Request = tokenRequest.createOAuth2Request(clientDetails);
 
             OAuth2Authentication oAuth2Authentication = new OAuth2Authentication(oAuth2Request, authentication);
