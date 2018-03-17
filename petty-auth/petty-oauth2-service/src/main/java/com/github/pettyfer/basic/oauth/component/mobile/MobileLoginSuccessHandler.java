@@ -2,7 +2,9 @@ package com.github.pettyfer.basic.oauth.component.mobile;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.pettyfer.basic.common.constant.CommonConstant;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
@@ -29,14 +31,16 @@ public class MobileLoginSuccessHandler implements AuthenticationSuccessHandler {
     private static final String BASIC_ = "Basic ";
 
     private final ObjectMapper objectMapper;
+
     private final ClientDetailsService clientDetailsService;
-    private final AuthorizationServerTokenServices authorizationServerTokenServices;
 
     @Autowired
-    public MobileLoginSuccessHandler(ObjectMapper objectMapper, ClientDetailsService clientDetailsService, AuthorizationServerTokenServices authorizationServerTokenServices) {
+    private AuthorizationServerTokenServices authorizationServerTokenServices;
+
+    @Autowired
+    public MobileLoginSuccessHandler(ObjectMapper objectMapper, ClientDetailsService clientDetailsService) {
         this.objectMapper = objectMapper;
         this.clientDetailsService = clientDetailsService;
-        this.authorizationServerTokenServices = authorizationServerTokenServices;
     }
 
     /**
@@ -50,17 +54,21 @@ public class MobileLoginSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
         String header = request.getHeader("Authorization");
-
-        if (header == null || !header.startsWith(BASIC_)) {
-            throw new UnapprovedClientAuthenticationException("请求头中client信息为空");
+        String clientId = request.getParameter("client_id");
+        String clientSecret = request.getParameter("client_secret");
+        if (StringUtils.isBlank(clientId) || StringUtils.isBlank(clientSecret)) {
+            if (header == null || !header.startsWith(BASIC_)) {
+                throw new UnapprovedClientAuthenticationException("Bad client credentials");
+            }
         }
 
         try {
-            String[] tokens = extractAndDecodeHeader(header);
-            assert tokens.length == 2;
-            String clientId = tokens[0];
-            String clientSecret = tokens[1];
-
+            if (StringUtils.isBlank(clientId) || StringUtils.isBlank(clientSecret)) {
+                String[] tokens = extractAndDecodeHeader(header);
+                assert tokens.length == 2;
+                clientId = tokens[0];
+                clientSecret = tokens[1];
+            }
             JSONObject params = new JSONObject();
             params.put("clientId", clientId);
             params.put("clientSecret", clientSecret);
@@ -72,10 +80,8 @@ public class MobileLoginSuccessHandler implements AuthenticationSuccessHandler {
 
             OAuth2Authentication oAuth2Authentication = new OAuth2Authentication(oAuth2Request, authentication);
             OAuth2AccessToken oAuth2AccessToken = authorizationServerTokenServices.createAccessToken(oAuth2Authentication);
-            log.info("获取token 成功：{}", oAuth2AccessToken.getValue());
-
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType("application/json; charset=utf-8");
+            response.setCharacterEncoding(CommonConstant.UTF8);
+            response.setContentType(CommonConstant.CONTENT_TYPE);
             PrintWriter printWriter = response.getWriter();
             printWriter.append(objectMapper.writeValueAsString(oAuth2AccessToken));
         } catch (IOException e) {
@@ -90,10 +96,8 @@ public class MobileLoginSuccessHandler implements AuthenticationSuccessHandler {
      * @throws BadCredentialsException if the Basic header is not present or is not valid
      *                                 Base64
      */
-    private String[] extractAndDecodeHeader(String header)
-            throws IOException {
-
-        byte[] base64Token = header.substring(6).getBytes("UTF-8");
+    private String[] extractAndDecodeHeader(String header) throws IOException {
+        byte[] base64Token = header.substring(6).getBytes(CommonConstant.UTF8);
         byte[] decoded;
         try {
             decoded = Base64.decode(base64Token);
@@ -102,10 +106,8 @@ public class MobileLoginSuccessHandler implements AuthenticationSuccessHandler {
                     "Failed to decode basic authentication token");
         }
 
-        String token = new String(decoded, "UTF-8");
-
+        String token = new String(decoded, CommonConstant.UTF8);
         int delim = token.indexOf(":");
-
         if (delim == -1) {
             throw new BadCredentialsException("Invalid basic authentication token");
         }

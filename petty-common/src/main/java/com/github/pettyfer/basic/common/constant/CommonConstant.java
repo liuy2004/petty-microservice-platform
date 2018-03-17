@@ -45,4 +45,8 @@ public interface CommonConstant {
     Integer STATUS_LOCK = 9;
     String DEL_FLAG = "del_flag";
     String CONTENT_TYPE = "application/json; charset=utf-8";
+    /**
+     * 编码
+     */
+    String UTF8 = "UTF-8";
 }
