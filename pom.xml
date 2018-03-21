@@ -27,6 +27,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
         <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
+        <docker.image.prefix>petty</docker.image.prefix>
+        <docker.plugin.version>0.4.13</docker.plugin.version>
         <skipTests>true</skipTests>
         <petty.version>1.0.0-SNAPSHOT</petty.version>
     </properties>
