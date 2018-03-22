@@ -76,13 +76,17 @@
 				<version>${docker.plugin.version}</version>
 				<executions>
 					<execution>
-						<phase>package</phase>
+						<phase>install</phase>
 						<goals>
 							<goal>build</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
+					<imageTags>
+						<imageTag>latest</imageTag>
+					</imageTags>
+					<forceTags>true</forceTags>
 					<imageName>${docker.image.prefix}/${project.build.finalName}</imageName>
 					<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
 					<resources>
