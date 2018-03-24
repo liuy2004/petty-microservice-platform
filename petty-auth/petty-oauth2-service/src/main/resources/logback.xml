@@ -150,7 +150,7 @@
     <!--<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" />-->
 
     <logger name="java.sql" level="DEBUG" />
-    <logger name="org.springframework" level="DEBUG" />
+    <logger name="org.springframework.security" level="DEBUG" />
     <logger name="com.github.pettyfer" level="DEBUG" />
 
     <!-- root级别   DEBUG -->
