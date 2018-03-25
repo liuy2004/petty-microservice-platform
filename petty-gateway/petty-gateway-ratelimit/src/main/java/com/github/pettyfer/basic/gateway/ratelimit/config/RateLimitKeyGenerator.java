@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Key generator for rate limit control.
+ * @author Petty
  */
 public interface RateLimitKeyGenerator {
 

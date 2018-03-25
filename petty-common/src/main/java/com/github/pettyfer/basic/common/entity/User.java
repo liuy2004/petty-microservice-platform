@@ -9,13 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 用户信息
+ * 用户信息，用户授权服务判断登陆有效信息
+ * PS:包含用户密码
+ *
  * @author Petty
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class User implements Serializable {
+    private static final long serialVersionUID = -2924404879928203710L;
     private String userId;
     private String userName;
     private String userPwd;

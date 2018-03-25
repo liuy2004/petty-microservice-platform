@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 用户基础信息模型
+ * 用户基础信息模型，用户获取用户基础信息
+ * PS:不包含密码等敏感数据
+ *
  * @author Petty
  */
 @Data

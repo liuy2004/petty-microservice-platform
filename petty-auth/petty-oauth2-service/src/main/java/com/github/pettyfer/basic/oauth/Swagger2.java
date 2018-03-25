@@ -32,7 +32,6 @@ public class Swagger2 {
         return new ApiInfoBuilder()
                 .title("Petty-Microservice-Platform APIs DOC")
                 .termsOfServiceUrl("http://www.pettyfer.cn")
-                .contact("Alex Pettyfer")
                 .version("1.0")
                 .build();
     }

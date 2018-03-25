@@ -6,10 +6,14 @@ import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+/**
+ * @author Petty
+ */
 @FeignClient(name = "petty-basic-info-service", fallback = DeptInfoServiceFallbackImpl.class)
 public interface DeptInfoService {
     /**
      * 通过用户ID查询用户部门信息
+     *
      * @param userId
      * @return 部门信息
      */

@@ -43,10 +43,10 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     @Override
     public UserInfo findUserInfoByUsername(String username) {
         UserInfo userInfo = new UserInfo();
-        SystemUser systemUser_query = new SystemUser();
-        systemUser_query.setUserName(username);
-        systemUser_query.setDelFlag(0);
-        SystemUser systemUser = systemUserMapper.selectOne(systemUser_query);
+        SystemUser systemUserQuery = new SystemUser();
+        systemUserQuery.setUserName(username);
+        systemUserQuery.setDelFlag(0);
+        SystemUser systemUser = systemUserMapper.selectOne(systemUserQuery);
         BeanUtils.copyProperties(systemUser,userInfo);
         return userInfo;
     }

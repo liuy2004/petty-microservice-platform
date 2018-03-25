@@ -11,6 +11,9 @@ import org.springframework.cloud.netflix.turbine.EnableTurbine;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * @author Petty
+ */
 @EnableAdminServer
 @SpringBootApplication
 @EnableDiscoveryClient

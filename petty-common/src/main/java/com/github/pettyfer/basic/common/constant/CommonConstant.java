@@ -6,6 +6,9 @@ package com.github.pettyfer.basic.common.constant;
  */
 public interface CommonConstant {
 
+    /**
+     * 用户未登陆
+     */
     int NO_LOGIN = 403;
 
     int SUCCESS = 200;
@@ -44,11 +47,23 @@ public interface CommonConstant {
      */
     Integer STATUS_LOCK = 9;
     String DEL_FLAG = "del_flag";
+
+    /**
+     * 服务端返回上下文信息类型
+     */
     String CONTENT_TYPE = "application/json; charset=utf-8";
     /**
      * 编码
      */
     String UTF8 = "UTF-8";
 
+    /**
+     * 用户名称上下文传递Map数据结构所需key
+     */
     String BASIC_USERNAME_CONTEXT = "basic_username_context";
+
+    /**
+     * 未知客户端请求来源IP
+     */
+    String UN_KNOWN_CLIENT_IP = "unKnown";
 }

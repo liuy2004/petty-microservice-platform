@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
+/**
+ * @author Petty
+ */
 @FeignClient(name = "petty-basic-info-service", fallback = RoleInfoServiceFallbackImpl.class)
 public interface RoleInfoService {
     /**
      * 通过用户ID查询用户详细信息
+     *
      * @param userId
      * @return 角色信息
      */

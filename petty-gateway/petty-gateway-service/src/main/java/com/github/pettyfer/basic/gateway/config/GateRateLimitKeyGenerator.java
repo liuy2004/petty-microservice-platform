@@ -1,5 +1,6 @@
 package com.github.pettyfer.basic.gateway.config;
 
+import com.github.pettyfer.basic.common.constant.CommonConstant;
 import com.github.pettyfer.basic.common.utils.UserUtils;
 import com.github.pettyfer.basic.gateway.ratelimit.config.RateLimitKeyGenerator;
 import com.github.pettyfer.basic.gateway.ratelimit.config.properties.RateLimitProperties;
@@ -26,7 +27,7 @@ public class GateRateLimitKeyGenerator implements RateLimitKeyGenerator {
      */
     public static String getClientIp(HttpServletRequest request) {
         String ip = request.getHeader("X-Forwarded-For");
-        if (StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)) {
+        if (StringUtils.isNotEmpty(ip) && !CommonConstant.UN_KNOWN_CLIENT_IP.equalsIgnoreCase(ip)) {
             int index = ip.indexOf(",");
             if (index != -1) {
                 return ip.substring(0, index);
@@ -35,7 +36,7 @@ public class GateRateLimitKeyGenerator implements RateLimitKeyGenerator {
             }
         }
         ip = request.getHeader("X-Real-IP");
-        if (StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)) {
+        if (StringUtils.isNotEmpty(ip) && !CommonConstant.UN_KNOWN_CLIENT_IP.equalsIgnoreCase(ip)) {
             return ip;
         }
         return request.getRemoteAddr();
@@ -48,8 +49,8 @@ public class GateRateLimitKeyGenerator implements RateLimitKeyGenerator {
      * @return
      */
     public static String getClientInfo(HttpServletRequest request) {
-        String Agent = request.getHeader("User-Agent");
-        StringTokenizer st = new StringTokenizer(Agent, ";");
+        String agent = request.getHeader("User-Agent");
+        StringTokenizer st = new StringTokenizer(agent, ";");
         st.nextToken();
         String clientType = st.nextToken();
         return clientType;
@@ -72,7 +73,7 @@ public class GateRateLimitKeyGenerator implements RateLimitKeyGenerator {
             }
             if (types.contains(RateLimitProperties.Policy.Type.USER) && StringUtils.isBlank(username)) {
                 joiner.add(ANONYMOUS_USER);
-            }else{
+            } else {
                 joiner.add(username);
             }
         }
