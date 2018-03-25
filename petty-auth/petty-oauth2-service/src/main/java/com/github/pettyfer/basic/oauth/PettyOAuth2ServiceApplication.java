@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableResourceServer
-@EnableFeignClients
+@EnableFeignClients({"com.github.pettyfer.basic.common.feign","com.github.pettyfer.basic.oauth.feign"})
 @EnableHystrix
 @PettyConfigure
 public class PettyOAuth2ServiceApplication {

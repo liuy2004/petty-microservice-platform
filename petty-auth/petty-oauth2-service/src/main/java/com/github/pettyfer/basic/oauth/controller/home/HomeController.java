@@ -1,6 +1,6 @@
 package com.github.pettyfer.basic.oauth.controller.home;
 
-import com.github.pettyfer.basic.oauth.utils.SysUtil;
+import com.github.pettyfer.basic.oauth.utils.RoleUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +22,12 @@ public class HomeController {
     @GetMapping(value = "dashboard")
     public String dashboard(Model model, Authentication authentication) {
         String home_url = "";
-        model.addAttribute("userInfo",SysUtil.getUser());
-        if (SysUtil.hasRole(authentication.getAuthorities(), "ROLE_ADMIN")) {
+        model.addAttribute("userInfo", RoleUtils.getUser());
+        if (RoleUtils.hasRole(authentication.getAuthorities(), "ROLE_ADMIN")) {
             home_url = "/admin/index";
-        } else if (SysUtil.hasRole(authentication.getAuthorities(), "ROLE_DEVELOPER")) {
+        } else if (RoleUtils.hasRole(authentication.getAuthorities(), "ROLE_DEVELOPER")) {
             home_url = "/console/index";
-        } else if (SysUtil.hasRole(authentication.getAuthorities(), "ROLE_USER")) {
+        } else if (RoleUtils.hasRole(authentication.getAuthorities(), "ROLE_USER")) {
             home_url = "/user/index";
         }
         return home_url;

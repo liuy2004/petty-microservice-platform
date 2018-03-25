@@ -21,7 +21,7 @@ public class UserServiceTests {
      */
     @Test
     public void requestUserInfoByUsername() {
-        UserInfo userInfo = userService.findUserInfoByUsername("pettyfer");
+        UserInfo userInfo = userService.findUserInfoByUsername("admin");
         System.out.println(userInfo);
     }
 
@@ -30,7 +30,7 @@ public class UserServiceTests {
      */
     @Test
     public void requestUser() {
-        User user = userService.findUserByUsername("pettyfer");
+        User user = userService.findUserByUsername("admin");
         System.out.println(user);
     }
 

@@ -8,6 +8,10 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+/**
+ * SpringApplicationContext工具类
+ * @author Petty
+ */
 @Slf4j
 @Service
 @Lazy(value = false)

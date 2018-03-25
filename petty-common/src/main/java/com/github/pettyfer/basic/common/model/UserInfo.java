@@ -7,13 +7,14 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 用户信息详情
+ * 用户基础信息模型
  * @author Petty
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserInfo implements Serializable {
+    private static final long serialVersionUID = 6703721639017427276L;
     private String userId;
     private String userName;
     private String fullName;

@@ -1,6 +1,7 @@
 package com.github.pettyfer.basic.common.utils;
 
 import com.github.pettyfer.basic.common.constant.CommonConstant;
+import com.github.pettyfer.basic.common.context.BaseContextHandler;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
@@ -10,15 +11,15 @@ import sun.security.provider.certpath.UntrustedChecker;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
  * @author Petty
- * 用户信息解析
+ * 用户基础信息解析
  */
 @Slf4j
 public class UserUtils {
-    private static final ThreadLocal<String> THREAD_LOCAL_USER = new ThreadLocal<>();
     private static final String KEY_USER = "user";
 
     /**
@@ -87,11 +88,11 @@ public class UserUtils {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public static List<String> getRole(HttpServletRequest httpServletRequest) {
+    public static List<LinkedHashMap<String,String>> getRole(HttpServletRequest httpServletRequest) {
         String token = getToken(httpServletRequest);
         String key = Base64.getEncoder().encodeToString(CommonConstant.SIGN_KEY.getBytes());
         Claims claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
-        return (List<String>) claims.get("authorities");
+        return (List<LinkedHashMap<String,String>>) claims.get("authorities");
     }
 
 
@@ -101,8 +102,7 @@ public class UserUtils {
      * @param username 用户名
      */
     public static void setUser(String username) {
-        THREAD_LOCAL_USER.set(username);
-
+        BaseContextHandler.setUser(username);
         MDC.put(KEY_USER, username);
     }
 
@@ -113,7 +113,7 @@ public class UserUtils {
      */
 
     public static String getUser() {
-        return THREAD_LOCAL_USER.get();
+        return BaseContextHandler.getUser();
     }
 
     /**
@@ -122,11 +122,11 @@ public class UserUtils {
      * @return 用户名
      */
     public static String getUserName() {
-        return THREAD_LOCAL_USER.get();
+        return BaseContextHandler.getUser();
     }
 
-    public static void clearAllUserInfo() {
-        THREAD_LOCAL_USER.remove();
+    public static void clearAllInfo() {
+        BaseContextHandler.remove();
         MDC.remove(KEY_USER);
     }
 }

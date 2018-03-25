@@ -49,4 +49,6 @@ public interface CommonConstant {
      * 编码
      */
     String UTF8 = "UTF-8";
+
+    String BASIC_USERNAME_CONTEXT = "basic_username_context";
 }

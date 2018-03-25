@@ -17,6 +17,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,14 +40,14 @@ public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
      */
     private User generatorByToken(HttpServletRequest request, String token) {
         String username = UserUtils.getUserName(request);
-        List<String> roles = UserUtils.getRole(request);
+        List<LinkedHashMap<String, String>> roles = UserUtils.getRole(request);
         log.info("Auth-Token-User:{}-Roles:{}", username, roles);
         User user = new User();
         user.setUserName(username);
         List<Role> sysRoleList = new ArrayList<>();
         roles.stream().forEach(role -> {
             Role sysRole = new Role();
-            sysRole.setRoleName(role);
+            sysRole.setRoleName(role.get("authority"));
             sysRoleList.add(sysRole);
         });
         user.setRoleList(sysRoleList);

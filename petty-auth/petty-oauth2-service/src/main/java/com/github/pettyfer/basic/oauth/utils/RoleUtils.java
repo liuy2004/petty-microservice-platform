@@ -14,8 +14,11 @@ import java.util.Collection;
 import java.util.Objects;
 
 
+/**
+ * @author Petty
+ */
 @Slf4j
-public class SysUtil {
+public class RoleUtils {
 
     private static UserService userService = SpringContextHolder.getBean(UserService.class);
 

@@ -29,6 +29,11 @@
 			</exclusions>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+		</dependency>
+
 		<!-- 代码生成 -->
 		<dependency>
 			<groupId>org.apache.velocity</groupId>

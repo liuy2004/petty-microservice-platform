@@ -5,12 +5,13 @@ import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
 import com.github.pettyfer.basic.common.entity.User;
 import com.github.pettyfer.basic.common.model.UserInfo;
 import com.github.pettyfer.basic.common.response.BaseResponse;
+import com.github.pettyfer.basic.common.utils.SysUtils;
 import com.github.pettyfer.basic.common.web.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,11 +26,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class SystemUserController extends BaseController {
 
+    private final ISystemUserService systemUserService;
+
     @Autowired
-    private ISystemUserService systemUserService;
+    public SystemUserController(ISystemUserService systemUserService) {
+        this.systemUserService = systemUserService;
+    }
 
     @GetMapping("/info")
     public BaseResponse<User> user(User user) {
+        SysUtils.getUserDetail();
         return new BaseResponse<>(user);
     }
 
@@ -39,6 +45,7 @@ public class SystemUserController extends BaseController {
      * @param username 用户名
      * @return UseVo 对象
      */
+    @Cacheable(value = "basic:basic_user",key = "'basic:basic_system_user'.concat(':').concat(#username)")
     @GetMapping("/findUserByUsername/{username}")
     public User findUserByUsername(@PathVariable String username) {
         return systemUserService.findUserByUsername(username);
@@ -49,6 +56,7 @@ public class SystemUserController extends BaseController {
      * @param mobile 手机号码
      * @return 用户信息详情对象
      */
+    @Cacheable(value = "basic:basic_user",key = "'basic:basic_system_user'.concat(':').concat(#mobile)")
     @GetMapping("/findUserByMobile/{mobile}")
     public User findUserByMobile(@PathVariable String mobile) {
         return systemUserService.findUserByMobile(mobile);
@@ -59,6 +67,7 @@ public class SystemUserController extends BaseController {
      * @param username
      * @return 用户信息详情对象
      */
+    @Cacheable(value = "basic:basic_user_info",key = "'basic:basic_system_user_info'.concat(':').concat(#username)")
     @GetMapping("/findUserInfoByUsername/{username}")
     public UserInfo findUserInfoByUsername(@PathVariable String username) {
         return systemUserService.findUserInfoByUsername(username);

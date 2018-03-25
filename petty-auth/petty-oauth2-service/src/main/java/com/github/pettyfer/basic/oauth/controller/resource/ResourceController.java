@@ -1,5 +1,6 @@
 package com.github.pettyfer.basic.oauth.controller.resource;
 
+import com.github.pettyfer.basic.common.utils.SysUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -30,6 +31,7 @@ public class ResourceController {
     @ApiImplicitParam(name = "authentication", value = "access_token", required = true, dataType = "String")
     @GetMapping("user")
     public Authentication getUser(Authentication authentication) {
-        return authentication;
+        SysUtils.getUserDetail();
+        return null;
     }
 }

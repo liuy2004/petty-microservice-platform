@@ -102,7 +102,7 @@ public class ControllerAop {
             throw new RuntimeException(e);
         } finally {
             if (StringUtils.isNotEmpty(username)) {
-                UserUtils.clearAllUserInfo();
+                UserUtils.clearAllInfo();
             }
         }
         return result;
