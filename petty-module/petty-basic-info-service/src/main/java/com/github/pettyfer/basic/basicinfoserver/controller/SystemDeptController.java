@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Controller;
  * @author Pettyfer
  * @since 2018-02-28
  */
-@Controller
+@RestController
 @RequestMapping("/dept")
 public class SystemDeptController {
     /**

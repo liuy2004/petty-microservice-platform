@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * <p>
@@ -18,7 +22,7 @@ import org.springframework.stereotype.Controller;
  * @author Pettyfer
  * @since 2018-02-28
  */
-@Controller
+@RestController
 @RequestMapping("/role")
 public class SystemRoleController {
     /**
@@ -28,8 +32,8 @@ public class SystemRoleController {
      */
     @Cacheable(value = "basic:basic_role",key = "'basic:basic_system_role'.concat(':').concat(#userId)")
     @GetMapping("/findRoleInfoByUserId/{userId}")
-    public RoleInfo findRoleInfoByUserId(@PathVariable String userId) {
-        return new RoleInfo();
+    public List<RoleInfo> findRoleInfoByUserId(@PathVariable String userId) {
+        return new LinkedList<>();
     }
 }
 

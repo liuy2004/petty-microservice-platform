@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * <p>
@@ -18,7 +22,7 @@ import org.springframework.stereotype.Controller;
  * @author Pettyfer
  * @since 2018-02-28
  */
-@Controller
+@RestController
 @RequestMapping("/group")
 public class SystemGroupController {
     /**
@@ -28,8 +32,8 @@ public class SystemGroupController {
      */
     @Cacheable(value = "basic:basic_group",key = "'basic:basic_system_group'.concat(':').concat(#userId)")
     @GetMapping("/findGroupInfoByUserId/{userId}")
-    public GroupInfo findGroupInfoByUserId(@PathVariable String userId) {
-        return new GroupInfo();
+    public List<GroupInfo> findGroupInfoByUserId(@PathVariable String userId) {
+        return new LinkedList<>();
     }
 }
 

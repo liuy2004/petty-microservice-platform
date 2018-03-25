@@ -35,7 +35,7 @@ public class SystemUserController extends BaseController {
 
     @GetMapping("/info")
     public BaseResponse<User> user(User user) {
-        SysUtils.getUserDetail();
+        System.out.println(SysUtils.getUserDetail());;
         return new BaseResponse<>(user);
     }
 

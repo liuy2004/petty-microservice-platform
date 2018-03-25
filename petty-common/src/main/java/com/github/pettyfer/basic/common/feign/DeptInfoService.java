@@ -13,6 +13,6 @@ public interface DeptInfoService {
      * @param userId
      * @return 部门信息
      */
-    @GetMapping("/role/findDeptInfoByUserId/{userId}")
+    @GetMapping("/dept/findDeptInfoByUserId/{userId}")
     DeptInfo findDeptInfoByUserId(@PathVariable("userId") String userId);
 }

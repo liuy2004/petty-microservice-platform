@@ -6,6 +6,8 @@ import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+
 @FeignClient(name = "petty-basic-info-service", fallback = RoleInfoServiceFallbackImpl.class)
 public interface RoleInfoService {
     /**
@@ -14,5 +16,5 @@ public interface RoleInfoService {
      * @return 角色信息
      */
     @GetMapping("/role/findRoleInfoByUserId/{userId}")
-    RoleInfo findRoleInfoByUserId(@PathVariable("userId") String userId);
+    List<RoleInfo> findRoleInfoByUserId(@PathVariable("userId") String userId);
 }
