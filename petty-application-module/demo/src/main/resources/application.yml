@@ -12,12 +12,12 @@ security:
     client:
       client-id: demo
       client-secret: demoSecret
-      user-authorization-uri: http://localhost:6060/oauth/authorize
-      access-token-uri: http://localhost:6060/oauth/token
+      user-authorization-uri: http://127.0.0.1:6060/oauth/authorize
+      access-token-uri: http://127.0.0.1:6060/oauth/token
       scope: application
     resource:
       jwt:
-        key-uri: http://localhost:6060/oauth/token_key
+        key-uri: http://127.0.0.1:6060/oauth/token_key
 spring:
   application:
     name: sso-client-demo

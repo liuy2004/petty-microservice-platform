@@ -9,12 +9,17 @@
     debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 -->
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
     <!-- 定义日志文件 输入位置 -->
-    <property name="log_dir" value="logs/petty_dev" />
+    <property name="log_dir" value="logs/petty_dev"/>
     <!-- 日志最大的历史 30天 -->
     <property name="maxHistory" value="30"/>
 
     <!-- 定义日志文件名称 -->
-    <property name="log_name" value="petty-notice-service" />
+    <property name="log_name" value="petty-notice-service"/>
+
+    <!-- 应用名称 -->
+    <property name="application_name" value="petty-microservice-platform"/>
+
+    <property name="profiles" value="dev"/>
 
     <property name="console_log_pattern" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger -%msg%n"/>
 
@@ -141,6 +146,29 @@
         </encoder>
     </appender>
 
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>192.168.1.139:4569</destination>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp/>
+                <version/>
+                <pattern>
+                    <pattern>
+                        {
+                        "application-name": "[${application_name}]",
+                        "service-name": "[${log_name}]",
+                        "profiles": "[${profiles}]",
+                        "logger": "%logger",
+                        "level": "%level",
+                        "thread": "%thread",
+                        "message": "%message"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
     <!--<logger name="java.sql.PreparedStatement" value="DEBUG" />-->
     <!--<logger name="java.sql.Connection" value="DEBUG" />-->
     <!--<logger name="java.sql.Statement" value="DEBUG" />-->
@@ -149,18 +177,20 @@
     <!--<logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/>-->
     <!--<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" />-->
 
-    <logger name="java.sql" level="DEBUG" />
-    <logger name="com.github.pettyfer" level="DEBUG" />
+    <logger name="java.sql" level="DEBUG"/>
+    <logger name="com.github.pettyfer" level="DEBUG"/>
 
     <!-- root级别   DEBUG -->
     <root level="INFO">
         <!-- 控制台输出 -->
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
         <!-- 文件输出 -->
-        <appender-ref ref="ERROR" />
-        <appender-ref ref="INFO" />
-        <appender-ref ref="WARN" />
-        <appender-ref ref="DEBUG" />
-        <appender-ref ref="TRACE" />
+        <appender-ref ref="ERROR"/>
+        <appender-ref ref="INFO"/>
+        <appender-ref ref="WARN"/>
+        <appender-ref ref="DEBUG"/>
+        <appender-ref ref="TRACE"/>
+        <!-- Logstash日志收集 -->
+        <appender-ref ref="LOGSTASH"/>
     </root>
 </configuration>
