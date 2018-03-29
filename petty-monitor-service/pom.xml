@@ -87,14 +87,6 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>${docker.plugin.version}</version>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<goals>
-							<goal>build</goal>
-						</goals>
-					</execution>
-				</executions>
 				<configuration>
 					<imageTags>
 						<imageTag>latest</imageTag>
