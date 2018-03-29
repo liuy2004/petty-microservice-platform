@@ -22,3 +22,12 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:30151/eureka
+---
+spring:
+  profiles: prd
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:30151/eureka
