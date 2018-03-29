@@ -4,7 +4,7 @@
     <groupId>com.github.pettyfer.basic</groupId>
     <artifactId>petty-microservice-platform</artifactId>
     <packaging>pom</packaging>
-    <version>${petty.version}</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>petty-microservice-platform Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
@@ -30,7 +30,6 @@
         <docker.image.prefix>petty</docker.image.prefix>
         <docker.plugin.version>0.4.13</docker.plugin.version>
         <skipTests>true</skipTests>
-        <petty.version>1.0.0-SNAPSHOT</petty.version>
     </properties>
 
     <parent>

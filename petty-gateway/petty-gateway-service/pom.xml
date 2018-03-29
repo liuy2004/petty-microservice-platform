@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>petty-gateway-service</artifactId>
-	<version>${petty.version}</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>petty-gateway-service</name>
@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>com.github.pettyfer.basic</groupId>
 		<artifactId>petty-gateway</artifactId>
-		<version>${petty.version}</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<dependencies>
@@ -35,7 +35,7 @@
 		<dependency>
 			<groupId>com.github.pettyfer.basic</groupId>
 			<artifactId>petty-gateway-ratelimit</artifactId>
-			<version>${petty.version}</version>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>com.github.pettyfer.basic</groupId>
 			<artifactId>petty-common</artifactId>
-			<version>${petty.version}</version>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>

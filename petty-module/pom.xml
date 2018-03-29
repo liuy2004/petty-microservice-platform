@@ -5,7 +5,7 @@
     <parent>
         <artifactId>petty-microservice-platform</artifactId>
         <groupId>com.github.pettyfer.basic</groupId>
-        <version>${petty.version}</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <description>微服务架构系统基础模块集</description>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.github.pettyfer.basic</groupId>
             <artifactId>petty-common</artifactId>
-            <version>${petty.version}</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>

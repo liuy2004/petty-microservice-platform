@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>petty-monitor-service</artifactId>
-	<version>${petty.version}</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>petty-monitor-service</name>
@@ -13,14 +13,14 @@
 	<parent>
 		<artifactId>petty-microservice-platform</artifactId>
 		<groupId>com.github.pettyfer.basic</groupId>
-		<version>${petty.version}</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.github.pettyfer.basic</groupId>
 			<artifactId>petty-common</artifactId>
-			<version>${petty.version}</version>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
