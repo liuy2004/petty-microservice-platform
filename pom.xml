@@ -119,4 +119,17 @@
         </pluginManagement>
     </build>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshot</id>
+            <name>repo-snapshot</name>
+            <url>http://127.0.0.1:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-release</id>
+            <name>repo-release</name>
+            <url>http://127.0.0.1:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+
 </project>
