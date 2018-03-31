@@ -15,7 +15,6 @@
         <module>petty-module</module>
         <module>petty-auth</module>
         <module>petty-config-service</module>
-        <module>petty-monitor-service</module>
         <module>petty-application-module</module>
     </modules>
 

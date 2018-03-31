@@ -15,6 +15,7 @@
     <modules>
         <module>petty-basic-info-service</module>
         <module>petty-notice-service</module>
+        <module>petty-monitor-service</module>
     </modules>
 
     <dependencies>
