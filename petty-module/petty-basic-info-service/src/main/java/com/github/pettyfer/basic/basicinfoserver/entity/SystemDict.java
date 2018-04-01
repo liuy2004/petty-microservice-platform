@@ -1,10 +1,11 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -54,17 +55,17 @@ public class SystemDict extends Model<SystemDict> {
      * 是否默认显示值  @枚举 1、是，0、否
      */
     @TableField("IS_DEFAULT")
-    private BigDecimal isDefault;
+    private Integer isDefault;
     /**
      * 排序号
      */
     @TableField("SORT_NO")
-    private BigDecimal sortNo;
+    private Integer sortNo;
     /**
      * 是否启用 @枚举  0:否  1:是
      */
     @TableField("STATUS")
-    private BigDecimal status;
+    private Integer status;
     /**
      * 创建人
      */
@@ -89,7 +90,8 @@ public class SystemDict extends Model<SystemDict> {
      * 删除标记 @枚举 0-否  1-是
      */
     @TableField("DEL_FLAG")
-    private BigDecimal delFlag;
+    @TableLogic
+    private Integer delFlag;
 
 
     public String getDictId() {
@@ -140,27 +142,27 @@ public class SystemDict extends Model<SystemDict> {
         this.parentCode = parentCode;
     }
 
-    public BigDecimal getIsDefault() {
+    public Integer getIsDefault() {
         return isDefault;
     }
 
-    public void setIsDefault(BigDecimal isDefault) {
+    public void setIsDefault(Integer isDefault) {
         this.isDefault = isDefault;
     }
 
-    public BigDecimal getSortNo() {
+    public Integer getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(BigDecimal sortNo) {
+    public void setSortNo(Integer sortNo) {
         this.sortNo = sortNo;
     }
 
-    public BigDecimal getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(BigDecimal status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -196,11 +198,11 @@ public class SystemDict extends Model<SystemDict> {
         this.modifyDate = modifyDate;
     }
 
-    public BigDecimal getDelFlag() {
+    public Integer getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(BigDecimal delFlag) {
+    public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
     }
 

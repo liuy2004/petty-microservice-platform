@@ -3,6 +3,7 @@ package com.github.pettyfer.basic.basicinfoserver.entity;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
 
@@ -148,6 +149,7 @@ public class SystemUser extends Model<SystemUser> {
      * 删除标记  @枚举  0:否；1:是
      */
     @TableField("DEL_FLAG")
+    @TableLogic
     private Integer delFlag;
 
 

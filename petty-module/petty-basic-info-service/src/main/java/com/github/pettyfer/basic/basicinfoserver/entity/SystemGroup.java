@@ -1,10 +1,11 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -39,17 +40,17 @@ public class SystemGroup extends Model<SystemGroup> {
      * 用户组类型@1-访问安全控制用户组 2-基础资料子系统用户组
      */
     @TableField("GROUP_TYPE")
-    private BigDecimal groupType;
+    private Integer groupType;
     /**
      * 排序
      */
     @TableField("SORT_NO")
-    private BigDecimal sortNo;
+    private Integer sortNo;
     /**
      * 是否启用 @枚举  0:否  1:是
      */
     @TableField("STATUS")
-    private BigDecimal status;
+    private Integer status;
     /**
      * 创建人
      */
@@ -74,7 +75,8 @@ public class SystemGroup extends Model<SystemGroup> {
      * 删除标记  @枚举  0:否；1:是
      */
     @TableField("DEL_FLAG")
-    private BigDecimal delFlag;
+    @TableLogic
+    private Integer delFlag;
 
 
     public String getGroupId() {
@@ -101,27 +103,27 @@ public class SystemGroup extends Model<SystemGroup> {
         this.parentId = parentId;
     }
 
-    public BigDecimal getGroupType() {
+    public Integer getGroupType() {
         return groupType;
     }
 
-    public void setGroupType(BigDecimal groupType) {
+    public void setGroupType(Integer groupType) {
         this.groupType = groupType;
     }
 
-    public BigDecimal getSortNo() {
+    public Integer getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(BigDecimal sortNo) {
+    public void setSortNo(Integer sortNo) {
         this.sortNo = sortNo;
     }
 
-    public BigDecimal getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(BigDecimal status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -157,11 +159,11 @@ public class SystemGroup extends Model<SystemGroup> {
         this.modifyDate = modifyDate;
     }
 
-    public BigDecimal getDelFlag() {
+    public Integer getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(BigDecimal delFlag) {
+    public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
     }
 

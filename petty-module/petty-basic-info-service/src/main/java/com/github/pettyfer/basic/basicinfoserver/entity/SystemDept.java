@@ -1,10 +1,11 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -84,7 +85,7 @@ public class SystemDept extends Model<SystemDept> {
      * 同层部门等级
      */
     @TableField("DEPT_GRADE")
-    private BigDecimal deptGrade;
+    private Integer deptGrade;
     /**
      * 区域编号
      */
@@ -94,12 +95,12 @@ public class SystemDept extends Model<SystemDept> {
      * 排序
      */
     @TableField("SORT_NO")
-    private BigDecimal sortNo;
+    private Integer sortNo;
     /**
      * 部门状态
      */
     @TableField("STATUS")
-    private BigDecimal status;
+    private Integer status;
     /**
      * 创建人
      */
@@ -124,7 +125,8 @@ public class SystemDept extends Model<SystemDept> {
      * 删除标记
      */
     @TableField("DEL_FLAG")
-    private BigDecimal delFlag;
+    @TableLogic
+    private Integer delFlag;
 
 
     public String getDeptId() {
@@ -223,11 +225,11 @@ public class SystemDept extends Model<SystemDept> {
         this.address = address;
     }
 
-    public BigDecimal getDeptGrade() {
+    public Integer getDeptGrade() {
         return deptGrade;
     }
 
-    public void setDeptGrade(BigDecimal deptGrade) {
+    public void setDeptGrade(Integer deptGrade) {
         this.deptGrade = deptGrade;
     }
 
@@ -239,19 +241,19 @@ public class SystemDept extends Model<SystemDept> {
         this.areaCode = areaCode;
     }
 
-    public BigDecimal getSortNo() {
+    public Integer getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(BigDecimal sortNo) {
+    public void setSortNo(Integer sortNo) {
         this.sortNo = sortNo;
     }
 
-    public BigDecimal getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(BigDecimal status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -287,11 +289,11 @@ public class SystemDept extends Model<SystemDept> {
         this.modifyDate = modifyDate;
     }
 
-    public BigDecimal getDelFlag() {
+    public Integer getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(BigDecimal delFlag) {
+    public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
     }
 
@@ -303,27 +305,27 @@ public class SystemDept extends Model<SystemDept> {
     @Override
     public String toString() {
         return "SystemDept{" +
-        ", deptId=" + deptId +
-        ", parentId=" + parentId +
-        ", deptName=" + deptName +
-        ", deptShortName=" + deptShortName +
-        ", deptType=" + deptType +
-        ", deptFramId=" + deptFramId +
-        ", orgId=" + orgId +
-        ", deptDesc=" + deptDesc +
-        ", leader=" + leader +
-        ", deputyLeader=" + deputyLeader +
-        ", telPhone=" + telPhone +
-        ", address=" + address +
-        ", deptGrade=" + deptGrade +
-        ", areaCode=" + areaCode +
-        ", sortNo=" + sortNo +
-        ", status=" + status +
-        ", creator=" + creator +
-        ", createDate=" + createDate +
-        ", modifier=" + modifier +
-        ", modifyDate=" + modifyDate +
-        ", delFlag=" + delFlag +
-        "}";
+                ", deptId=" + deptId +
+                ", parentId=" + parentId +
+                ", deptName=" + deptName +
+                ", deptShortName=" + deptShortName +
+                ", deptType=" + deptType +
+                ", deptFramId=" + deptFramId +
+                ", orgId=" + orgId +
+                ", deptDesc=" + deptDesc +
+                ", leader=" + leader +
+                ", deputyLeader=" + deputyLeader +
+                ", telPhone=" + telPhone +
+                ", address=" + address +
+                ", deptGrade=" + deptGrade +
+                ", areaCode=" + areaCode +
+                ", sortNo=" + sortNo +
+                ", status=" + status +
+                ", creator=" + creator +
+                ", createDate=" + createDate +
+                ", modifier=" + modifier +
+                ", modifyDate=" + modifyDate +
+                ", delFlag=" + delFlag +
+                "}";
     }
 }

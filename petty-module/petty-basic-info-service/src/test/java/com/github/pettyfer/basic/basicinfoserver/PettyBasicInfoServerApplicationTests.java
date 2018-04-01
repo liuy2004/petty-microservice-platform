@@ -19,7 +19,7 @@ public class PettyBasicInfoServerApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		UserInfo userInfo = systemUserService.findUserInfoByUsername("pettyfer");
+		UserInfo userInfo = systemUserService.findUserInfoByUsername("admin");
 	}
 
 }
