@@ -27,7 +27,7 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 @Component
 public class ResponseExceptionTranslator extends DefaultWebResponseExceptionTranslator {
 
-    public static final String BAD_MSG = "无效的凭证";
+    public static final String BAD_MSG = "坏的凭证";
 
     /**
      * @param e spring security内部异常

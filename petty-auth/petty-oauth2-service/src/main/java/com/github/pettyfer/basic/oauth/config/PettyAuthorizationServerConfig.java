@@ -2,6 +2,7 @@ package com.github.pettyfer.basic.oauth.config;
 
 import com.github.pettyfer.basic.common.constant.CommonConstant;
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
+import com.github.pettyfer.basic.oauth.translator.ResponseExceptionTranslator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,11 +48,14 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
 
     private final RedisConnectionFactory redisConnectionFactory;
 
+    private final ResponseExceptionTranslator responseExceptionTranslator;
+
     @Autowired
-    public PettyAuthorizationServerConfig(AuthServerConfig authServerConfig, UserDetailsService userDetailsService, RedisConnectionFactory redisConnectionFactory) {
+    public PettyAuthorizationServerConfig(AuthServerConfig authServerConfig, UserDetailsService userDetailsService, RedisConnectionFactory redisConnectionFactory, ResponseExceptionTranslator responseExceptionTranslator) {
         this.authServerConfig = authServerConfig;
         this.userDetailsService = userDetailsService;
         this.redisConnectionFactory = redisConnectionFactory;
+        this.responseExceptionTranslator = responseExceptionTranslator;
     }
 
 
@@ -84,6 +88,7 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         tokenEnhancerChain.setTokenEnhancers(Arrays.asList(customerEnhancer(), jwtAccessTokenConverter()));
         endpoints.tokenEnhancer(tokenEnhancerChain);
+        endpoints.exceptionTranslator(responseExceptionTranslator);
         //配置Token相关参数
         DefaultTokenServices tokenServices = (DefaultTokenServices) endpoints.getDefaultAuthorizationServerTokenServices();
         tokenServices.setSupportRefreshToken(true);
