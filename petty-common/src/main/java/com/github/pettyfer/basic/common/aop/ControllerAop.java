@@ -11,6 +11,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -26,11 +27,16 @@ import java.util.Arrays;
  * @date 2018年3月1日
  */
 @Aspect
+@Order(10)
 @Component
 @Slf4j
 public class ControllerAop {
+    private final CacheManager cacheManager;
+
     @Autowired
-    private CacheManager cacheManager;
+    public ControllerAop(CacheManager cacheManager) {
+        this.cacheManager = cacheManager;
+    }
 
     @Pointcut("execution(public com.github.pettyfer.basic.common.response.BaseResponse *(..))")
     public void pointCutResponse() {
