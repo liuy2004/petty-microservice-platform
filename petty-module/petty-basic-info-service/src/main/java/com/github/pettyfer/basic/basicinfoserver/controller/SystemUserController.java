@@ -34,7 +34,7 @@ public class SystemUserController extends BaseController {
         this.systemUserService = systemUserService;
     }
 
-    @UserAuth
+    @UserAuth(isUserDetails = false)
     @GetMapping("/info")
     public BaseResponse user() {
         System.out.println(UserUtils.getUserDetail());

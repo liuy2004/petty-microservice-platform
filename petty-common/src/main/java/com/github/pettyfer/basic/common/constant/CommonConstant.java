@@ -21,6 +21,9 @@ public interface CommonConstant {
      * 没有权限
      */
     Integer EX_TOKEN_ERROR_CODE = 403;
+
+    Integer EX_NO_USER = 405;
+
     Integer EX_OTHER_CODE = 500;
     /**
      * Jwt加密/解密凭据

@@ -2,6 +2,7 @@ package com.github.pettyfer.basic.common.utils;
 
 import com.github.pettyfer.basic.common.context.BaseContextHandler;
 import com.github.pettyfer.basic.common.entity.User;
+import com.github.pettyfer.basic.common.exception.auth.NoUserException;
 import com.github.pettyfer.basic.common.feign.DeptInfoService;
 import com.github.pettyfer.basic.common.feign.GroupInfoService;
 import com.github.pettyfer.basic.common.feign.RoleInfoService;
@@ -37,7 +38,7 @@ public class UserUtils {
     public static UserDetail getUserDetail() {
         UserDetail userDetail = new UserDetail();
         User user = BaseContextHandler.getUser();
-        Preconditions.checkNotNull(user,"未获取用户基础信息");
+        Preconditions.checkNotNull(user,new NoUserException("未获取用户基础信息"));
         UserInfo userInfo = userInfoService.findUserInfoByUsername(user.getUserName());
         List<RoleInfo> roleInfos = roleInfoService.findRoleInfoByUserId(userInfo.getUserId());
         DeptInfo deptInfo = deptInfoService.findDeptInfoByUserId(userInfo.getUserId());

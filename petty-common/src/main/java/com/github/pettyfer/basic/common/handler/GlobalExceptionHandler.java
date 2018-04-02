@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 @Log4j
 public class GlobalExceptionHandler {
     /**
-     * 处理BaseException异常
+     * 处理BaseRuntimeException异常
      *
      * @param request  请求对象
      * @param response 响应对象
@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 处理Exception异常
+     * 处理BaseException异常
      *
      * @param request  请求对象
      * @param response 响应对象

@@ -1,5 +1,6 @@
 package com.github.pettyfer.basic.common.aop;
 
+import com.github.pettyfer.basic.common.exception.BaseRuntimeException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -83,7 +84,7 @@ public class ControllerAop {
             log.info(pjp.getSignature() + "use time:" + (System.currentTimeMillis() - startTime));
         } catch (Throwable e) {
             log.error("异常信息：", e);
-            throw new RuntimeException(e);
+            throw new BaseRuntimeException(e.getMessage());
         }
         return result;
     }
