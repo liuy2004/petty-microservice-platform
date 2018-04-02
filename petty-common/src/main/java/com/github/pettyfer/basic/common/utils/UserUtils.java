@@ -38,7 +38,12 @@ public class UserUtils {
     public static UserDetail getUserDetail() {
         UserDetail userDetail = new UserDetail();
         User user = BaseContextHandler.getUser();
-        Preconditions.checkNotNull(user,new NoUserException("未获取用户基础信息"));
+        try{
+            Preconditions.checkNotNull(user);
+        }catch (Exception e){
+            throw new NoUserException("未获取用户基础信息");
+        }
+
         UserInfo userInfo = userInfoService.findUserInfoByUsername(user.getUserName());
         List<RoleInfo> roleInfos = roleInfoService.findRoleInfoByUserId(userInfo.getUserId());
         DeptInfo deptInfo = deptInfoService.findDeptInfoByUserId(userInfo.getUserId());
