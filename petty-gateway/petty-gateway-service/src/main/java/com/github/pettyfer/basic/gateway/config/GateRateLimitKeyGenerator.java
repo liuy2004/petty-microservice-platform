@@ -1,7 +1,7 @@
 package com.github.pettyfer.basic.gateway.config;
 
 import com.github.pettyfer.basic.common.constant.CommonConstant;
-import com.github.pettyfer.basic.common.utils.UserUtils;
+import com.github.pettyfer.basic.common.utils.TokenUtils;
 import com.github.pettyfer.basic.gateway.ratelimit.config.RateLimitKeyGenerator;
 import com.github.pettyfer.basic.gateway.ratelimit.config.properties.RateLimitProperties;
 import org.apache.commons.lang.StringUtils;
@@ -61,7 +61,7 @@ public class GateRateLimitKeyGenerator implements RateLimitKeyGenerator {
         final List<RateLimitProperties.Policy.Type> types = policy.getType();
         final StringJoiner joiner = new StringJoiner(":");
         // 获取用户名称
-        String username = UserUtils.getUserName(request);
+        String username = TokenUtils.getUserName(request);
         joiner.add(getClientIp(request));
         joiner.add(getClientInfo(request));
         if (route != null) {

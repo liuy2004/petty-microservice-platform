@@ -1,22 +1,23 @@
 package com.github.pettyfer.basic.common.exception;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
 /**
  * 自定义RuntimeException
+ *
  * @author Petty
  * @date 2018年2月24日
  */
-@Data
+@Setter
+@Getter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class BaseRuntimeException extends RuntimeException implements Serializable {
-    private static final long serialVersionUID = -8390390631837103313L;
+    private static final long serialVersionUID = 5785773026238677601L;
     private int status = 200;
 
     public BaseRuntimeException(String message, int status) {

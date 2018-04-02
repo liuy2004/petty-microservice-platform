@@ -1,5 +1,9 @@
 package com.github.pettyfer.basic.common.utils;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.github.pettyfer.basic.common.entity.Role;
 import com.github.pettyfer.basic.common.model.DeptInfo;
 import com.github.pettyfer.basic.common.model.GroupInfo;
@@ -21,7 +25,9 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SysDetail implements Serializable {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class UserDetail implements Serializable {
     private static final long serialVersionUID = 7393139301770902436L;
 
     /**

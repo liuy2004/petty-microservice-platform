@@ -1,9 +1,7 @@
 package com.github.pettyfer.basic.common.exception;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -13,7 +11,9 @@ import java.io.Serializable;
  * @author Petty
  * @date 2018年2月24日
  */
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class BaseException extends Exception implements Serializable {

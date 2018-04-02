@@ -1,10 +1,6 @@
 package com.github.pettyfer.basic.common.aop;
 
-import com.github.pettyfer.basic.common.constant.SecurityConstant;
-import com.github.pettyfer.basic.common.entity.User;
-import com.github.pettyfer.basic.common.utils.UserUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -74,24 +70,6 @@ public class ControllerAop {
 
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-
-        String token = UserUtils.getToken(request);
-        User user = null;
-        if (StringUtils.isNotEmpty(token)) {
-            user = cacheManager.getCache(SecurityConstant.TOKEN_USER_DETAIL).get(token, User.class);
-        }
-        String username;
-        if (user == null) {
-            username = UserUtils.getUserName(request);
-            if (StringUtils.isNotEmpty(username)) {
-                UserUtils.setUser(username);
-            }
-        } else {
-            username = user.getUserName();
-            UserUtils.setUser(username);
-        }
-        log.info("Controller AOP get username:{}", username);
-
         log.info("URL : " + request.getRequestURL().toString());
         log.info("HTTP_METHOD : " + request.getMethod());
         log.info("IP : " + request.getRemoteAddr());
@@ -106,10 +84,6 @@ public class ControllerAop {
         } catch (Throwable e) {
             log.error("异常信息：", e);
             throw new RuntimeException(e);
-        } finally {
-            if (StringUtils.isNotEmpty(username)) {
-                UserUtils.clearAllInfo();
-            }
         }
         return result;
     }

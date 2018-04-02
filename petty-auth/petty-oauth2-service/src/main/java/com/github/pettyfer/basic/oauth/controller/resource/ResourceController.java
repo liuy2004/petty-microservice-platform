@@ -1,13 +1,17 @@
 package com.github.pettyfer.basic.oauth.controller.resource;
 
-import com.github.pettyfer.basic.common.utils.SysUtils;
+import com.github.pettyfer.basic.common.annotation.UserAuth;
+import com.github.pettyfer.basic.common.utils.UserDetail;
+import com.github.pettyfer.basic.common.utils.UserUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -24,14 +28,12 @@ public class ResourceController {
     /**
      * 通过access_token获取用户信息
      *
-     * @param authentication
-     * @return
+     * @return Authentication
      */
+    @UserAuth
     @ApiOperation(value = "获取用户信息", notes = "")
-    @ApiImplicitParam(name = "authentication", value = "access_token", required = true, dataType = "String")
     @GetMapping("user")
-    public Authentication getUser(Authentication authentication) {
-        SysUtils.getUserDetail();
-        return null;
+    public UserDetail getUser() {
+        return UserUtils.getUserDetail();
     }
 }

@@ -13,8 +13,8 @@ import java.lang.annotation.*;
 @Inherited
 public @interface UserAuth {
     /**
-     * 是否需要用户信息详情
+     * 是否需要用户基础信息
      * @return boolean
      */
-    boolean isUserDetails() default false;
+    boolean isUserDetails() default true;
 }

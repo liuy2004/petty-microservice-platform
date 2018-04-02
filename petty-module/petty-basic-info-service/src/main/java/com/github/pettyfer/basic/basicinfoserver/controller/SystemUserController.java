@@ -6,7 +6,7 @@ import com.github.pettyfer.basic.common.annotation.UserAuth;
 import com.github.pettyfer.basic.common.entity.User;
 import com.github.pettyfer.basic.common.model.UserInfo;
 import com.github.pettyfer.basic.common.response.BaseResponse;
-import com.github.pettyfer.basic.common.utils.SysUtils;
+import com.github.pettyfer.basic.common.utils.UserUtils;
 import com.github.pettyfer.basic.common.web.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -36,9 +36,9 @@ public class SystemUserController extends BaseController {
 
     @UserAuth
     @GetMapping("/info")
-    public BaseResponse<User> user(User user) {
-        System.out.println(SysUtils.getUserDetail());
-        return new BaseResponse<>(user);
+    public BaseResponse user() {
+        System.out.println(UserUtils.getUserDetail());
+        return new BaseResponse<>();
     }
 
     /**

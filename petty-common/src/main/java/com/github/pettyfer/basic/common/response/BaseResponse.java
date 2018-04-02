@@ -1,5 +1,9 @@
 package com.github.pettyfer.basic.common.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.github.pettyfer.basic.common.constant.CommonConstant;
 import lombok.Data;
 
@@ -9,8 +13,11 @@ import java.io.Serializable;
  * @author Petty
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BaseResponse<T> implements Serializable {
 
+    private static final long serialVersionUID = -3246273238796974462L;
     private String message = "Success";
 
     private long timestamp = System.currentTimeMillis();
@@ -32,5 +39,11 @@ public class BaseResponse<T> implements Serializable {
         super();
         this.message = e.getMessage();
         this.status = CommonConstant.FAIL;
+    }
+
+    public BaseResponse(Throwable e, int statusCode) {
+        super();
+        this.message = e.getMessage();
+        this.status = statusCode;
     }
 }

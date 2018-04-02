@@ -1,6 +1,7 @@
 package com.github.pettyfer.basic.common.context;
 
 import com.github.pettyfer.basic.common.constant.CommonConstant;
+import com.github.pettyfer.basic.common.entity.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,13 +30,13 @@ public class BaseContextHandler {
         return map.get(key);
     }
 
-    public static void setUser(String username) {
-        set(CommonConstant.BASIC_USERNAME_CONTEXT, username);
+    public static void setUser(User user) {
+        set(CommonConstant.BASIC_USERNAME_CONTEXT, user);
     }
 
-    public static String getUser() {
-        Object username = get(CommonConstant.BASIC_USERNAME_CONTEXT);
-        return username == null ? "" : username.toString();
+    public static User getUser() {
+        Object user = get(CommonConstant.BASIC_USERNAME_CONTEXT);
+        return user == null ? null : (User) user;
     }
 
     public static void remove(){
