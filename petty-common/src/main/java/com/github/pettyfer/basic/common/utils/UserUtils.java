@@ -37,10 +37,8 @@ public class UserUtils {
     public static UserDetail getUserDetail() {
         UserDetail userDetail = new UserDetail();
         User user = BaseContextHandler.getUser();
-        Preconditions.checkNotNull(user,"未获取用户基础");
-        System.out.println(user.getUserName());
+        Preconditions.checkNotNull(user,"未获取用户基础信息");
         UserInfo userInfo = userInfoService.findUserInfoByUsername(user.getUserName());
-        System.out.println(userInfo);
         List<RoleInfo> roleInfos = roleInfoService.findRoleInfoByUserId(userInfo.getUserId());
         DeptInfo deptInfo = deptInfoService.findDeptInfoByUserId(userInfo.getUserId());
         List<GroupInfo> groupInfos = groupInfoService.findGroupInfoByUserId(userInfo.getUserId());
