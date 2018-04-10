@@ -1,6 +1,6 @@
 package com.github.pettyfer.basic.common.aop;
 
-import com.github.pettyfer.basic.common.annotation.UserAuth;
+import com.github.pettyfer.basic.common.annotation.UserContext;
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
 import com.github.pettyfer.basic.common.context.BaseContextHandler;
 import com.github.pettyfer.basic.common.entity.Role;
@@ -37,19 +37,19 @@ import java.util.Optional;
 @Order(9)
 @Component
 @Slf4j
-public class UserAuthAop {
+public class UserContextAop {
 
     private final CacheManager cacheManager;
 
     @Autowired
-    public UserAuthAop(CacheManager cacheManager) {
+    public UserContextAop(CacheManager cacheManager) {
         this.cacheManager = cacheManager;
     }
 
     /**
      * 切点
      */
-    @Pointcut("@annotation(com.github.pettyfer.basic.common.annotation.UserAuth)")
+    @Pointcut("@annotation(com.github.pettyfer.basic.common.annotation.UserContext)")
     public void authPointCut() {
     }
 
@@ -77,24 +77,20 @@ public class UserAuthAop {
             e.printStackTrace();
         }
         if (method != null) {
-            if (method.isAnnotationPresent(UserAuth.class)) {
-                UserAuth userAuth = method.getAnnotation(UserAuth.class);
+            if (method.isAnnotationPresent(UserContext.class)) {
                 Object obj = null;
-                //是否获取Token中包含的用户信息
-                if (userAuth.isUserDetails()) {
-                    String token = TokenUtils.getToken(request);
-                    if (StringUtils.isBlank(token)) {
-                        log.error("resolveArgument error token is empty");
-                        throw new TokenErrorException("invalid token");
-                    }
-                    Optional<User> userOptional = Optional.ofNullable(cacheManager.getCache(SecurityConstant.TOKEN_USER_DETAIL).get(token, User.class));
-                    if (userOptional.isPresent()) {
-                        log.info("return cache user entity,token :{}", token);
-                        userOptional.get();
-                    }
-                    obj = userOptional.orElseGet(() -> generatorByToken(request, token));
-                    BaseContextHandler.setUser((User) obj);
+                String token = TokenUtils.getToken(request);
+                if (StringUtils.isBlank(token)) {
+                    log.error("resolveArgument error token is empty");
+                    throw new TokenErrorException("invalid token");
                 }
+                Optional<User> userOptional = Optional.ofNullable(cacheManager.getCache(SecurityConstant.TOKEN_USER_DETAIL).get(token, User.class));
+                if (userOptional.isPresent()) {
+                    log.info("return cache user entity,token :{}", token);
+                    userOptional.get();
+                }
+                obj = userOptional.orElseGet(() -> generatorByToken(request, token));
+                BaseContextHandler.setUser((User) obj);
                 object = joinPoint.proceed();
             } else {//没有使用@UserAuth注解直接放行
                 joinPoint.proceed();

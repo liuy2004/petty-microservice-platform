@@ -2,7 +2,7 @@ package com.github.pettyfer.basic.basicinfoserver.controller;
 
 
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
-import com.github.pettyfer.basic.common.annotation.UserAuth;
+import com.github.pettyfer.basic.common.annotation.UserContext;
 import com.github.pettyfer.basic.common.entity.User;
 import com.github.pettyfer.basic.common.model.UserInfo;
 import com.github.pettyfer.basic.common.response.BaseResponse;
@@ -34,7 +34,7 @@ public class SystemUserController extends BaseController {
         this.systemUserService = systemUserService;
     }
 
-    @UserAuth
+    @UserContext
     @GetMapping("/info")
     public BaseResponse user() {
         System.out.println(UserUtils.getUserDetail());
