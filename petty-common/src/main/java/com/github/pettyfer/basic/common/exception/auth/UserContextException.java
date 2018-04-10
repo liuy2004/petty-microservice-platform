@@ -9,11 +9,11 @@ import com.github.pettyfer.basic.common.exception.BaseRuntimeException;
  * @version 1.0
  * {@link com.github.pettyfer.basic.common.exception.BaseRuntimeException }
  */
-public class NoUserException extends BaseRuntimeException {
+public class UserContextException extends BaseRuntimeException {
 
     private static final long serialVersionUID = 1743414082337284940L;
 
-    public NoUserException(String message) {
+    public UserContextException(String message) {
         super(message,CommonConstant.EX_NO_USER);
     }
 }

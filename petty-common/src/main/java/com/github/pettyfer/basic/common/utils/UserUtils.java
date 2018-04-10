@@ -2,7 +2,7 @@ package com.github.pettyfer.basic.common.utils;
 
 import com.github.pettyfer.basic.common.context.BaseContextHandler;
 import com.github.pettyfer.basic.common.entity.User;
-import com.github.pettyfer.basic.common.exception.auth.NoUserException;
+import com.github.pettyfer.basic.common.exception.auth.UserContextException;
 import com.github.pettyfer.basic.common.feign.DeptInfoService;
 import com.github.pettyfer.basic.common.feign.GroupInfoService;
 import com.github.pettyfer.basic.common.feign.RoleInfoService;
@@ -41,7 +41,7 @@ public class UserUtils {
         try{
             Preconditions.checkNotNull(user);
         }catch (Exception e){
-            throw new NoUserException("未获取用户基础信息");
+            throw new UserContextException("没有获取到用户上下文信息，请使用@UserContext注解解析并增加用户信息上下文");
         }
 
         UserInfo userInfo = userInfoService.findUserInfoByUsername(user.getUserName());
