@@ -1,5 +1,6 @@
 package com.github.pettyfer.basic.gateway;
 
+import com.github.pettyfer.basic.common.annotation.PettyConfigure;
 import com.github.pettyfer.basic.gateway.config.GateRateLimitKeyGenerator;
 import com.github.pettyfer.basic.gateway.ratelimit.EnablePettyGatewayRatelimit;
 import com.github.pettyfer.basic.gateway.ratelimit.config.RateLimitKeyGenerator;
@@ -11,6 +12,7 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -23,7 +25,9 @@ import org.springframework.web.filter.CorsFilter;
 @SpringBootApplication
 @EnablePettyGatewayRatelimit
 @EnableDiscoveryClient
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableHystrix
+@PettyConfigure
 public class PettyGatewayServiceApplication {
 
     public static void main(String[] args) {

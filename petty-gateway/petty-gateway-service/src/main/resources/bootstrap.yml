@@ -22,6 +22,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:30151/eureka
+#OAuth2服务器地址
+security:
+  auth:
+   server: http://127.0.0.1:6060
 ---
 spring:
   profiles: prd
@@ -31,3 +35,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://127.0.0.1:30151/eureka
+#OAuth2服务器地址
+security:
+  auth:
+    server: http://127.0.0.1:6060

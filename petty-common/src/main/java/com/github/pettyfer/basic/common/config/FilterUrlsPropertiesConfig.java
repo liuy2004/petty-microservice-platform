@@ -24,6 +24,6 @@ import java.util.List;
 @RefreshScope
 @ConditionalOnExpression("!'${urls}'.isEmpty()")
 @ConfigurationProperties(prefix = "urls")
-public class FilterUrlsPropertiesConifg {
+public class FilterUrlsPropertiesConfig {
     private List<String> anon = new ArrayList<>();
 }

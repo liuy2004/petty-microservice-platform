@@ -22,6 +22,11 @@ public interface SecurityConstant {
     String AUTHORIZATION_CODE = "authorization_code";
 
     /**
+     * 资源授权失败或没有授权记录
+     */
+    String AUTHORIZATION_FAILURES = "Authorization failures";
+
+    /**
      * 客户端授权模式
      */
     String CLIENT = "client_credentials";

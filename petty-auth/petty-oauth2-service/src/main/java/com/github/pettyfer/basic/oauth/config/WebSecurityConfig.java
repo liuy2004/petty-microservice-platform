@@ -1,6 +1,6 @@
 package com.github.pettyfer.basic.oauth.config;
 
-import com.github.pettyfer.basic.common.config.FilterUrlsPropertiesConifg;
+import com.github.pettyfer.basic.common.config.FilterUrlsPropertiesConfig;
 import com.github.pettyfer.basic.oauth.component.mobile.MobileSecurityConfigurer;
 import com.github.pettyfer.basic.oauth.handler.SuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import org.springframework.security.web.authentication.rememberme.InMemoryTokenR
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final FilterUrlsPropertiesConifg filterUrlsPropertiesConifg;
+    private final FilterUrlsPropertiesConfig filterUrlsPropertiesConfig;
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
 
@@ -31,10 +31,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private MobileSecurityConfigurer mobileSecurityConfigurer;
 
     @Autowired
-    public WebSecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, FilterUrlsPropertiesConifg filterUrlsPropertiesConifg) {
+    public WebSecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, FilterUrlsPropertiesConfig filterUrlsPropertiesConfig) {
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
-        this.filterUrlsPropertiesConifg = filterUrlsPropertiesConifg;
+        this.filterUrlsPropertiesConfig = filterUrlsPropertiesConfig;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/console/**").hasRole("DEVELOPER");
-        for (String url : filterUrlsPropertiesConifg.getAnon()) {
+        for (String url : filterUrlsPropertiesConfig.getAnon()) {
             registry.antMatchers(url).permitAll();
         }
         registry.anyRequest().authenticated().and().logout();
