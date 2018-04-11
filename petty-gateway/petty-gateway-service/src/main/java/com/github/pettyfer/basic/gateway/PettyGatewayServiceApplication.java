@@ -49,7 +49,7 @@ public class PettyGatewayServiceApplication {
     /**
      * 跨域处理
      *
-     * @return
+     * @return CorsFilter
      */
     @Bean
     public CorsFilter corsFilter() {

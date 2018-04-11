@@ -14,6 +14,8 @@ import java.util.StringTokenizer;
 
 /**
  * @author Petty
+ * @date 2018年4月11日
+ * 限流组件key生成规则
  */
 public class GateRateLimitKeyGenerator implements RateLimitKeyGenerator {
 
