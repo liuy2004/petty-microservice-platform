@@ -54,8 +54,14 @@ public class GateRateLimitKeyGenerator implements RateLimitKeyGenerator {
         String agent = request.getHeader("User-Agent");
         StringTokenizer st = new StringTokenizer(agent, ";");
         st.nextToken();
-        String clientType = st.nextToken();
-        return clientType;
+        String clientType;
+        try {
+            clientType = st.nextToken();
+            return clientType;
+        } catch (Exception e) {
+            clientType = "UnknownClient";
+            return clientType;
+        }
     }
 
     @Override
