@@ -2,8 +2,8 @@ package com.github.pettyfer.basic.oauth.utils;
 
 import com.github.pettyfer.basic.common.constant.CommonConstant;
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
-import com.github.pettyfer.basic.common.entity.Role;
-import com.github.pettyfer.basic.common.entity.User;
+import com.github.pettyfer.basic.common.model.auth.Role;
+import com.github.pettyfer.basic.common.model.auth.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

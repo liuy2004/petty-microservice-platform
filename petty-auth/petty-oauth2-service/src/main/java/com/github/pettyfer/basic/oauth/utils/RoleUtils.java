@@ -1,7 +1,7 @@
 package com.github.pettyfer.basic.oauth.utils;
 
 import com.github.pettyfer.basic.oauth.feign.UserService;
-import com.github.pettyfer.basic.common.model.UserInfo;
+import com.github.pettyfer.basic.common.model.basic.UserInfo;
 import com.github.pettyfer.basic.common.utils.SpringContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;

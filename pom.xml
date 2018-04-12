@@ -32,6 +32,7 @@
         <joda-time.version>2.9.9</joda-time.version>
         <logstash.version>5.0</logstash.version>
         <guava.version>23.0</guava.version>
+        <jasypt.version>1.18</jasypt.version>
         <skipTests>true</skipTests>
     </properties>
 

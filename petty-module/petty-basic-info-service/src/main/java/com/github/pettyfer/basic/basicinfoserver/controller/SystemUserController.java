@@ -3,8 +3,8 @@ package com.github.pettyfer.basic.basicinfoserver.controller;
 
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
 import com.github.pettyfer.basic.common.annotation.UserContext;
-import com.github.pettyfer.basic.common.entity.User;
-import com.github.pettyfer.basic.common.model.UserInfo;
+import com.github.pettyfer.basic.common.model.auth.User;
+import com.github.pettyfer.basic.common.model.basic.UserInfo;
 import com.github.pettyfer.basic.common.response.BaseResponse;
 import com.github.pettyfer.basic.common.utils.UserUtils;
 import com.github.pettyfer.basic.common.web.BaseController;

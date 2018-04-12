@@ -32,64 +32,8 @@
         <result column="DEL_FLAG" property="delFlag" />
     </resultMap>
 
-    <resultMap id="UserMap" type="com.github.pettyfer.basic.common.entity.User">
-        <id column="USER_ID" property="userId"/>
-        <result column="USER_NAME" property="userName"/>
-        <result column="USER_PWD" property="userPwd"/>
-        <result column="FULL_NAME" property="fullName"/>
-        <result column="IS_ADMIN" property="isAdmin"/>
-        <result column="STATUS" property="status"/>
-        <result column="CREATOR" property="creator"/>
-        <result column="CREATE_DATE" property="createDate"/>
-        <result column="MODIFIER" property="modifier"/>
-        <result column="MODIFY_DATE" property="modifyDate"/>
-        <result column="DEL_FLAG" property="delFlag"/>
-        <collection property="roleList" ofType="com.github.pettyfer.basic.common.entity.Role">
-            <id column="ROLE_ID" property="roleId"/>
-            <result column="ROLE_NAME" property="roleName"/>
-            <result column="ROLE_TYPE" property="roleType"/>
-            <result column="ROLE_STATUS" property="roleStatus"/>
-            <result column="SORT_NO" property="sortNo"/>
-        </collection>
-    </resultMap>
-
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         USER_ID AS USER_ID, USER_NAME AS USER_NAME, USER_PWD AS USER_PWD, FULL_NAME AS FULL_NAME, USER_SEX AS USER_SEX, USER_BIRTHDAY AS USER_BIRTHDAY, IN_DATE AS IN_DATE, PHOTO AS PHOTO, USER_NUM AS USER_NUM, EMAIL AS EMAIL, QQ_NUM AS QQ_NUM, USER_TEL AS USER_TEL, USER_ADDR AS USER_ADDR, USER_DESC AS USER_DESC, USER_PHONE_TEL AS USER_PHONE_TEL, USER_SOURCE AS USER_SOURCE, USER_IDEN_TYPE AS USER_IDEN_TYPE, USER_IDEN AS USER_IDEN, SORT_NO AS SORT_NO, IS_ADMIN AS IS_ADMIN, STATUS AS STATUS, CREATOR AS CREATOR, CREATE_DATE AS CREATE_DATE, MODIFIER AS MODIFIER, MODIFY_DATE AS MODIFY_DATE, DEL_FLAG AS DEL_FLAG
     </sql>
-
-    <sql id="selectUser">
-        SELECT
-        `USER`.USER_ID,
-        `USER`.USER_NAME,
-        `USER`.USER_PWD,
-        `USER`.FULL_NAME,
-        `USER`.IS_ADMIN,
-        `USER`.STATUS,
-        `USER`.IS_ADMIN,
-        `USER`.CREATOR,
-        `USER`.CREATE_DATE,
-        `USER`.MODIFIER,
-        `USER`.MODIFY_DATE,
-        `USER`.DEL_FLAG,
-        R.ROLE_ID,
-        R.ROLE_NAME,
-        R.ROLE_TYPE,
-        R.STATUS AS ROLE_STATUS,
-        R.SORT_NO
-        FROM
-        SYSTEM_USER AS `USER`
-        LEFT JOIN SYSTEM_USER_ROLE AS UDR ON UDR.USER_ID = `USER`.USER_ID
-        LEFT JOIN SYSTEM_ROLE AS R ON R.ROLE_ID = UDR.ROLE_ID
-    </sql>
-
-    <select id="selectUserByUsername" resultMap="UserMap">
-        <include refid="selectUser"/>
-        WHERE `USER`.USER_NAME = #{username} AND `USER`.DEL_FLAG = '0'
-    </select>
-
-    <select id="selectUserByMobile" resultMap="UserMap">
-        <include refid="selectUser"/>
-        WHERE `USER`.USER_PHONE_TEL = #{mobile} AND `USER`.DEL_FLAG = '0'
-    </select>
 </mapper>

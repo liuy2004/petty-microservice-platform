@@ -1,6 +1,6 @@
 package com.github.pettyfer.basic.oauth.component.mobile;
 
-import com.github.pettyfer.basic.common.entity.User;
+import com.github.pettyfer.basic.common.model.auth.User;
 import com.github.pettyfer.basic.oauth.feign.UserService;
 import com.github.pettyfer.basic.oauth.utils.UserDetailsImpl;
 import lombok.extern.slf4j.Slf4j;

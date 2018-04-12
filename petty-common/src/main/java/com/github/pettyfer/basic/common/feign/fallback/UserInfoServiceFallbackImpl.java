@@ -1,7 +1,7 @@
 package com.github.pettyfer.basic.common.feign.fallback;
 
 import com.github.pettyfer.basic.common.feign.UserInfoService;
-import com.github.pettyfer.basic.common.model.UserInfo;
+import com.github.pettyfer.basic.common.model.basic.UserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

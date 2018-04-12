@@ -1,16 +1,16 @@
 package com.github.pettyfer.basic.common.utils;
 
 import com.github.pettyfer.basic.common.context.BaseContextHandler;
-import com.github.pettyfer.basic.common.entity.User;
+import com.github.pettyfer.basic.common.model.auth.User;
 import com.github.pettyfer.basic.common.exception.auth.UserContextException;
 import com.github.pettyfer.basic.common.feign.DeptInfoService;
 import com.github.pettyfer.basic.common.feign.GroupInfoService;
 import com.github.pettyfer.basic.common.feign.RoleInfoService;
 import com.github.pettyfer.basic.common.feign.UserInfoService;
-import com.github.pettyfer.basic.common.model.DeptInfo;
-import com.github.pettyfer.basic.common.model.GroupInfo;
-import com.github.pettyfer.basic.common.model.RoleInfo;
-import com.github.pettyfer.basic.common.model.UserInfo;
+import com.github.pettyfer.basic.common.model.basic.DeptInfo;
+import com.github.pettyfer.basic.common.model.basic.GroupInfo;
+import com.github.pettyfer.basic.common.model.basic.RoleInfo;
+import com.github.pettyfer.basic.common.model.basic.UserInfo;
 import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;
 

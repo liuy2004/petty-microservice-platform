@@ -1,4 +1,4 @@
-package com.github.pettyfer.basic.common.model;
+package com.github.pettyfer.basic.common.model.basic;
 
 import java.io.Serializable;
 

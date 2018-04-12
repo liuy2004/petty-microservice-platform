@@ -1,4 +1,4 @@
-package com.github.pettyfer.basic.common.model;
+package com.github.pettyfer.basic.common.model.basic;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -12,30 +12,19 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * 用户所属部门
+ * 用户组
  *
  * @author Petty
  */
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DeptInfo implements Serializable {
-    private static final long serialVersionUID = 4257669635468768869L;
-    private String deptId;
+public class GroupInfo implements Serializable {
+    private static final long serialVersionUID = 4276507548530306822L;
+    private String groupId;
+    private String groupName;
     private String parentId;
-    private String deptName;
-    private String deptShortName;
-    private String deptType;
-    private String deptFramId;
-    private String orgId;
-    private String deptDesc;
-    private String leader;
-    private String deputyLeader;
-    private String telPhone;
-    private String address;
-    private BigDecimal deptGrade;
-    private String areaCode;
+    private BigDecimal groupType;
 }

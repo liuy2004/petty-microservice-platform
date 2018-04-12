@@ -1,14 +1,12 @@
 package com.github.pettyfer.basic.basicinfoserver.controller;
 
 
-import com.github.pettyfer.basic.common.model.DeptInfo;
-import com.github.pettyfer.basic.common.model.GroupInfo;
+import com.github.pettyfer.basic.common.model.basic.GroupInfo;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.LinkedList;

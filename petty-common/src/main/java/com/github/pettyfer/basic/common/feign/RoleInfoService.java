@@ -1,7 +1,7 @@
 package com.github.pettyfer.basic.common.feign;
 
 import com.github.pettyfer.basic.common.feign.fallback.RoleInfoServiceFallbackImpl;
-import com.github.pettyfer.basic.common.model.RoleInfo;
+import com.github.pettyfer.basic.common.model.basic.RoleInfo;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

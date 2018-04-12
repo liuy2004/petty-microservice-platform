@@ -2,13 +2,10 @@ package com.github.pettyfer.basic.common.utils;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.github.pettyfer.basic.common.entity.Role;
-import com.github.pettyfer.basic.common.model.DeptInfo;
-import com.github.pettyfer.basic.common.model.GroupInfo;
-import com.github.pettyfer.basic.common.model.RoleInfo;
-import com.github.pettyfer.basic.common.model.UserInfo;
+import com.github.pettyfer.basic.common.model.basic.DeptInfo;
+import com.github.pettyfer.basic.common.model.basic.GroupInfo;
+import com.github.pettyfer.basic.common.model.basic.RoleInfo;
+import com.github.pettyfer.basic.common.model.basic.UserInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

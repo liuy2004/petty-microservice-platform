@@ -1,4 +1,4 @@
-package com.github.pettyfer.basic.common.model;
+package com.github.pettyfer.basic.common.model.basic;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

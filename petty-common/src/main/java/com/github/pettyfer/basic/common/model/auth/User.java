@@ -1,4 +1,4 @@
-package com.github.pettyfer.basic.common.entity;
+package com.github.pettyfer.basic.common.model.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

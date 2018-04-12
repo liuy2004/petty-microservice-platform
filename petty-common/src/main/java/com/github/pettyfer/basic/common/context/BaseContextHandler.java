@@ -1,7 +1,7 @@
 package com.github.pettyfer.basic.common.context;
 
 import com.github.pettyfer.basic.common.constant.CommonConstant;
-import com.github.pettyfer.basic.common.entity.User;
+import com.github.pettyfer.basic.common.model.auth.User;
 
 import java.util.HashMap;
 import java.util.Map;

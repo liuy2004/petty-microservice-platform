@@ -2,8 +2,8 @@ package com.github.pettyfer.basic.basicinfoserver.service;
 
 import com.github.pettyfer.basic.basicinfoserver.entity.SystemUser;
 import com.baomidou.mybatisplus.service.IService;
-import com.github.pettyfer.basic.common.entity.User;
-import com.github.pettyfer.basic.common.model.UserInfo;
+import com.github.pettyfer.basic.common.model.auth.User;
+import com.github.pettyfer.basic.common.model.basic.UserInfo;
 
 /**
  * <p>

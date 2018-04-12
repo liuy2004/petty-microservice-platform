@@ -1,7 +1,7 @@
 package com.github.pettyfer.basic.common.feign.fallback;
 
 import com.github.pettyfer.basic.common.feign.RoleInfoService;
-import com.github.pettyfer.basic.common.model.RoleInfo;
+import com.github.pettyfer.basic.common.model.basic.RoleInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

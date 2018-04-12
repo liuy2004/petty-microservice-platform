@@ -1,8 +1,8 @@
 package com.github.pettyfer.basic.oauth.feign.fallback;
 
 import com.github.pettyfer.basic.oauth.feign.UserService;
-import com.github.pettyfer.basic.common.entity.User;
-import com.github.pettyfer.basic.common.model.UserInfo;
+import com.github.pettyfer.basic.common.model.auth.User;
+import com.github.pettyfer.basic.common.model.basic.UserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

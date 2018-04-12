@@ -1,7 +1,7 @@
 package com.github.pettyfer.basic.common.feign.fallback;
 
 import com.github.pettyfer.basic.common.feign.GroupInfoService;
-import com.github.pettyfer.basic.common.model.GroupInfo;
+import com.github.pettyfer.basic.common.model.basic.GroupInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
