@@ -29,6 +29,8 @@ public class ResponseExceptionTranslator extends DefaultWebResponseExceptionTran
 
     public static final String BAD_MSG = "坏的凭证";
 
+    public static final String INVALID_REFRESH_TOKEN = "Invalid refresh token";
+
     /**
      * @param e spring security内部异常
      * @return 经过处理的异常信息
@@ -39,6 +41,8 @@ public class ResponseExceptionTranslator extends DefaultWebResponseExceptionTran
         OAuth2Exception oAuth2Exception;
         if (e instanceof InvalidGrantException && StringUtils.equals(BAD_MSG, e.getMessage())) {
             oAuth2Exception = new InvalidGrantException("密码错误", e);
+        } else if (e instanceof InvalidGrantException && StringUtils.contains(e.getMessage(), INVALID_REFRESH_TOKEN)) {
+            oAuth2Exception = new InvalidGrantException("refresh_token失效", e);
         } else if (e instanceof InternalAuthenticationServiceException) {
             oAuth2Exception = new InvalidGrantException("用户名不存在", e);
         } else if (e instanceof HttpRequestMethodNotSupportedException) {
