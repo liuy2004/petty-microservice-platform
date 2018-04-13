@@ -89,6 +89,10 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
         tokenEnhancerChain.setTokenEnhancers(Arrays.asList(customerEnhancer(), jwtAccessTokenConverter()));
         endpoints.tokenEnhancer(tokenEnhancerChain);
         endpoints.exceptionTranslator(responseExceptionTranslator);
+
+        // TODO 该配置会使refresh_token只用刷新一次Token，再次刷新需要使用新的refresh_token保证安全性
+        //强制refresh_token只能使用一次
+        endpoints.reuseRefreshTokens(false);
         //配置Token相关参数
         DefaultTokenServices tokenServices = (DefaultTokenServices) endpoints.getDefaultAuthorizationServerTokenServices();
         tokenServices.setSupportRefreshToken(true);
