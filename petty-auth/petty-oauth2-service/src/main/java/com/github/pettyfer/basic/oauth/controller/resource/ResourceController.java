@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 获取用户信息
  */
 @Slf4j
-@Api(value = "ResourceController", description = "资源获取")
+@Api(value = "资源控制器", tags = {"资源接口"}, description = "获取用户资源")
 @RestController
 @RequestMapping(value = "resource")
 public class ResourceController {
@@ -27,7 +27,7 @@ public class ResourceController {
      * @return Authentication
      */
     @UserContext
-    @ApiOperation(value = "获取用户信息", notes = "")
+    @ApiOperation(value = "获取用户信息", notes = "需要验证登陆令牌")
     @GetMapping("user")
     public UserDetail getUser() {
         return UserUtils.getUserDetail();

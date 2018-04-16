@@ -8,6 +8,8 @@ import com.github.pettyfer.basic.common.model.basic.UserInfo;
 import com.github.pettyfer.basic.common.response.BaseResponse;
 import com.github.pettyfer.basic.common.utils.UserUtils;
 import com.github.pettyfer.basic.common.web.BaseController;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Pettyfer
  * @since 2018-02-27
  */
+@Api(value="企业用户控制器", tags={"用户信息接口"}, description = "获取用户信息，或者对之进行修改")
 @RestController
 @RequestMapping("/user")
 public class SystemUserController extends BaseController {
@@ -35,6 +38,7 @@ public class SystemUserController extends BaseController {
     }
 
     @UserContext
+    @ApiOperation(value = "测试接口", notes = "需要验证登陆令牌")
     @GetMapping("/info")
     public BaseResponse user() {
         System.out.println(UserUtils.getUserDetail());
