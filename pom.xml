@@ -29,6 +29,10 @@
         <docker.image.prefix>petty</docker.image.prefix>
         <docker.plugin.version>0.4.13</docker.plugin.version>
         <junit.version>4.12</junit.version>
+        <druid.version>1.1.8</druid.version>
+        <mybatisplus.version>1.0.5</mybatisplus.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
+        <velocity.version>2.0</velocity.version>
         <joda-time.version>2.9.9</joda-time.version>
         <logstash.version>5.0</logstash.version>
         <guava.version>23.0</guava.version>

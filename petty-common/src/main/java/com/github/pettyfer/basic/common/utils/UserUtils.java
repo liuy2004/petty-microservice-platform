@@ -1,12 +1,12 @@
 package com.github.pettyfer.basic.common.utils;
 
-import com.github.pettyfer.basic.common.context.BaseContextHandler;
-import com.github.pettyfer.basic.common.model.auth.User;
+import com.github.pettyfer.basic.common.context.SessionContext;
 import com.github.pettyfer.basic.common.exception.auth.UserContextException;
 import com.github.pettyfer.basic.common.feign.DeptInfoService;
 import com.github.pettyfer.basic.common.feign.GroupInfoService;
 import com.github.pettyfer.basic.common.feign.RoleInfoService;
 import com.github.pettyfer.basic.common.feign.UserInfoService;
+import com.github.pettyfer.basic.common.model.auth.User;
 import com.github.pettyfer.basic.common.model.basic.DeptInfo;
 import com.github.pettyfer.basic.common.model.basic.GroupInfo;
 import com.github.pettyfer.basic.common.model.basic.RoleInfo;
@@ -37,7 +37,7 @@ public class UserUtils {
      */
     public static UserDetail getUserDetail() {
         UserDetail userDetail = new UserDetail();
-        User user = BaseContextHandler.getUser();
+        User user = SessionContext.getUser();
         try{
             Preconditions.checkNotNull(user);
         }catch (Exception e){

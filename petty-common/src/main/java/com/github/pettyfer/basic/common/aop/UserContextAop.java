@@ -3,9 +3,10 @@ package com.github.pettyfer.basic.common.aop;
 import com.github.pettyfer.basic.common.annotation.UserContext;
 import com.github.pettyfer.basic.common.constant.SecurityConstant;
 import com.github.pettyfer.basic.common.context.BaseContextHandler;
+import com.github.pettyfer.basic.common.context.SessionContext;
+import com.github.pettyfer.basic.common.exception.auth.TokenErrorException;
 import com.github.pettyfer.basic.common.model.auth.Role;
 import com.github.pettyfer.basic.common.model.auth.User;
-import com.github.pettyfer.basic.common.exception.auth.TokenErrorException;
 import com.github.pettyfer.basic.common.utils.TokenUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -90,7 +91,7 @@ public class UserContextAop {
                     userOptional.get();
                 }
                 obj = userOptional.orElseGet(() -> generatorByToken(request, token));
-                BaseContextHandler.setUser((User) obj);
+                SessionContext.setUser((User) obj);
                 object = joinPoint.proceed();
             } else {//没有使用@UserAuth注解直接放行
                 joinPoint.proceed();
