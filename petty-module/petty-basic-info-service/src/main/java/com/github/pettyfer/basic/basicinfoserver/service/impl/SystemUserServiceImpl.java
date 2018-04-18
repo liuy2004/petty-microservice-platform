@@ -18,6 +18,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -72,14 +73,13 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
             }
         });
 
-        List<Role> roles = new LinkedList<>();
         HashSet<Role> roleHashSet = new HashSet<>();
         for (SystemRole s : systemRoles) {
             Role role = new Role();
             BeanUtils.copyProperties(s,role);
             roleHashSet.add(role);
         }
-        roles.addAll(roleHashSet);
+        List<Role> roles = new ArrayList<>(roleHashSet);
 
         BeanUtils.copyProperties(systemUser, user);
         user.setRoleList(roles);
@@ -111,14 +111,13 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
             }
         });
 
-        List<Role> roles = new LinkedList<>();
         HashSet<Role> roleHashSet = new HashSet<>();
         for (SystemRole s : systemRoles) {
             Role role = new Role();
             BeanUtils.copyProperties(s,role);
             roleHashSet.add(role);
         }
-        roles.addAll(roleHashSet);
+        List<Role> roles = new ArrayList<>(roleHashSet);
         BeanUtils.copyProperties(systemUser, user);
         user.setRoleList(roles);
         return user;
