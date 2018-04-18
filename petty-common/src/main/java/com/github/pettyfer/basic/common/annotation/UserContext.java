@@ -7,6 +7,7 @@ import java.lang.annotation.*;
  *
  * @author Petty
  * @since 2018-04-01
+ * 注解使用请见{@link com.github.pettyfer.basic.common.aop.UserContextAop}
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
