@@ -24,7 +24,7 @@
         <jdk.compile.source.version>1.8</jdk.compile.source.version>
         <jdk.compile.target.version>1.8</jdk.compile.target.version>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
+        <spring-cloud.version>Edgware.SR3</spring-cloud.version>
         <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
         <docker.image.prefix>petty</docker.image.prefix>
         <docker.plugin.version>0.4.13</docker.plugin.version>
@@ -43,7 +43,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.9.RELEASE</version>
+        <version>1.5.10.RELEASE</version>
         <relativePath/>
     </parent>
 

@@ -13,14 +13,12 @@ import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
 import com.github.pettyfer.basic.common.model.auth.Role;
 import com.github.pettyfer.basic.common.model.auth.User;
 import com.github.pettyfer.basic.common.model.basic.UserInfo;
-import org.json.JSONObject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 
 /**

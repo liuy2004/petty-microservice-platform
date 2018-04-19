@@ -4,7 +4,7 @@ import com.github.pettyfer.basic.common.constant.CommonConstant;
 import com.github.pettyfer.basic.common.exception.BaseException;
 import com.github.pettyfer.basic.common.exception.BaseRuntimeException;
 import com.github.pettyfer.basic.common.response.BaseResponse;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @ControllerAdvice("com.github.pettyfer")
 @ResponseBody
-@Log4j
+@Slf4j
 public class GlobalExceptionHandler {
     /**
      * 处理BaseRuntimeException异常
