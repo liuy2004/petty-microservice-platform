@@ -48,7 +48,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     }
 
     @Override
-    @Cacheable(value = "basic:basic_user",key = "'basic:basic_system_user'.concat(':').concat(#username)")
+    @Cacheable(value = "basic:basic_user", key = "'basic:basic_system_user'.concat(':').concat(#username)")
     public User findUserByUsername(String username) {
         User user = new User();
         SystemUser systemUserQuery = new SystemUser();
@@ -56,27 +56,17 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
         SystemUser systemUser = systemUserMapper.selectOne(systemUserQuery);
 
         SystemUserRole systemUserRoleQuery = new SystemUserRole();
-        systemUserQuery.setUserId(systemUser.getUserId());
-        SystemUserRole systemUserRole = systemUserRoleMapper.selectOne(systemUserRoleQuery);
-
-        SystemRole systemRoleQuery = new SystemRole();
-        systemRoleQuery.setRoleId(systemUserRole.getRoleId());
-        List<SystemRole> systemRoles = systemRoleMapper.selectList(new Wrapper<SystemRole>() {
-
-            private static final long serialVersionUID = 2840132994715602216L;
-
-            @Override
-            public String getSqlSegment() {
-                EntityWrapper<SystemRole> ew = new EntityWrapper<>();
-                ew.setEntity(systemRoleQuery);
-                return ew.getSqlSegment();
-            }
-        });
+        systemUserRoleQuery.setUserId(systemUser.getUserId());
+        List<SystemUserRole> systemUserRoles = systemUserRoleMapper.selectList(new EntityWrapper<>(systemUserRoleQuery));
 
         HashSet<Role> roleHashSet = new HashSet<>();
-        for (SystemRole s : systemRoles) {
+        //角色信息一对多
+        for (SystemUserRole systemUserRole : systemUserRoles) {
+            SystemRole systemRoleQuery = new SystemRole();
+            systemRoleQuery.setRoleId(systemUserRole.getRoleId());
+            SystemRole systemRole = systemRoleMapper.selectOne(systemRoleQuery);
             Role role = new Role();
-            BeanUtils.copyProperties(s,role);
+            BeanUtils.copyProperties(systemRole, role);
             roleHashSet.add(role);
         }
         List<Role> roles = new ArrayList<>(roleHashSet);
@@ -87,7 +77,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     }
 
     @Override
-    @Cacheable(value = "basic:basic_user",key = "'basic:basic_system_user'.concat(':').concat(#mobile)")
+    @Cacheable(value = "basic:basic_user", key = "'basic:basic_system_user'.concat(':').concat(#mobile)")
     public User findUserByMobile(String mobile) {
         User user = new User();
         SystemUser systemUserQuery = new SystemUser();
@@ -95,27 +85,17 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
         SystemUser systemUser = systemUserMapper.selectOne(systemUserQuery);
 
         SystemUserRole systemUserRoleQuery = new SystemUserRole();
-        systemUserQuery.setUserId(systemUser.getUserId());
-        SystemUserRole systemUserRole = systemUserRoleMapper.selectOne(systemUserRoleQuery);
-
-        SystemRole systemRoleQuery = new SystemRole();
-        systemRoleQuery.setRoleId(systemUserRole.getRoleId());
-        List<SystemRole> systemRoles = systemRoleMapper.selectList(new Wrapper<SystemRole>() {
-
-            private static final long serialVersionUID = -6368731390232831383L;
-
-            @Override
-            public String getSqlSegment() {
-                EntityWrapper<SystemRole> ew = new EntityWrapper<>();
-                ew.setEntity(systemRoleQuery);
-                return ew.getSqlSegment();
-            }
-        });
+        systemUserRoleQuery.setUserId(systemUser.getUserId());
+        List<SystemUserRole> systemUserRoles = systemUserRoleMapper.selectList(new EntityWrapper<>(systemUserRoleQuery));
 
         HashSet<Role> roleHashSet = new HashSet<>();
-        for (SystemRole s : systemRoles) {
+        //角色信息一对多
+        for (SystemUserRole systemUserRole : systemUserRoles) {
+            SystemRole systemRoleQuery = new SystemRole();
+            systemRoleQuery.setRoleId(systemUserRole.getRoleId());
+            SystemRole systemRole = systemRoleMapper.selectOne(systemRoleQuery);
             Role role = new Role();
-            BeanUtils.copyProperties(s,role);
+            BeanUtils.copyProperties(systemRole, role);
             roleHashSet.add(role);
         }
         List<Role> roles = new ArrayList<>(roleHashSet);
@@ -125,7 +105,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     }
 
     @Override
-    @Cacheable(value = "basic:basic_user_info",key = "'basic:basic_system_user_info'.concat(':').concat(#username)")
+    @Cacheable(value = "basic:basic_user_info", key = "'basic:basic_system_user_info'.concat(':').concat(#username)")
     public UserInfo findUserInfoByUsername(String username) {
         UserInfo userInfo = new UserInfo();
         SystemUser systemUserQuery = new SystemUser();
