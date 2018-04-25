@@ -15,6 +15,7 @@ import com.github.pettyfer.basic.common.model.auth.User;
 import com.github.pettyfer.basic.common.model.basic.UserInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     }
 
     @Override
+    @Cacheable(value = "basic:basic_user",key = "'basic:basic_system_user'.concat(':').concat(#username)")
     public User findUserByUsername(String username) {
         User user = new User();
         SystemUser systemUserQuery = new SystemUser();
@@ -85,6 +87,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     }
 
     @Override
+    @Cacheable(value = "basic:basic_user",key = "'basic:basic_system_user'.concat(':').concat(#mobile)")
     public User findUserByMobile(String mobile) {
         User user = new User();
         SystemUser systemUserQuery = new SystemUser();
@@ -122,6 +125,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     }
 
     @Override
+    @Cacheable(value = "basic:basic_user_info",key = "'basic:basic_system_user_info'.concat(':').concat(#username)")
     public UserInfo findUserInfoByUsername(String username) {
         UserInfo userInfo = new UserInfo();
         SystemUser systemUserQuery = new SystemUser();

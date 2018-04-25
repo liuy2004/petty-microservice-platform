@@ -11,7 +11,6 @@ import com.github.pettyfer.basic.common.web.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Pettyfer
  * @since 2018-02-27
  */
-@Api(value="企业用户控制器", tags={"用户信息接口"}, description = "获取用户信息，或者对之进行修改")
+@Api(value = "企业用户控制器", tags = {"用户信息接口"}, description = "获取用户信息，或者对之进行修改")
 @RestController
 @RequestMapping("/user")
 public class SystemUserController extends BaseController {
@@ -51,7 +50,6 @@ public class SystemUserController extends BaseController {
      * @param username 用户名
      * @return UseVo 对象
      */
-    @Cacheable(value = "basic:basic_user",key = "'basic:basic_system_user'.concat(':').concat(#username)")
     @GetMapping("/findUserByUsername/{username}")
     public User findUserByUsername(@PathVariable String username) {
         return systemUserService.findUserByUsername(username);
@@ -59,10 +57,10 @@ public class SystemUserController extends BaseController {
 
     /**
      * 通过用户手机号码查询用户详细信息
+     *
      * @param mobile 手机号码
      * @return 用户信息详情对象
      */
-    @Cacheable(value = "basic:basic_user",key = "'basic:basic_system_user'.concat(':').concat(#mobile)")
     @GetMapping("/findUserByMobile/{mobile}")
     public User findUserByMobile(@PathVariable String mobile) {
         return systemUserService.findUserByMobile(mobile);
@@ -70,10 +68,10 @@ public class SystemUserController extends BaseController {
 
     /**
      * 通过用户名查询用户详细信息
+     *
      * @param username
      * @return 用户信息详情对象
      */
-    @Cacheable(value = "basic:basic_user_info",key = "'basic:basic_system_user_info'.concat(':').concat(#username)")
     @GetMapping("/findUserInfoByUsername/{username}")
     public UserInfo findUserInfoByUsername(@PathVariable String username) {
         return systemUserService.findUserInfoByUsername(username);
