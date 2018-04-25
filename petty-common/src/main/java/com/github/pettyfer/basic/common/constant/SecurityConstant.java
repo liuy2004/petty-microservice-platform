@@ -24,7 +24,7 @@ public interface SecurityConstant {
     /**
      * 资源授权失败或没有授权记录
      */
-    String AUTHORIZATION_FAILURES = "Authorization failures";
+    String AUTHORIZATION_FAILURES = "403 Forbidden";
 
     /**
      * 客户端授权模式
