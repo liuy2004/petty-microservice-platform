@@ -1,6 +1,6 @@
 package com.github.pettyfer.basic.oauth;
 
-import com.github.pettyfer.basic.common.annotation.PettyConfigure;
+import com.github.pettyfer.basic.common.annotation.PettyConfigurer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -20,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableResourceServer
 @EnableFeignClients({"com.github.pettyfer.basic.common.feign","com.github.pettyfer.basic.oauth.feign"})
 @EnableHystrix
-@PettyConfigure
+@PettyConfigurer
 public class PettyOAuth2ServiceApplication {
 
 	public static void main(String[] args) {

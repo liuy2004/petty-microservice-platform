@@ -1,6 +1,6 @@
 package com.github.pettyfer.basic.gateway;
 
-import com.github.pettyfer.basic.common.annotation.PettyConfigure;
+import com.github.pettyfer.basic.common.annotation.PettyConfigurer;
 import com.github.pettyfer.basic.gateway.config.GateRateLimitKeyGenerator;
 import com.github.pettyfer.basic.gateway.ratelimit.EnablePettyGatewayRatelimit;
 import com.github.pettyfer.basic.gateway.ratelimit.config.RateLimitKeyGenerator;
@@ -29,7 +29,7 @@ import org.springframework.web.filter.CorsFilter;
 @EnableDiscoveryClient
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableHystrix
-@PettyConfigure
+@PettyConfigurer
 public class PettyGatewayServiceApplication {
 
     public static void main(String[] args) {

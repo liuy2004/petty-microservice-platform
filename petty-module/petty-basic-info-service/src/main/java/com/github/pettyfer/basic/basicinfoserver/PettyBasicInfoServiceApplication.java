@@ -1,12 +1,11 @@
 package com.github.pettyfer.basic.basicinfoserver;
 
 import com.github.pettyfer.basic.common.annotation.CommonApi;
-import com.github.pettyfer.basic.common.annotation.PettyConfigure;
+import com.github.pettyfer.basic.common.annotation.PettyConfigurer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
@@ -17,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableHystrix
-@PettyConfigure
+@PettyConfigurer
 @CommonApi
 public class PettyBasicInfoServiceApplication {
 
