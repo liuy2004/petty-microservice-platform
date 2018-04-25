@@ -36,7 +36,7 @@ public class PettyMybatisGenerator {
         dsc.setUrl("jdbc:mysql://localhost:3306/petty_platform?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("liuyang19950123");
+        dsc.setPassword("123456");
         mpg.setDataSource(dsc);
 
 

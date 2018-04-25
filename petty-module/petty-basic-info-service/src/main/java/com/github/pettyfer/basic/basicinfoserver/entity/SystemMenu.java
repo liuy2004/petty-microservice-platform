@@ -1,11 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
+import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableLogic;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
-
 import java.io.Serializable;
 
 /**
@@ -14,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-03-08
+ * @since 2018-04-25
  */
 @TableName("system_menu")
 public class SystemMenu extends Model<SystemMenu> {
@@ -42,11 +41,6 @@ public class SystemMenu extends Model<SystemMenu> {
     @TableField("HREF")
     private String href;
     /**
-     * 目标窗口@字典 mainFrame-当前窗口，_blank-新窗口
-     */
-    @TableField("TARGET")
-    private String target;
-    /**
      * 图标
      */
     @TableField("ICON")
@@ -55,7 +49,7 @@ public class SystemMenu extends Model<SystemMenu> {
      * 是否启用 @枚举 0-否；1-是
      */
     @TableField("IS_SHOW")
-    private Integer isShow;
+    private BigDecimal isShow;
     /**
      * 按钮标识
      */
@@ -65,17 +59,17 @@ public class SystemMenu extends Model<SystemMenu> {
      * 类型 @枚举 1-菜单；2-按钮；3-数据权限
      */
     @TableField("MENU_TYPE")
-    private Integer menuType;
+    private BigDecimal menuType;
     /**
      * 是否隐藏@枚举 0-否；1-是
      */
     @TableField("IS_HIDDEN")
-    private Integer isHidden;
+    private BigDecimal isHidden;
     /**
      * 是否第三方@枚举 0-否；1-是
      */
     @TableField("IS_EXTERNAL")
-    private Integer isExternal;
+    private BigDecimal isExternal;
     /**
      * 备注
      */
@@ -85,7 +79,7 @@ public class SystemMenu extends Model<SystemMenu> {
      * 菜单/按钮排序号
      */
     @TableField("SORT_NO")
-    private Integer sortNo;
+    private BigDecimal sortNo;
     /**
      * 创建人
      */
@@ -110,8 +104,7 @@ public class SystemMenu extends Model<SystemMenu> {
      * 删除标记  @枚举 0-否；1-是
      */
     @TableField("DEL_FLAG")
-    @TableLogic
-    private Integer delFlag;
+    private BigDecimal delFlag;
 
 
     public String getMenuId() {
@@ -146,14 +139,6 @@ public class SystemMenu extends Model<SystemMenu> {
         this.href = href;
     }
 
-    public String getTarget() {
-        return target;
-    }
-
-    public void setTarget(String target) {
-        this.target = target;
-    }
-
     public String getIcon() {
         return icon;
     }
@@ -162,11 +147,11 @@ public class SystemMenu extends Model<SystemMenu> {
         this.icon = icon;
     }
 
-    public Integer getIsShow() {
+    public BigDecimal getIsShow() {
         return isShow;
     }
 
-    public void setIsShow(Integer isShow) {
+    public void setIsShow(BigDecimal isShow) {
         this.isShow = isShow;
     }
 
@@ -178,27 +163,27 @@ public class SystemMenu extends Model<SystemMenu> {
         this.permission = permission;
     }
 
-    public Integer getMenuType() {
+    public BigDecimal getMenuType() {
         return menuType;
     }
 
-    public void setMenuType(Integer menuType) {
+    public void setMenuType(BigDecimal menuType) {
         this.menuType = menuType;
     }
 
-    public Integer getIsHidden() {
+    public BigDecimal getIsHidden() {
         return isHidden;
     }
 
-    public void setIsHidden(Integer isHidden) {
+    public void setIsHidden(BigDecimal isHidden) {
         this.isHidden = isHidden;
     }
 
-    public Integer getIsExternal() {
+    public BigDecimal getIsExternal() {
         return isExternal;
     }
 
-    public void setIsExternal(Integer isExternal) {
+    public void setIsExternal(BigDecimal isExternal) {
         this.isExternal = isExternal;
     }
 
@@ -210,11 +195,11 @@ public class SystemMenu extends Model<SystemMenu> {
         this.remark = remark;
     }
 
-    public Integer getSortNo() {
+    public BigDecimal getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(Integer sortNo) {
+    public void setSortNo(BigDecimal sortNo) {
         this.sortNo = sortNo;
     }
 
@@ -250,11 +235,11 @@ public class SystemMenu extends Model<SystemMenu> {
         this.modifyDate = modifyDate;
     }
 
-    public Integer getDelFlag() {
+    public BigDecimal getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(Integer delFlag) {
+    public void setDelFlag(BigDecimal delFlag) {
         this.delFlag = delFlag;
     }
 
@@ -270,7 +255,6 @@ public class SystemMenu extends Model<SystemMenu> {
         ", parentId=" + parentId +
         ", menuName=" + menuName +
         ", href=" + href +
-        ", target=" + target +
         ", icon=" + icon +
         ", isShow=" + isShow +
         ", permission=" + permission +
