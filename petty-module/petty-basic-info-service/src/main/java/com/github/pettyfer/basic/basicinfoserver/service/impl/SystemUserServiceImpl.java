@@ -61,6 +61,15 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
 
         HashSet<Role> roleHashSet = new HashSet<>();
         //角色信息一对多
+        searchRole(systemUserRoles, roleHashSet);
+        List<Role> roles = new ArrayList<>(roleHashSet);
+
+        BeanUtils.copyProperties(systemUser, user);
+        user.setRoleList(roles);
+        return user;
+    }
+
+    private void searchRole(List<SystemUserRole> systemUserRoles, HashSet<Role> roleHashSet) {
         for (SystemUserRole systemUserRole : systemUserRoles) {
             SystemRole systemRoleQuery = new SystemRole();
             systemRoleQuery.setRoleId(systemUserRole.getRoleId());
@@ -69,11 +78,6 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
             BeanUtils.copyProperties(systemRole, role);
             roleHashSet.add(role);
         }
-        List<Role> roles = new ArrayList<>(roleHashSet);
-
-        BeanUtils.copyProperties(systemUser, user);
-        user.setRoleList(roles);
-        return user;
     }
 
     @Override
@@ -90,14 +94,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
 
         HashSet<Role> roleHashSet = new HashSet<>();
         //角色信息一对多
-        for (SystemUserRole systemUserRole : systemUserRoles) {
-            SystemRole systemRoleQuery = new SystemRole();
-            systemRoleQuery.setRoleId(systemUserRole.getRoleId());
-            SystemRole systemRole = systemRoleMapper.selectOne(systemRoleQuery);
-            Role role = new Role();
-            BeanUtils.copyProperties(systemRole, role);
-            roleHashSet.add(role);
-        }
+        searchRole(systemUserRoles, roleHashSet);
         List<Role> roles = new ArrayList<>(roleHashSet);
         BeanUtils.copyProperties(systemUser, user);
         user.setRoleList(roles);
