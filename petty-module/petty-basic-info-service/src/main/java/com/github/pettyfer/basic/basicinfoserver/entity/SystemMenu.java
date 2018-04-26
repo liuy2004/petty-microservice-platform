@@ -67,11 +67,6 @@ public class SystemMenu extends Model<SystemMenu> {
     @TableField("IS_HIDDEN")
     private BigDecimal isHidden;
     /**
-     * 是否第三方@枚举 0-否；1-是
-     */
-    @TableField("IS_EXTERNAL")
-    private BigDecimal isExternal;
-    /**
      * 备注
      */
     @TableField("REMARK")
@@ -181,14 +176,6 @@ public class SystemMenu extends Model<SystemMenu> {
         this.isHidden = isHidden;
     }
 
-    public BigDecimal getIsExternal() {
-        return isExternal;
-    }
-
-    public void setIsExternal(BigDecimal isExternal) {
-        this.isExternal = isExternal;
-    }
-
     public String getRemark() {
         return remark;
     }
@@ -262,7 +249,6 @@ public class SystemMenu extends Model<SystemMenu> {
         ", permission=" + permission +
         ", menuType=" + menuType +
         ", isHidden=" + isHidden +
-        ", isExternal=" + isExternal +
         ", remark=" + remark +
         ", sortNo=" + sortNo +
         ", creator=" + creator +

@@ -34,15 +34,12 @@ import java.util.List;
 @Service("systemUserService")
 public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemUser> implements ISystemUserService {
 
-    private final SystemUserMapper systemUserMapper;
-
     private final SystemUserRoleMapper systemUserRoleMapper;
 
     private final SystemRoleMapper systemRoleMapper;
 
     @Autowired
-    public SystemUserServiceImpl(SystemUserMapper systemUserMapper, SystemUserRoleMapper systemUserRoleMapper, SystemRoleMapper systemRoleMapper) {
-        this.systemUserMapper = systemUserMapper;
+    public SystemUserServiceImpl(SystemUserRoleMapper systemUserRoleMapper, SystemRoleMapper systemRoleMapper) {
         this.systemUserRoleMapper = systemUserRoleMapper;
         this.systemRoleMapper = systemRoleMapper;
     }
@@ -53,7 +50,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
         User user = new User();
         SystemUser systemUserQuery = new SystemUser();
         systemUserQuery.setUserName(username);
-        SystemUser systemUser = systemUserMapper.selectOne(systemUserQuery);
+        SystemUser systemUser = baseMapper.selectOne(systemUserQuery);
 
         SystemUserRole systemUserRoleQuery = new SystemUserRole();
         systemUserRoleQuery.setUserId(systemUser.getUserId());
@@ -86,7 +83,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
         User user = new User();
         SystemUser systemUserQuery = new SystemUser();
         systemUserQuery.setUserTel(mobile);
-        SystemUser systemUser = systemUserMapper.selectOne(systemUserQuery);
+        SystemUser systemUser = baseMapper.selectOne(systemUserQuery);
 
         SystemUserRole systemUserRoleQuery = new SystemUserRole();
         systemUserRoleQuery.setUserId(systemUser.getUserId());
@@ -108,7 +105,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
         SystemUser systemUserQuery = new SystemUser();
         systemUserQuery.setUserName(username);
         systemUserQuery.setDelFlag(0);
-        SystemUser systemUser = systemUserMapper.selectOne(systemUserQuery);
+        SystemUser systemUser = baseMapper.selectOne(systemUserQuery);
         BeanUtils.copyProperties(systemUser, userInfo);
         return userInfo;
     }

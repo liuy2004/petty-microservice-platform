@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 /**
  * @author Petty
  */
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
