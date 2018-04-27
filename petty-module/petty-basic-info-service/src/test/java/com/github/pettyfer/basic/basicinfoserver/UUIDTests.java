@@ -19,5 +19,9 @@ public class UUIDTests {
     @Test
     public void createUUID(){
         System.out.println(UUID.randomUUID().toString().replace("-", ""));
+        System.out.println(UUID.randomUUID().toString().replace("-", ""));
+        System.out.println(UUID.randomUUID().toString().replace("-", ""));
+        System.out.println(UUID.randomUUID().toString().replace("-", ""));
+        System.out.println(UUID.randomUUID().toString().replace("-", ""));
     }
 }
