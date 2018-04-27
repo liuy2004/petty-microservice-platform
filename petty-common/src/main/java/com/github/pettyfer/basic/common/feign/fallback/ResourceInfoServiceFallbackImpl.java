@@ -1,7 +1,7 @@
 package com.github.pettyfer.basic.common.feign.fallback;
 
-import com.github.pettyfer.basic.common.feign.MenuInfoService;
-import com.github.pettyfer.basic.common.model.basic.MenuInfo;
+import com.github.pettyfer.basic.common.feign.ResourceInfoService;
+import com.github.pettyfer.basic.common.model.basic.ResourceInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.Set;
  * @date 2018/4/26
  */
 @Service
-public class MenuInfoServiceFallbackImpl implements MenuInfoService {
+public class ResourceInfoServiceFallbackImpl implements ResourceInfoService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -24,8 +24,8 @@ public class MenuInfoServiceFallbackImpl implements MenuInfoService {
      * @return 角色信息
      */
     @Override
-    public Set<MenuInfo> findMenuByRole(String role) {
-        logger.error("调用{}异常:{}", "findMenuByRole", role);
+    public Set<ResourceInfo> findResourceByRole(String role) {
+        logger.error("调用{}异常:{}", "findResourceByRole", role);
         return null;
     }
 }

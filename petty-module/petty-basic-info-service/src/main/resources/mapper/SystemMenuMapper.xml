@@ -7,12 +7,10 @@
         <id column="MENU_ID" property="menuId" />
         <result column="PARENT_ID" property="parentId" />
         <result column="MENU_NAME" property="menuName" />
-        <result column="HREF" property="href" />
+        <result column="ROUTER_PATH" property="routerPath" />
         <result column="ICON" property="icon" />
         <result column="IS_SHOW" property="isShow" />
         <result column="PERMISSION" property="permission" />
-        <result column="MENU_TYPE" property="menuType" />
-        <result column="IS_HIDDEN" property="isHidden" />
         <result column="REMARK" property="remark" />
         <result column="SORT_NO" property="sortNo" />
         <result column="CREATOR" property="creator" />
@@ -24,7 +22,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        MENU_ID AS menuId, PARENT_ID AS parentId, MENU_NAME AS menuName, HREF AS href, ICON AS icon, IS_SHOW AS isShow, PERMISSION AS permission, MENU_TYPE AS menuType, IS_HIDDEN AS isHidden, REMARK AS remark, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
+        MENU_ID AS menuId, PARENT_ID AS parentId, MENU_NAME AS menuName, ROUTER_PATH AS routerPath, ICON AS icon, IS_SHOW AS isShow, PERMISSION AS permission, REMARK AS remark, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
     </sql>
 
 </mapper>

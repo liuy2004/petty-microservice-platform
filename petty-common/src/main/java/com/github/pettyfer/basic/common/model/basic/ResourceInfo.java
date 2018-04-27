@@ -18,15 +18,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MenuInfo implements Serializable {
+public class ResourceInfo implements Serializable {
     private static final long serialVersionUID = 7593984561438329435L;
-    private String menuId;
-    private String parentId;
-    private String menuName;
-    private String href;
-    private String icon;
-    private Integer isShow;
-    private String permission;
+    private String resourceId;
+    private String resourceName;
+    private String requestUrl;
+    private String requestMethod;
     private String remark;
     private String creator;
     private String createDate;

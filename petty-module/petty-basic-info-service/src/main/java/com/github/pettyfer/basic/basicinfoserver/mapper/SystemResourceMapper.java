@@ -1,16 +1,16 @@
 package com.github.pettyfer.basic.basicinfoserver.mapper;
 
-import com.github.pettyfer.basic.basicinfoserver.entity.SystemMenu;
+import com.github.pettyfer.basic.basicinfoserver.entity.SystemResource;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
  * <p>
- * 菜单信息 Mapper 接口
+ * 资源信息 Mapper 接口
  * </p>
  *
  * @author Pettyfer
  * @since 2018-04-27
  */
-public interface SystemMenuMapper extends BaseMapper<SystemMenu> {
+public interface SystemResourceMapper extends BaseMapper<SystemResource> {
 
 }

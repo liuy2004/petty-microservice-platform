@@ -9,52 +9,37 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 菜单信息
+ * 资源信息
  * </p>
  *
  * @author Pettyfer
  * @since 2018-04-27
  */
-@TableName("system_menu")
-public class SystemMenu extends Model<SystemMenu> {
+@TableName("system_resource")
+public class SystemResource extends Model<SystemResource> {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * UUID
      */
-    @TableId("MENU_ID")
-    private String menuId;
-    /**
-     * 父节点
-     */
-    @TableField("PARENT_ID")
-    private String parentId;
+    @TableId("RESOURCE_ID")
+    private String resourceId;
     /**
      * 菜单/按钮名称
      */
-    @TableField("MENU_NAME")
-    private String menuName;
+    @TableField("RESOURCE_NAME")
+    private String resourceName;
     /**
-     * 路由地址
+     * 请求地址
      */
-    @TableField("ROUTER_PATH")
-    private String routerPath;
+    @TableField("REQUEST_URL")
+    private String requestUrl;
     /**
-     * 图标
+     * 请求方法
      */
-    @TableField("ICON")
-    private String icon;
-    /**
-     * 是否启用 @枚举 0-否；1-是
-     */
-    @TableField("IS_SHOW")
-    private BigDecimal isShow;
-    /**
-     * 按钮标识
-     */
-    @TableField("PERMISSION")
-    private String permission;
+    @TableField("REQUEST_METHOD")
+    private String requestMethod;
     /**
      * 备注
      */
@@ -92,60 +77,36 @@ public class SystemMenu extends Model<SystemMenu> {
     private Integer delFlag;
 
 
-    public String getMenuId() {
-        return menuId;
+    public String getResourceId() {
+        return resourceId;
     }
 
-    public void setMenuId(String menuId) {
-        this.menuId = menuId;
+    public void setResourceId(String resourceId) {
+        this.resourceId = resourceId;
     }
 
-    public String getParentId() {
-        return parentId;
+    public String getResourceName() {
+        return resourceName;
     }
 
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
     }
 
-    public String getMenuName() {
-        return menuName;
+    public String getRequestUrl() {
+        return requestUrl;
     }
 
-    public void setMenuName(String menuName) {
-        this.menuName = menuName;
+    public void setRequestUrl(String requestUrl) {
+        this.requestUrl = requestUrl;
     }
 
-    public String getRouterPath() {
-        return routerPath;
+    public String getRequestMethod() {
+        return requestMethod;
     }
 
-    public void setRouterPath(String routerPath) {
-        this.routerPath = routerPath;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public BigDecimal getIsShow() {
-        return isShow;
-    }
-
-    public void setIsShow(BigDecimal isShow) {
-        this.isShow = isShow;
-    }
-
-    public String getPermission() {
-        return permission;
-    }
-
-    public void setPermission(String permission) {
-        this.permission = permission;
+    public void setRequestMethod(String requestMethod) {
+        this.requestMethod = requestMethod;
     }
 
     public String getRemark() {
@@ -206,19 +167,16 @@ public class SystemMenu extends Model<SystemMenu> {
 
     @Override
     protected Serializable pkVal() {
-        return this.menuId;
+        return this.resourceId;
     }
 
     @Override
     public String toString() {
-        return "SystemMenu{" +
-        ", menuId=" + menuId +
-        ", parentId=" + parentId +
-        ", menuName=" + menuName +
-        ", routerPath=" + routerPath +
-        ", icon=" + icon +
-        ", isShow=" + isShow +
-        ", permission=" + permission +
+        return "SystemResource{" +
+        ", resourceId=" + resourceId +
+        ", resourceName=" + resourceName +
+        ", requestUrl=" + requestUrl +
+        ", requestMethod=" + requestMethod +
         ", remark=" + remark +
         ", sortNo=" + sortNo +
         ", creator=" + creator +

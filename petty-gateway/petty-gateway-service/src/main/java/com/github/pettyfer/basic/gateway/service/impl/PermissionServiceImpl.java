@@ -1,10 +1,8 @@
 package com.github.pettyfer.basic.gateway.service.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.toolkit.StringUtils;
-import com.github.pettyfer.basic.common.feign.MenuInfoService;
-import com.github.pettyfer.basic.common.model.basic.MenuInfo;
+import com.github.pettyfer.basic.common.feign.ResourceInfoService;
+import com.github.pettyfer.basic.common.model.basic.ResourceInfo;
 import com.github.pettyfer.basic.gateway.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -26,13 +24,13 @@ import java.util.Set;
 @Service("permissionService")
 public class PermissionServiceImpl implements PermissionService {
 
-    private final MenuInfoService menuInfoService;
+    private final ResourceInfoService resourceInfoService;
 
     private AntPathMatcher antPathMatcher = new AntPathMatcher();
 
     @Autowired
-    public PermissionServiceImpl(MenuInfoService menuInfoService) {
-        this.menuInfoService = menuInfoService;
+    public PermissionServiceImpl(ResourceInfoService resourceInfoService) {
+        this.resourceInfoService = resourceInfoService;
     }
 
     @Override
@@ -45,18 +43,18 @@ public class PermissionServiceImpl implements PermissionService {
         boolean hasPermission = false;
 
         if (principal != null) {
-            Set<MenuInfo> menuInfos = new HashSet<>();
+            Set<ResourceInfo> resourceInfos = new HashSet<>();
             for (SimpleGrantedAuthority authority : simpleGrantedAuthority) {
                 String role = authority.getAuthority().replace("{", "").replace("}", "").split("=")[1];
-                Set<MenuInfo> menuInfoSet = menuInfoService.findMenuByRole(role);
-                if (menuInfoSet != null) {
-                    menuInfos.addAll(menuInfoSet);
+                Set<ResourceInfo> resourceInfoSet = resourceInfoService.findResourceByRole(role);
+                if (resourceInfoSet != null) {
+                    resourceInfos.addAll(resourceInfoSet);
                 }
             }
-            for (MenuInfo menuInfo : menuInfos) {
+            for (ResourceInfo resourceInfo : resourceInfos) {
                 System.out.println(request.getRequestURI());
                 System.out.println(request.getMethod());
-                if (StringUtils.isNotEmpty(menuInfo.getHref()) && antPathMatcher.match(menuInfo.getHref(), request.getRequestURI())) {
+                if (StringUtils.isNotEmpty(resourceInfo.getRequestUrl()) && antPathMatcher.match(resourceInfo.getRequestUrl(), request.getRequestURI()) && request.getMethod().equals(resourceInfo.getRequestMethod())) {
                     hasPermission = true;
                     break;
                 }

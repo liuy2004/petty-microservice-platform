@@ -2,7 +2,7 @@ package com.github.pettyfer.basic.basicinfoserver.service;
 
 import com.github.pettyfer.basic.basicinfoserver.entity.SystemMenu;
 import com.baomidou.mybatisplus.service.IService;
-import com.github.pettyfer.basic.common.model.basic.MenuInfo;
+import com.github.pettyfer.basic.common.model.basic.ResourceInfo;
 
 import java.util.Set;
 
@@ -16,11 +16,4 @@ import java.util.Set;
  */
 public interface ISystemMenuService extends IService<SystemMenu> {
 
-    /**
-     * 通过角色获取菜单信息
-     *
-     * @param role 角色名称
-     * @return Set<MenuInfo>
-     */
-    Set<MenuInfo> searchMenuByRole(String role);
 }
