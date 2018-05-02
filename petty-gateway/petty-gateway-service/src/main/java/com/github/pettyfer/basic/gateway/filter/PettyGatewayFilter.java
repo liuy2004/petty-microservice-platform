@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 自定义ZuulFilter
+ *
  * @author Petty
  */
 @Slf4j
 @Component
-public class PettyGatewayFilter extends ZuulFilter{
+public class PettyGatewayFilter extends ZuulFilter {
     @Override
     public String filterType() {
         return "pre";
@@ -27,6 +28,7 @@ public class PettyGatewayFilter extends ZuulFilter{
 
     /**
      * 时候执行过滤器
+     *
      * @return
      */
     @Override
@@ -39,9 +41,10 @@ public class PettyGatewayFilter extends ZuulFilter{
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         String token = request.getHeader(CommonConstant.REQUEST_HEADER);
-
-        //只配置Token转发至下层服务，其他请求信息拦截
-        ctx.addZuulRequestHeader(CommonConstant.REQUEST_HEADER,token);
+        if (token != null) {
+            //只配置Token转发至下层服务，其他请求信息拦截
+            ctx.addZuulRequestHeader(CommonConstant.REQUEST_HEADER, token);
+        }
         return null;
     }
 }
