@@ -52,8 +52,6 @@ public class PermissionServiceImpl implements PermissionService {
                 }
             }
             for (ResourceInfo resourceInfo : resourceInfos) {
-                System.out.println(request.getRequestURI());
-                System.out.println(request.getMethod());
                 if (StringUtils.isNotEmpty(resourceInfo.getRequestUrl()) && antPathMatcher.match(resourceInfo.getRequestUrl(), request.getRequestURI()) && request.getMethod().equals(resourceInfo.getRequestMethod())) {
                     hasPermission = true;
                     break;
