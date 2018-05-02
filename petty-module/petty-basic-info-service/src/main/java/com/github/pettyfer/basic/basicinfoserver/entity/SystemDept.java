@@ -1,11 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
-
 import java.io.Serializable;
 
 /**
@@ -14,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-28
+ * @since 2018-05-02
  */
 @TableName("system_dept")
 public class SystemDept extends Model<SystemDept> {
@@ -24,13 +23,18 @@ public class SystemDept extends Model<SystemDept> {
     /**
      * 主键
      */
-    @TableId("DEPT_ID")
-    private String deptId;
+    @TableId("UUID")
+    private String uuid;
+    /**
+     * 部门唯一码
+     */
+    @TableField("DEPT_CODE")
+    private String deptCode;
     /**
      * 上级ID标识
      */
-    @TableField("PARENT_ID")
-    private String parentId;
+    @TableField("PARENT_CODE")
+    private String parentCode;
     /**
      * 部门名称
      */
@@ -49,13 +53,13 @@ public class SystemDept extends Model<SystemDept> {
     /**
      * 部门组织架构层级编码
      */
-    @TableField("DEPT_FRAM_ID")
-    private String deptFramId;
+    @TableField("DEPT_FRAM_CODE")
+    private String deptFramCode;
     /**
      * 组织机构代码
      */
-    @TableField("ORG_ID")
-    private String orgId;
+    @TableField("ORG_CODE")
+    private String orgCode;
     /**
      * 部门描述
      */
@@ -92,15 +96,15 @@ public class SystemDept extends Model<SystemDept> {
     @TableField("AREA_CODE")
     private String areaCode;
     /**
-     * 排序
-     */
-    @TableField("SORT_NO")
-    private Integer sortNo;
-    /**
      * 部门状态
      */
     @TableField("STATUS")
     private Integer status;
+    /**
+     * 排序
+     */
+    @TableField("SORT_NO")
+    private Integer sortNo;
     /**
      * 创建人
      */
@@ -129,20 +133,28 @@ public class SystemDept extends Model<SystemDept> {
     private Integer delFlag;
 
 
-    public String getDeptId() {
-        return deptId;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setDeptId(String deptId) {
-        this.deptId = deptId;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
-    public String getParentId() {
-        return parentId;
+    public String getDeptCode() {
+        return deptCode;
     }
 
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
+    public void setDeptCode(String deptCode) {
+        this.deptCode = deptCode;
+    }
+
+    public String getParentCode() {
+        return parentCode;
+    }
+
+    public void setParentCode(String parentCode) {
+        this.parentCode = parentCode;
     }
 
     public String getDeptName() {
@@ -169,20 +181,20 @@ public class SystemDept extends Model<SystemDept> {
         this.deptType = deptType;
     }
 
-    public String getDeptFramId() {
-        return deptFramId;
+    public String getDeptFramCode() {
+        return deptFramCode;
     }
 
-    public void setDeptFramId(String deptFramId) {
-        this.deptFramId = deptFramId;
+    public void setDeptFramCode(String deptFramCode) {
+        this.deptFramCode = deptFramCode;
     }
 
-    public String getOrgId() {
-        return orgId;
+    public String getOrgCode() {
+        return orgCode;
     }
 
-    public void setOrgId(String orgId) {
-        this.orgId = orgId;
+    public void setOrgCode(String orgCode) {
+        this.orgCode = orgCode;
     }
 
     public String getDeptDesc() {
@@ -241,20 +253,20 @@ public class SystemDept extends Model<SystemDept> {
         this.areaCode = areaCode;
     }
 
-    public Integer getSortNo() {
-        return sortNo;
-    }
-
-    public void setSortNo(Integer sortNo) {
-        this.sortNo = sortNo;
-    }
-
     public Integer getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getSortNo() {
+        return sortNo;
+    }
+
+    public void setSortNo(Integer sortNo) {
+        this.sortNo = sortNo;
     }
 
     public String getCreator() {
@@ -299,33 +311,34 @@ public class SystemDept extends Model<SystemDept> {
 
     @Override
     protected Serializable pkVal() {
-        return this.deptId;
+        return this.uuid;
     }
 
     @Override
     public String toString() {
         return "SystemDept{" +
-                ", deptId=" + deptId +
-                ", parentId=" + parentId +
-                ", deptName=" + deptName +
-                ", deptShortName=" + deptShortName +
-                ", deptType=" + deptType +
-                ", deptFramId=" + deptFramId +
-                ", orgId=" + orgId +
-                ", deptDesc=" + deptDesc +
-                ", leader=" + leader +
-                ", deputyLeader=" + deputyLeader +
-                ", telPhone=" + telPhone +
-                ", address=" + address +
-                ", deptGrade=" + deptGrade +
-                ", areaCode=" + areaCode +
-                ", sortNo=" + sortNo +
-                ", status=" + status +
-                ", creator=" + creator +
-                ", createDate=" + createDate +
-                ", modifier=" + modifier +
-                ", modifyDate=" + modifyDate +
-                ", delFlag=" + delFlag +
-                "}";
+        ", uuid=" + uuid +
+        ", deptCode=" + deptCode +
+        ", parentCode=" + parentCode +
+        ", deptName=" + deptName +
+        ", deptShortName=" + deptShortName +
+        ", deptType=" + deptType +
+        ", deptFramCode=" + deptFramCode +
+        ", orgCode=" + orgCode +
+        ", deptDesc=" + deptDesc +
+        ", leader=" + leader +
+        ", deputyLeader=" + deputyLeader +
+        ", telPhone=" + telPhone +
+        ", address=" + address +
+        ", deptGrade=" + deptGrade +
+        ", areaCode=" + areaCode +
+        ", status=" + status +
+        ", sortNo=" + sortNo +
+        ", creator=" + creator +
+        ", createDate=" + createDate +
+        ", modifier=" + modifier +
+        ", modifyDate=" + modifyDate +
+        ", delFlag=" + delFlag +
+        "}";
     }
 }

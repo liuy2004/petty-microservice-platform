@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-04-25
+ * @since 2018-05-02
  */
 @TableName("system_role_menu")
 public class SystemRoleMenu extends Model<SystemRoleMenu> {
@@ -25,15 +25,15 @@ public class SystemRoleMenu extends Model<SystemRoleMenu> {
     @TableId("UUID")
     private String uuid;
     /**
-     * 角色编号
+     * 角色编号@SYSTEM_ROLE
      */
-    @TableField("ROLE_ID")
-    private String roleId;
+    @TableField("ROLE_CODE")
+    private String roleCode;
     /**
-     * 菜单编号
+     * 菜单编号@SYSTEM_MENU
      */
-    @TableField("MENU_ID")
-    private String menuId;
+    @TableField("MENU_CODE")
+    private String menuCode;
 
 
     public String getUuid() {
@@ -44,20 +44,20 @@ public class SystemRoleMenu extends Model<SystemRoleMenu> {
         this.uuid = uuid;
     }
 
-    public String getRoleId() {
-        return roleId;
+    public String getRoleCode() {
+        return roleCode;
     }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode;
     }
 
-    public String getMenuId() {
-        return menuId;
+    public String getMenuCode() {
+        return menuCode;
     }
 
-    public void setMenuId(String menuId) {
-        this.menuId = menuId;
+    public void setMenuCode(String menuCode) {
+        this.menuCode = menuCode;
     }
 
     @Override
@@ -69,8 +69,8 @@ public class SystemRoleMenu extends Model<SystemRoleMenu> {
     public String toString() {
         return "SystemRoleMenu{" +
         ", uuid=" + uuid +
-        ", roleId=" + roleId +
-        ", menuId=" + menuId +
+        ", roleCode=" + roleCode +
+        ", menuCode=" + menuCode +
         "}";
     }
 }

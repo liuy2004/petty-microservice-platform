@@ -4,9 +4,9 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemPosition">
-        <id column="POSITION_ID" property="positionId" />
-        <result column="DEPT_ID" property="deptId" />
+        <id column="UUID" property="uuid" />
         <result column="POSITION_CODE" property="positionCode" />
+        <result column="DEPT_CODE" property="deptCode" />
         <result column="POSITION_NAME" property="positionName" />
         <result column="STATUS" property="status" />
         <result column="SORT_NO" property="sortNo" />
@@ -19,7 +19,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        POSITION_ID AS positionId, DEPT_ID AS deptId, POSITION_CODE AS positionCode, POSITION_NAME AS positionName, STATUS AS status, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
+        UUID AS uuid, POSITION_CODE AS positionCode, DEPT_CODE AS deptCode, POSITION_NAME AS positionName, STATUS AS status, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
     </sql>
 
 </mapper>

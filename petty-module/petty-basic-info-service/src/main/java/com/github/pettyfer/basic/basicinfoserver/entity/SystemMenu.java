@@ -1,9 +1,9 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
 
@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-04-27
+ * @since 2018-05-02
  */
 @TableName("system_menu")
 public class SystemMenu extends Model<SystemMenu> {
@@ -21,15 +21,20 @@ public class SystemMenu extends Model<SystemMenu> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * UUID
+     * 主键
      */
-    @TableId("MENU_ID")
-    private String menuId;
+    @TableId("UUID")
+    private String uuid;
+    /**
+     * 唯一标识符
+     */
+    @TableField("MENU_CODE")
+    private String menuCode;
     /**
      * 父节点
      */
-    @TableField("PARENT_ID")
-    private String parentId;
+    @TableField("PARENT_CODE")
+    private String parentCode;
     /**
      * 菜单/按钮名称
      */
@@ -49,7 +54,7 @@ public class SystemMenu extends Model<SystemMenu> {
      * 是否启用 @枚举 0-否；1-是
      */
     @TableField("IS_SHOW")
-    private BigDecimal isShow;
+    private Integer isShow;
     /**
      * 按钮标识
      */
@@ -64,7 +69,7 @@ public class SystemMenu extends Model<SystemMenu> {
      * 菜单/按钮排序号
      */
     @TableField("SORT_NO")
-    private BigDecimal sortNo;
+    private Integer sortNo;
     /**
      * 创建人
      */
@@ -89,23 +94,32 @@ public class SystemMenu extends Model<SystemMenu> {
      * 删除标记  @枚举 0-否；1-是
      */
     @TableField("DEL_FLAG")
+    @TableLogic
     private Integer delFlag;
 
 
-    public String getMenuId() {
-        return menuId;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setMenuId(String menuId) {
-        this.menuId = menuId;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
-    public String getParentId() {
-        return parentId;
+    public String getMenuCode() {
+        return menuCode;
     }
 
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
+    public void setMenuCode(String menuCode) {
+        this.menuCode = menuCode;
+    }
+
+    public String getParentCode() {
+        return parentCode;
+    }
+
+    public void setParentCode(String parentCode) {
+        this.parentCode = parentCode;
     }
 
     public String getMenuName() {
@@ -132,11 +146,11 @@ public class SystemMenu extends Model<SystemMenu> {
         this.icon = icon;
     }
 
-    public BigDecimal getIsShow() {
+    public Integer getIsShow() {
         return isShow;
     }
 
-    public void setIsShow(BigDecimal isShow) {
+    public void setIsShow(Integer isShow) {
         this.isShow = isShow;
     }
 
@@ -156,11 +170,11 @@ public class SystemMenu extends Model<SystemMenu> {
         this.remark = remark;
     }
 
-    public BigDecimal getSortNo() {
+    public Integer getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(BigDecimal sortNo) {
+    public void setSortNo(Integer sortNo) {
         this.sortNo = sortNo;
     }
 
@@ -206,14 +220,15 @@ public class SystemMenu extends Model<SystemMenu> {
 
     @Override
     protected Serializable pkVal() {
-        return this.menuId;
+        return this.uuid;
     }
 
     @Override
     public String toString() {
         return "SystemMenu{" +
-        ", menuId=" + menuId +
-        ", parentId=" + parentId +
+        ", uuid=" + uuid +
+        ", menuCode=" + menuCode +
+        ", parentCode=" + parentCode +
         ", menuName=" + menuName +
         ", routerPath=" + routerPath +
         ", icon=" + icon +

@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-28
+ * @since 2018-05-02
  */
 @TableName("system_group_role")
 public class SystemGroupRole extends Model<SystemGroupRole> {
@@ -22,55 +22,55 @@ public class SystemGroupRole extends Model<SystemGroupRole> {
     /**
      * UUID
      */
-    @TableId("ID")
-    private String id;
+    @TableId("UUID")
+    private String uuid;
     /**
-     * 用户组代码
+     * 用户组代码@SYSTEM_GROUP
      */
-    @TableField("GROUP_ID")
-    private String groupId;
+    @TableField("GROUP_CODE")
+    private String groupCode;
     /**
-     * 角色代码
+     * 角色代码@SYSTEM_ROLE
      */
-    @TableField("ROLE_ID")
-    private String roleId;
+    @TableField("ROLE_CODE")
+    private String roleCode;
 
 
-    public String getId() {
-        return id;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
-    public String getGroupId() {
-        return groupId;
+    public String getGroupCode() {
+        return groupCode;
     }
 
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
+    public void setGroupCode(String groupCode) {
+        this.groupCode = groupCode;
     }
 
-    public String getRoleId() {
-        return roleId;
+    public String getRoleCode() {
+        return roleCode;
     }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode;
     }
 
     @Override
     protected Serializable pkVal() {
-        return this.id;
+        return this.uuid;
     }
 
     @Override
     public String toString() {
         return "SystemGroupRole{" +
-        ", id=" + id +
-        ", groupId=" + groupId +
-        ", roleId=" + roleId +
+        ", uuid=" + uuid +
+        ", groupCode=" + groupCode +
+        ", roleCode=" + roleCode +
         "}";
     }
 }

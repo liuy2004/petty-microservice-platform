@@ -2,14 +2,11 @@ package com.github.pettyfer.basic.common.model.basic;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * 用户所属部门
@@ -24,8 +21,8 @@ import java.math.BigDecimal;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DeptInfo implements Serializable {
     private static final long serialVersionUID = 4257669635468768869L;
-    private String deptId;
-    private String parentId;
+    private String deptCode;
+    private String parentCode;
     private String deptName;
     private String deptShortName;
     private String deptType;
@@ -36,6 +33,6 @@ public class DeptInfo implements Serializable {
     private String deputyLeader;
     private String telPhone;
     private String address;
-    private BigDecimal deptGrade;
+    private Integer deptGrade;
     private String areaCode;
 }

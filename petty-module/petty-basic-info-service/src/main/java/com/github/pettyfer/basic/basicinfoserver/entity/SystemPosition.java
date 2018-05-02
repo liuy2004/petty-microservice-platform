@@ -1,11 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
-
 import java.io.Serializable;
 
 /**
@@ -14,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-28
+ * @since 2018-05-02
  */
 @TableName("system_position")
 public class SystemPosition extends Model<SystemPosition> {
@@ -22,20 +21,20 @@ public class SystemPosition extends Model<SystemPosition> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * ID
+     * 主键
      */
-    @TableId("POSITION_ID")
-    private String positionId;
+    @TableId("UUID")
+    private String uuid;
     /**
-     * 部门CODE
-     */
-    @TableField("DEPT_ID")
-    private String deptId;
-    /**
-     * 岗位标识
+     * 唯一标识符
      */
     @TableField("POSITION_CODE")
     private String positionCode;
+    /**
+     * 部门CODE
+     */
+    @TableField("DEPT_CODE")
+    private String deptCode;
     /**
      * 岗位名称
      */
@@ -79,20 +78,12 @@ public class SystemPosition extends Model<SystemPosition> {
     private Integer delFlag;
 
 
-    public String getPositionId() {
-        return positionId;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setPositionId(String positionId) {
-        this.positionId = positionId;
-    }
-
-    public String getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(String deptId) {
-        this.deptId = deptId;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getPositionCode() {
@@ -101,6 +92,14 @@ public class SystemPosition extends Model<SystemPosition> {
 
     public void setPositionCode(String positionCode) {
         this.positionCode = positionCode;
+    }
+
+    public String getDeptCode() {
+        return deptCode;
+    }
+
+    public void setDeptCode(String deptCode) {
+        this.deptCode = deptCode;
     }
 
     public String getPositionName() {
@@ -169,23 +168,23 @@ public class SystemPosition extends Model<SystemPosition> {
 
     @Override
     protected Serializable pkVal() {
-        return this.positionId;
+        return this.uuid;
     }
 
     @Override
     public String toString() {
         return "SystemPosition{" +
-                ", positionId=" + positionId +
-                ", deptId=" + deptId +
-                ", positionCode=" + positionCode +
-                ", positionName=" + positionName +
-                ", status=" + status +
-                ", sortNo=" + sortNo +
-                ", creator=" + creator +
-                ", createDate=" + createDate +
-                ", modifier=" + modifier +
-                ", modifyDate=" + modifyDate +
-                ", delFlag=" + delFlag +
-                "}";
+        ", uuid=" + uuid +
+        ", positionCode=" + positionCode +
+        ", deptCode=" + deptCode +
+        ", positionName=" + positionName +
+        ", status=" + status +
+        ", sortNo=" + sortNo +
+        ", creator=" + creator +
+        ", createDate=" + createDate +
+        ", modifier=" + modifier +
+        ", modifyDate=" + modifyDate +
+        ", delFlag=" + delFlag +
+        "}";
     }
 }

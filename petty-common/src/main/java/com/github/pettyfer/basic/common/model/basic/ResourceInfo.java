@@ -20,13 +20,9 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResourceInfo implements Serializable {
     private static final long serialVersionUID = 7593984561438329435L;
-    private String resourceId;
+    private String resourceCode;
     private String resourceName;
     private String requestUrl;
     private String requestMethod;
     private String remark;
-    private String creator;
-    private String createDate;
-    private String modifier;
-    private String modifyDate;
 }

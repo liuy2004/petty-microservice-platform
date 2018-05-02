@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.github.pettyfer.basic.basicinfoserver.mapper.SystemUserDeptMapper">
+<mapper namespace="com.github.pettyfer.basic.basicinfoserver.mapper.SystemDeptMenuMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemUserDept">
+    <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemDeptMenu">
         <id column="UUID" property="uuid" />
-        <result column="USER_CODE" property="userCode" />
         <result column="DEPT_CODE" property="deptCode" />
+        <result column="MENU_CODE" property="menuCode" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        UUID AS uuid, USER_CODE AS userCode, DEPT_CODE AS deptCode
+        UUID AS uuid, DEPT_CODE AS deptCode, MENU_CODE AS menuCode
     </sql>
 
 </mapper>

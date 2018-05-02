@@ -54,11 +54,11 @@ public class SystemResourceServiceImpl extends ServiceImpl<SystemResourceMapper,
             systemRoleQuery.setRoleName(role);
             SystemRole systemRole = systemRoleMapper.selectOne(systemRoleQuery);
             SystemRoleResource systemRoleResourceQuery = new SystemRoleResource();
-            systemRoleResourceQuery.setRoleId(systemRole.getRoleId());
+            systemRoleResourceQuery.setRoleCode(systemRole.getRoleCode());
             List<SystemRoleResource> systemRoleResources = systemRoleResourceMapper.selectList(new EntityWrapper<>(systemRoleResourceQuery));
             for (SystemRoleResource systemRoleResource : systemRoleResources) {
                 SystemResource systemResourceQuery = new SystemResource();
-                systemResourceQuery.setResourceId(systemRoleResource.getResourceId());
+                systemResourceQuery.setResourceCode(systemRoleResource.getResourceCode());
                 SystemResource systemMenu = baseMapper.selectOne(systemResourceQuery);
                 ResourceInfo resourceInfo = new ResourceInfo();
                 BeanUtils.copyProperties(systemMenu, resourceInfo);

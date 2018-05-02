@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-28
+ * @since 2018-05-02
  */
 @TableName("system_user_group")
 public class SystemUserGroup extends Model<SystemUserGroup> {
@@ -22,55 +22,55 @@ public class SystemUserGroup extends Model<SystemUserGroup> {
     /**
      * UUID
      */
-    @TableId("ID")
-    private String id;
+    @TableId("UUID")
+    private String uuid;
     /**
-     * 用户代码
+     * 用户代码@SYSTEM_USER
      */
-    @TableField("USER_ID")
-    private String userId;
+    @TableField("USER_CODE")
+    private String userCode;
     /**
-     * 用户组代码
+     * 用户组代码@SYSTEM_GROUP
      */
-    @TableField("GROUP_ID")
-    private String groupId;
+    @TableField("GROUP_CODE")
+    private String groupCode;
 
 
-    public String getId() {
-        return id;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUserCode() {
+        return userCode;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
     }
 
-    public String getGroupId() {
-        return groupId;
+    public String getGroupCode() {
+        return groupCode;
     }
 
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
+    public void setGroupCode(String groupCode) {
+        this.groupCode = groupCode;
     }
 
     @Override
     protected Serializable pkVal() {
-        return this.id;
+        return this.uuid;
     }
 
     @Override
     public String toString() {
         return "SystemUserGroup{" +
-        ", id=" + id +
-        ", userId=" + userId +
-        ", groupId=" + groupId +
+        ", uuid=" + uuid +
+        ", userCode=" + userCode +
+        ", groupCode=" + groupCode +
         "}";
     }
 }

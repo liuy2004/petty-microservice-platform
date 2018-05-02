@@ -1,11 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
-
 import java.io.Serializable;
 
 /**
@@ -14,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-03-08
+ * @since 2018-05-02
  */
 @TableName("system_dict")
 public class SystemDict extends Model<SystemDict> {
@@ -24,8 +23,13 @@ public class SystemDict extends Model<SystemDict> {
     /**
      * 主键
      */
-    @TableId("DICT_ID")
-    private String dictId;
+    @TableId("UUID")
+    private String uuid;
+    /**
+     * 字典唯一码
+     */
+    @TableField("DICT_CODE")
+    private String dictCode;
     /**
      * 类型
      */
@@ -57,15 +61,15 @@ public class SystemDict extends Model<SystemDict> {
     @TableField("IS_DEFAULT")
     private Integer isDefault;
     /**
-     * 排序号
-     */
-    @TableField("SORT_NO")
-    private Integer sortNo;
-    /**
      * 是否启用 @枚举  0:否  1:是
      */
     @TableField("STATUS")
     private Integer status;
+    /**
+     * 排序号
+     */
+    @TableField("SORT_NO")
+    private Integer sortNo;
     /**
      * 创建人
      */
@@ -94,12 +98,20 @@ public class SystemDict extends Model<SystemDict> {
     private Integer delFlag;
 
 
-    public String getDictId() {
-        return dictId;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setDictId(String dictId) {
-        this.dictId = dictId;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getDictCode() {
+        return dictCode;
+    }
+
+    public void setDictCode(String dictCode) {
+        this.dictCode = dictCode;
     }
 
     public String getDictType() {
@@ -150,20 +162,20 @@ public class SystemDict extends Model<SystemDict> {
         this.isDefault = isDefault;
     }
 
-    public Integer getSortNo() {
-        return sortNo;
-    }
-
-    public void setSortNo(Integer sortNo) {
-        this.sortNo = sortNo;
-    }
-
     public Integer getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getSortNo() {
+        return sortNo;
+    }
+
+    public void setSortNo(Integer sortNo) {
+        this.sortNo = sortNo;
     }
 
     public String getCreator() {
@@ -208,21 +220,22 @@ public class SystemDict extends Model<SystemDict> {
 
     @Override
     protected Serializable pkVal() {
-        return this.dictId;
+        return this.uuid;
     }
 
     @Override
     public String toString() {
         return "SystemDict{" +
-        ", dictId=" + dictId +
+        ", uuid=" + uuid +
+        ", dictCode=" + dictCode +
         ", dictType=" + dictType +
         ", dictKey=" + dictKey +
         ", dictValue=" + dictValue +
         ", dictDesc=" + dictDesc +
         ", parentCode=" + parentCode +
         ", isDefault=" + isDefault +
-        ", sortNo=" + sortNo +
         ", status=" + status +
+        ", sortNo=" + sortNo +
         ", creator=" + creator +
         ", createDate=" + createDate +
         ", modifier=" + modifier +

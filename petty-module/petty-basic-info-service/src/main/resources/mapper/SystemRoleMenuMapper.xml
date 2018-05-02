@@ -5,13 +5,13 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemRoleMenu">
         <id column="UUID" property="uuid" />
-        <result column="ROLE_ID" property="roleId" />
-        <result column="MENU_ID" property="menuId" />
+        <result column="ROLE_CODE" property="roleCode" />
+        <result column="MENU_CODE" property="menuCode" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        UUID AS uuid, ROLE_ID AS roleId, MENU_ID AS menuId
+        UUID AS uuid, ROLE_CODE AS roleCode, MENU_CODE AS menuCode
     </sql>
 
 </mapper>

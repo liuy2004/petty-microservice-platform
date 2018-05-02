@@ -45,9 +45,9 @@ public class UserUtils {
         }
 
         UserInfo userInfo = userInfoService.findUserInfoByUsername(user.getUserName());
-        List<RoleInfo> roleInfos = roleInfoService.findRoleInfoByUserId(userInfo.getUserId());
-        DeptInfo deptInfo = deptInfoService.findDeptInfoByUserId(userInfo.getUserId());
-        List<GroupInfo> groupInfos = groupInfoService.findGroupInfoByUserId(userInfo.getUserId());
+        List<RoleInfo> roleInfos = roleInfoService.findRoleInfoByUserId(userInfo.getUserCode());
+        DeptInfo deptInfo = deptInfoService.findDeptInfoByUserId(userInfo.getUserCode());
+        List<GroupInfo> groupInfos = groupInfoService.findGroupInfoByUserId(userInfo.getUserCode());
         userDetail.setUserInfo(userInfo);
         userDetail.setDeptInfo(deptInfo);
         userDetail.setGroupInfos(groupInfos);

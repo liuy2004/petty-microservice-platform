@@ -15,9 +15,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Role implements Serializable {
     private static final long serialVersionUID = 3506075171647853639L;
-    private String roleId;
+    private String roleCode;
     private String roleName;
     private String roleType;
-    private Integer roleStatus;
-    private Integer sortNo;
+    private Integer status;
 }

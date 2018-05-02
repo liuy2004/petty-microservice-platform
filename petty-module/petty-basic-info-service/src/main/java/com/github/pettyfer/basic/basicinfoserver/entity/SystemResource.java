@@ -1,9 +1,9 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
 
@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-04-27
+ * @since 2018-05-02
  */
 @TableName("system_resource")
 public class SystemResource extends Model<SystemResource> {
@@ -21,10 +21,15 @@ public class SystemResource extends Model<SystemResource> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * UUID
+     * 主键
      */
-    @TableId("RESOURCE_ID")
-    private String resourceId;
+    @TableId("UUID")
+    private String uuid;
+    /**
+     * 唯一标识符
+     */
+    @TableField("RESOURCE_CODE")
+    private String resourceCode;
     /**
      * 菜单/按钮名称
      */
@@ -49,7 +54,7 @@ public class SystemResource extends Model<SystemResource> {
      * 菜单/按钮排序号
      */
     @TableField("SORT_NO")
-    private BigDecimal sortNo;
+    private Integer sortNo;
     /**
      * 创建人
      */
@@ -74,15 +79,24 @@ public class SystemResource extends Model<SystemResource> {
      * 删除标记  @枚举 0-否；1-是
      */
     @TableField("DEL_FLAG")
+    @TableLogic
     private Integer delFlag;
 
 
-    public String getResourceId() {
-        return resourceId;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setResourceId(String resourceId) {
-        this.resourceId = resourceId;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getResourceCode() {
+        return resourceCode;
+    }
+
+    public void setResourceCode(String resourceCode) {
+        this.resourceCode = resourceCode;
     }
 
     public String getResourceName() {
@@ -117,11 +131,11 @@ public class SystemResource extends Model<SystemResource> {
         this.remark = remark;
     }
 
-    public BigDecimal getSortNo() {
+    public Integer getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(BigDecimal sortNo) {
+    public void setSortNo(Integer sortNo) {
         this.sortNo = sortNo;
     }
 
@@ -167,13 +181,14 @@ public class SystemResource extends Model<SystemResource> {
 
     @Override
     protected Serializable pkVal() {
-        return this.resourceId;
+        return this.uuid;
     }
 
     @Override
     public String toString() {
         return "SystemResource{" +
-        ", resourceId=" + resourceId +
+        ", uuid=" + uuid +
+        ", resourceCode=" + resourceCode +
         ", resourceName=" + resourceName +
         ", requestUrl=" + requestUrl +
         ", requestMethod=" + requestMethod +

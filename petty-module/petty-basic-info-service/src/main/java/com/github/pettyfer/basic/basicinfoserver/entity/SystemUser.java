@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-28
+ * @since 2018-05-02
  */
 @TableName("system_user")
 public class SystemUser extends Model<SystemUser> {
@@ -23,8 +23,13 @@ public class SystemUser extends Model<SystemUser> {
     /**
      * 主键
      */
-    @TableId("USER_ID")
-    private String userId;
+    @TableId("UUID")
+    private String uuid;
+    /**
+     * 用户唯一码
+     */
+    @TableField("USER_CODE")
+    private String userCode;
     /**
      * 用户名
      */
@@ -99,7 +104,7 @@ public class SystemUser extends Model<SystemUser> {
      * 用户来源
      */
     @TableField("USER_SOURCE")
-    private Integer userSource;
+    private String userSource;
     /**
      * 证件类型
      */
@@ -111,11 +116,6 @@ public class SystemUser extends Model<SystemUser> {
     @TableField("USER_IDEN")
     private String userIden;
     /**
-     * 排序号
-     */
-    @TableField("SORT_NO")
-    private Integer sortNo;
-    /**
      * 管理员类型
      */
     @TableField("IS_ADMIN")
@@ -125,6 +125,11 @@ public class SystemUser extends Model<SystemUser> {
      */
     @TableField("STATUS")
     private Integer status;
+    /**
+     * 排序号
+     */
+    @TableField("SORT_NO")
+    private Integer sortNo;
     /**
      * 创建人
      */
@@ -153,12 +158,20 @@ public class SystemUser extends Model<SystemUser> {
     private Integer delFlag;
 
 
-    public String getUserId() {
-        return userId;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getUserCode() {
+        return userCode;
+    }
+
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
     }
 
     public String getUserName() {
@@ -273,11 +286,11 @@ public class SystemUser extends Model<SystemUser> {
         this.userPhoneTel = userPhoneTel;
     }
 
-    public Integer getUserSource() {
+    public String getUserSource() {
         return userSource;
     }
 
-    public void setUserSource(Integer userSource) {
+    public void setUserSource(String userSource) {
         this.userSource = userSource;
     }
 
@@ -297,14 +310,6 @@ public class SystemUser extends Model<SystemUser> {
         this.userIden = userIden;
     }
 
-    public Integer getSortNo() {
-        return sortNo;
-    }
-
-    public void setSortNo(Integer sortNo) {
-        this.sortNo = sortNo;
-    }
-
     public Integer getIsAdmin() {
         return isAdmin;
     }
@@ -319,6 +324,14 @@ public class SystemUser extends Model<SystemUser> {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getSortNo() {
+        return sortNo;
+    }
+
+    public void setSortNo(Integer sortNo) {
+        this.sortNo = sortNo;
     }
 
     public String getCreator() {
@@ -363,13 +376,14 @@ public class SystemUser extends Model<SystemUser> {
 
     @Override
     protected Serializable pkVal() {
-        return this.userId;
+        return this.uuid;
     }
 
     @Override
     public String toString() {
         return "SystemUser{" +
-        ", userId=" + userId +
+        ", uuid=" + uuid +
+        ", userCode=" + userCode +
         ", userName=" + userName +
         ", userPwd=" + userPwd +
         ", fullName=" + fullName +
@@ -387,9 +401,9 @@ public class SystemUser extends Model<SystemUser> {
         ", userSource=" + userSource +
         ", userIdenType=" + userIdenType +
         ", userIden=" + userIden +
-        ", sortNo=" + sortNo +
         ", isAdmin=" + isAdmin +
         ", status=" + status +
+        ", sortNo=" + sortNo +
         ", creator=" + creator +
         ", createDate=" + createDate +
         ", modifier=" + modifier +

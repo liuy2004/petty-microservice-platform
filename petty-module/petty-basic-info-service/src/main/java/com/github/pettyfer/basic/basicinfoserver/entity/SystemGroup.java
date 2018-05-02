@@ -1,11 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
-
 import java.io.Serializable;
 
 /**
@@ -14,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-28
+ * @since 2018-05-02
  */
 @TableName("system_group")
 public class SystemGroup extends Model<SystemGroup> {
@@ -24,8 +23,13 @@ public class SystemGroup extends Model<SystemGroup> {
     /**
      * 主键
      */
-    @TableId("GROUP_ID")
-    private String groupId;
+    @TableId("UUID")
+    private String uuid;
+    /**
+     * 唯一标识符
+     */
+    @TableField("GROUP_CODE")
+    private String groupCode;
     /**
      * 用户组名称
      */
@@ -34,23 +38,23 @@ public class SystemGroup extends Model<SystemGroup> {
     /**
      * 用户组父编号，顶级父编号为0
      */
-    @TableField("PARENT_ID")
-    private String parentId;
+    @TableField("PARENT_CODE")
+    private String parentCode;
     /**
      * 用户组类型@1-访问安全控制用户组 2-基础资料子系统用户组
      */
     @TableField("GROUP_TYPE")
     private Integer groupType;
     /**
-     * 排序
-     */
-    @TableField("SORT_NO")
-    private Integer sortNo;
-    /**
      * 是否启用 @枚举  0:否  1:是
      */
     @TableField("STATUS")
     private Integer status;
+    /**
+     * 排序
+     */
+    @TableField("SORT_NO")
+    private Integer sortNo;
     /**
      * 创建人
      */
@@ -79,12 +83,20 @@ public class SystemGroup extends Model<SystemGroup> {
     private Integer delFlag;
 
 
-    public String getGroupId() {
-        return groupId;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getGroupCode() {
+        return groupCode;
+    }
+
+    public void setGroupCode(String groupCode) {
+        this.groupCode = groupCode;
     }
 
     public String getGroupName() {
@@ -95,12 +107,12 @@ public class SystemGroup extends Model<SystemGroup> {
         this.groupName = groupName;
     }
 
-    public String getParentId() {
-        return parentId;
+    public String getParentCode() {
+        return parentCode;
     }
 
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
+    public void setParentCode(String parentCode) {
+        this.parentCode = parentCode;
     }
 
     public Integer getGroupType() {
@@ -111,20 +123,20 @@ public class SystemGroup extends Model<SystemGroup> {
         this.groupType = groupType;
     }
 
-    public Integer getSortNo() {
-        return sortNo;
-    }
-
-    public void setSortNo(Integer sortNo) {
-        this.sortNo = sortNo;
-    }
-
     public Integer getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getSortNo() {
+        return sortNo;
+    }
+
+    public void setSortNo(Integer sortNo) {
+        this.sortNo = sortNo;
     }
 
     public String getCreator() {
@@ -169,18 +181,19 @@ public class SystemGroup extends Model<SystemGroup> {
 
     @Override
     protected Serializable pkVal() {
-        return this.groupId;
+        return this.uuid;
     }
 
     @Override
     public String toString() {
         return "SystemGroup{" +
-        ", groupId=" + groupId +
+        ", uuid=" + uuid +
+        ", groupCode=" + groupCode +
         ", groupName=" + groupName +
-        ", parentId=" + parentId +
+        ", parentCode=" + parentCode +
         ", groupType=" + groupType +
-        ", sortNo=" + sortNo +
         ", status=" + status +
+        ", sortNo=" + sortNo +
         ", creator=" + creator +
         ", createDate=" + createDate +
         ", modifier=" + modifier +

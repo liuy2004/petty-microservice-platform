@@ -5,13 +5,13 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemRoleResource">
         <id column="UUID" property="uuid" />
-        <result column="ROLE_ID" property="roleId" />
-        <result column="RESOURCE_ID" property="resourceId" />
+        <result column="ROLE_CODE" property="roleCode" />
+        <result column="RESOURCE_CODE" property="resourceCode" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        UUID AS uuid, ROLE_ID AS roleId, RESOURCE_ID AS resourceId
+        UUID AS uuid, ROLE_CODE AS roleCode, RESOURCE_CODE AS resourceCode
     </sql>
 
 </mapper>

@@ -23,7 +23,7 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RoleInfo implements Serializable {
     private static final long serialVersionUID = 4994910569599395548L;
-    private String roleId;
+    private String roleCode;
     private String roleName;
     private String roleType;
 }

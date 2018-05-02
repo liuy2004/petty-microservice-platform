@@ -53,7 +53,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
         SystemUser systemUser = baseMapper.selectOne(systemUserQuery);
 
         SystemUserRole systemUserRoleQuery = new SystemUserRole();
-        systemUserRoleQuery.setUserId(systemUser.getUserId());
+        systemUserRoleQuery.setUserCode(systemUser.getUserCode());
         List<SystemUserRole> systemUserRoles = systemUserRoleMapper.selectList(new EntityWrapper<>(systemUserRoleQuery));
 
         HashSet<Role> roleHashSet = new HashSet<>();
@@ -69,7 +69,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     private void searchRole(List<SystemUserRole> systemUserRoles, HashSet<Role> roleHashSet) {
         for (SystemUserRole systemUserRole : systemUserRoles) {
             SystemRole systemRoleQuery = new SystemRole();
-            systemRoleQuery.setRoleId(systemUserRole.getRoleId());
+            systemRoleQuery.setRoleCode(systemUserRole.getRoleCode());
             SystemRole systemRole = systemRoleMapper.selectOne(systemRoleQuery);
             Role role = new Role();
             BeanUtils.copyProperties(systemRole, role);
@@ -86,7 +86,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
         SystemUser systemUser = baseMapper.selectOne(systemUserQuery);
 
         SystemUserRole systemUserRoleQuery = new SystemUserRole();
-        systemUserRoleQuery.setUserId(systemUser.getUserId());
+        systemUserRoleQuery.setUserCode(systemUser.getUserCode());
         List<SystemUserRole> systemUserRoles = systemUserRoleMapper.selectList(new EntityWrapper<>(systemUserRoleQuery));
 
         HashSet<Role> roleHashSet = new HashSet<>();

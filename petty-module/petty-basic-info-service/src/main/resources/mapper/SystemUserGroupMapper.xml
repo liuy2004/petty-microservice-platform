@@ -4,14 +4,14 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemUserGroup">
-        <id column="ID" property="id" />
-        <result column="USER_ID" property="userId" />
-        <result column="GROUP_ID" property="groupId" />
+        <id column="UUID" property="uuid" />
+        <result column="USER_CODE" property="userCode" />
+        <result column="GROUP_CODE" property="groupCode" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID AS id, USER_ID AS userId, GROUP_ID AS groupId
+        UUID AS uuid, USER_CODE AS userCode, GROUP_CODE AS groupCode
     </sql>
 
 </mapper>

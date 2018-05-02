@@ -1,8 +1,7 @@
 package com.github.pettyfer.basic.basicinfoserver.mapper;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.github.pettyfer.basic.basicinfoserver.entity.SystemUser;
-import com.github.pettyfer.basic.common.model.auth.User;
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
  * <p>
@@ -10,7 +9,7 @@ import com.github.pettyfer.basic.common.model.auth.User;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-28
+ * @since 2018-05-02
  */
 public interface SystemUserMapper extends BaseMapper<SystemUser> {
 

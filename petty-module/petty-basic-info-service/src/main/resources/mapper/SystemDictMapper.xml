@@ -4,15 +4,16 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemDict">
-        <id column="DICT_ID" property="dictId" />
+        <id column="UUID" property="uuid" />
+        <result column="DICT_CODE" property="dictCode" />
         <result column="DICT_TYPE" property="dictType" />
         <result column="DICT_KEY" property="dictKey" />
         <result column="DICT_VALUE" property="dictValue" />
         <result column="DICT_DESC" property="dictDesc" />
         <result column="PARENT_CODE" property="parentCode" />
         <result column="IS_DEFAULT" property="isDefault" />
-        <result column="SORT_NO" property="sortNo" />
         <result column="STATUS" property="status" />
+        <result column="SORT_NO" property="sortNo" />
         <result column="CREATOR" property="creator" />
         <result column="CREATE_DATE" property="createDate" />
         <result column="MODIFIER" property="modifier" />
@@ -22,7 +23,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        DICT_ID AS dictId, DICT_TYPE AS dictType, DICT_KEY AS dictKey, DICT_VALUE AS dictValue, DICT_DESC AS dictDesc, PARENT_CODE AS parentCode, IS_DEFAULT AS isDefault, SORT_NO AS sortNo, STATUS AS status, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
+        UUID AS uuid, DICT_CODE AS dictCode, DICT_TYPE AS dictType, DICT_KEY AS dictKey, DICT_VALUE AS dictValue, DICT_DESC AS dictDesc, PARENT_CODE AS parentCode, IS_DEFAULT AS isDefault, STATUS AS status, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
     </sql>
 
 </mapper>

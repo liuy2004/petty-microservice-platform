@@ -4,7 +4,8 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemResource">
-        <id column="RESOURCE_ID" property="resourceId" />
+        <id column="UUID" property="uuid" />
+        <result column="RESOURCE_CODE" property="resourceCode" />
         <result column="RESOURCE_NAME" property="resourceName" />
         <result column="REQUEST_URL" property="requestUrl" />
         <result column="REQUEST_METHOD" property="requestMethod" />
@@ -19,7 +20,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        RESOURCE_ID AS resourceId, RESOURCE_NAME AS resourceName, REQUEST_URL AS requestUrl, REQUEST_METHOD AS requestMethod, REMARK AS remark, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
+        UUID AS uuid, RESOURCE_CODE AS resourceCode, RESOURCE_NAME AS resourceName, REQUEST_URL AS requestUrl, REQUEST_METHOD AS requestMethod, REMARK AS remark, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
     </sql>
 
 </mapper>

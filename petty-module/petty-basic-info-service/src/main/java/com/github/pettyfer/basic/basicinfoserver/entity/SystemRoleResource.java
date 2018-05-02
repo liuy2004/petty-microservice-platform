@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-04-27
+ * @since 2018-05-02
  */
 @TableName("system_role_resource")
 public class SystemRoleResource extends Model<SystemRoleResource> {
@@ -25,15 +25,15 @@ public class SystemRoleResource extends Model<SystemRoleResource> {
     @TableId("UUID")
     private String uuid;
     /**
-     * 角色编号
+     * 角色编号@SYSTEM_ROLE
      */
-    @TableField("ROLE_ID")
-    private String roleId;
+    @TableField("ROLE_CODE")
+    private String roleCode;
     /**
-     * 资源编号
+     * 资源编号@SYSTEM_RESOURCE
      */
-    @TableField("RESOURCE_ID")
-    private String resourceId;
+    @TableField("RESOURCE_CODE")
+    private String resourceCode;
 
 
     public String getUuid() {
@@ -44,20 +44,20 @@ public class SystemRoleResource extends Model<SystemRoleResource> {
         this.uuid = uuid;
     }
 
-    public String getRoleId() {
-        return roleId;
+    public String getRoleCode() {
+        return roleCode;
     }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode;
     }
 
-    public String getResourceId() {
-        return resourceId;
+    public String getResourceCode() {
+        return resourceCode;
     }
 
-    public void setResourceId(String resourceId) {
-        this.resourceId = resourceId;
+    public void setResourceCode(String resourceCode) {
+        this.resourceCode = resourceCode;
     }
 
     @Override
@@ -69,8 +69,8 @@ public class SystemRoleResource extends Model<SystemRoleResource> {
     public String toString() {
         return "SystemRoleResource{" +
         ", uuid=" + uuid +
-        ", roleId=" + roleId +
-        ", resourceId=" + resourceId +
+        ", roleCode=" + roleCode +
+        ", resourceCode=" + resourceCode +
         "}";
     }
 }

@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 部门角色关联信息
+ * 部门菜单关联
  * </p>
  *
  * @author Pettyfer
  * @since 2018-05-02
  */
-@TableName("system_dept_role")
-public class SystemDeptRole extends Model<SystemDeptRole> {
+@TableName("system_dept_menu")
+public class SystemDeptMenu extends Model<SystemDeptMenu> {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,15 +25,15 @@ public class SystemDeptRole extends Model<SystemDeptRole> {
     @TableId("UUID")
     private String uuid;
     /**
-     * 部门代码@SYSTEM_DEPT
+     * 部门编号@SYSTEM_DEPT
      */
     @TableField("DEPT_CODE")
     private String deptCode;
     /**
-     * 角色代码@SYSTEM_ROLE
+     * 菜单编号@SYSTEM_MENU
      */
-    @TableField("ROLE_CODE")
-    private String roleCode;
+    @TableField("MENU_CODE")
+    private String menuCode;
 
 
     public String getUuid() {
@@ -52,12 +52,12 @@ public class SystemDeptRole extends Model<SystemDeptRole> {
         this.deptCode = deptCode;
     }
 
-    public String getRoleCode() {
-        return roleCode;
+    public String getMenuCode() {
+        return menuCode;
     }
 
-    public void setRoleCode(String roleCode) {
-        this.roleCode = roleCode;
+    public void setMenuCode(String menuCode) {
+        this.menuCode = menuCode;
     }
 
     @Override
@@ -67,10 +67,10 @@ public class SystemDeptRole extends Model<SystemDeptRole> {
 
     @Override
     public String toString() {
-        return "SystemDeptRole{" +
+        return "SystemDeptMenu{" +
         ", uuid=" + uuid +
         ", deptCode=" + deptCode +
-        ", roleCode=" + roleCode +
+        ", menuCode=" + menuCode +
         "}";
     }
 }

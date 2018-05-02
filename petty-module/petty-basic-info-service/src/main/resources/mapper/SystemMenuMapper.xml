@@ -4,8 +4,9 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemMenu">
-        <id column="MENU_ID" property="menuId" />
-        <result column="PARENT_ID" property="parentId" />
+        <id column="UUID" property="uuid" />
+        <result column="MENU_CODE" property="menuCode" />
+        <result column="PARENT_CODE" property="parentCode" />
         <result column="MENU_NAME" property="menuName" />
         <result column="ROUTER_PATH" property="routerPath" />
         <result column="ICON" property="icon" />
@@ -22,7 +23,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        MENU_ID AS menuId, PARENT_ID AS parentId, MENU_NAME AS menuName, ROUTER_PATH AS routerPath, ICON AS icon, IS_SHOW AS isShow, PERMISSION AS permission, REMARK AS remark, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
+        UUID AS uuid, MENU_CODE AS menuCode, PARENT_CODE AS parentCode, MENU_NAME AS menuName, ROUTER_PATH AS routerPath, ICON AS icon, IS_SHOW AS isShow, PERMISSION AS permission, REMARK AS remark, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
     </sql>
 
 </mapper>

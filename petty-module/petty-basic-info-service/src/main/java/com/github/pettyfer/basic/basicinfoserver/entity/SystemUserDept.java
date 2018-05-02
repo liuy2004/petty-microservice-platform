@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-28
+ * @since 2018-05-02
  */
 @TableName("system_user_dept")
 public class SystemUserDept extends Model<SystemUserDept> {
@@ -22,55 +22,55 @@ public class SystemUserDept extends Model<SystemUserDept> {
     /**
      * UUID
      */
-    @TableId("ID")
-    private String id;
+    @TableId("UUID")
+    private String uuid;
     /**
-     * 用户代码
+     * 用户代码@SYSTEM_USER
      */
-    @TableField("USER_ID")
-    private String userId;
+    @TableField("USER_CODE")
+    private String userCode;
     /**
-     * 部门编码
+     * 部门编码@SYSTEM_DEPT
      */
-    @TableField("DEPT_ID")
-    private String deptId;
+    @TableField("DEPT_CODE")
+    private String deptCode;
 
 
-    public String getId() {
-        return id;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUserCode() {
+        return userCode;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
     }
 
-    public String getDeptId() {
-        return deptId;
+    public String getDeptCode() {
+        return deptCode;
     }
 
-    public void setDeptId(String deptId) {
-        this.deptId = deptId;
+    public void setDeptCode(String deptCode) {
+        this.deptCode = deptCode;
     }
 
     @Override
     protected Serializable pkVal() {
-        return this.id;
+        return this.uuid;
     }
 
     @Override
     public String toString() {
         return "SystemUserDept{" +
-        ", id=" + id +
-        ", userId=" + userId +
-        ", deptId=" + deptId +
+        ", uuid=" + uuid +
+        ", userCode=" + userCode +
+        ", deptCode=" + deptCode +
         "}";
     }
 }

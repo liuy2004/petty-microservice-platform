@@ -4,14 +4,14 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemUserRole">
-        <id column="ID" property="id" />
-        <result column="USER_ID" property="userId" />
-        <result column="ROLE_ID" property="roleId" />
+        <id column="UUID" property="uuid" />
+        <result column="USER_CODE" property="userCode" />
+        <result column="ROLE_CODE" property="roleCode" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID AS id, USER_ID AS userId, ROLE_ID AS roleId
+        UUID AS uuid, USER_CODE AS userCode, ROLE_CODE AS roleCode
     </sql>
 
 </mapper>

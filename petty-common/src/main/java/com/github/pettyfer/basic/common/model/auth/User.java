@@ -19,17 +19,13 @@ import java.util.List;
 @NoArgsConstructor
 public class User implements Serializable {
     private static final long serialVersionUID = -2924404879928203710L;
-    private String userId;
+    private String userCode;
     private String userName;
     private String userPwd;
     private String fullName;
     private Integer sortNo;
     private Integer isAdmin;
     private Integer status;
-    private String creator;
-    private String createDate;
-    private String modifier;
-    private String modifyDate;
     private Integer delFlag;
     List<Role> roleList = new ArrayList<>();
 }

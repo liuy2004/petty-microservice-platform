@@ -4,7 +4,8 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemUser">
-        <id column="USER_ID" property="userId" />
+        <id column="UUID" property="uuid" />
+        <result column="USER_CODE" property="userCode" />
         <result column="USER_NAME" property="userName" />
         <result column="USER_PWD" property="userPwd" />
         <result column="FULL_NAME" property="fullName" />
@@ -22,9 +23,9 @@
         <result column="USER_SOURCE" property="userSource" />
         <result column="USER_IDEN_TYPE" property="userIdenType" />
         <result column="USER_IDEN" property="userIden" />
-        <result column="SORT_NO" property="sortNo" />
         <result column="IS_ADMIN" property="isAdmin" />
         <result column="STATUS" property="status" />
+        <result column="SORT_NO" property="sortNo" />
         <result column="CREATOR" property="creator" />
         <result column="CREATE_DATE" property="createDate" />
         <result column="MODIFIER" property="modifier" />
@@ -34,6 +35,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        USER_ID AS USER_ID, USER_NAME AS USER_NAME, USER_PWD AS USER_PWD, FULL_NAME AS FULL_NAME, USER_SEX AS USER_SEX, USER_BIRTHDAY AS USER_BIRTHDAY, IN_DATE AS IN_DATE, PHOTO AS PHOTO, USER_NUM AS USER_NUM, EMAIL AS EMAIL, QQ_NUM AS QQ_NUM, USER_TEL AS USER_TEL, USER_ADDR AS USER_ADDR, USER_DESC AS USER_DESC, USER_PHONE_TEL AS USER_PHONE_TEL, USER_SOURCE AS USER_SOURCE, USER_IDEN_TYPE AS USER_IDEN_TYPE, USER_IDEN AS USER_IDEN, SORT_NO AS SORT_NO, IS_ADMIN AS IS_ADMIN, STATUS AS STATUS, CREATOR AS CREATOR, CREATE_DATE AS CREATE_DATE, MODIFIER AS MODIFIER, MODIFY_DATE AS MODIFY_DATE, DEL_FLAG AS DEL_FLAG
+        UUID AS uuid, USER_CODE AS userCode, USER_NAME AS userName, USER_PWD AS userPwd, FULL_NAME AS fullName, USER_SEX AS userSex, USER_BIRTHDAY AS userBirthday, IN_DATE AS inDate, PHOTO AS photo, USER_NUM AS userNum, EMAIL AS email, QQ_NUM AS qqNum, USER_TEL AS userTel, USER_ADDR AS userAddr, USER_DESC AS userDesc, USER_PHONE_TEL AS userPhoneTel, USER_SOURCE AS userSource, USER_IDEN_TYPE AS userIdenType, USER_IDEN AS userIden, IS_ADMIN AS isAdmin, STATUS AS status, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
     </sql>
+
 </mapper>

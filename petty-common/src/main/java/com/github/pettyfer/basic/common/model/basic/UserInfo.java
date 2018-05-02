@@ -23,7 +23,7 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserInfo implements Serializable {
     private static final long serialVersionUID = 6703721639017427276L;
-    private String userId;
+    private String userCode;
     private String userName;
     private String fullName;
     private String userSex;

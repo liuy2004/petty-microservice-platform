@@ -1,11 +1,10 @@
 package com.github.pettyfer.basic.basicinfoserver.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
-
 import java.io.Serializable;
 
 /**
@@ -14,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Pettyfer
- * @since 2018-02-28
+ * @since 2018-05-02
  */
 @TableName("system_role")
 public class SystemRole extends Model<SystemRole> {
@@ -24,8 +23,13 @@ public class SystemRole extends Model<SystemRole> {
     /**
      * 主键
      */
-    @TableId("ROLE_ID")
-    private String roleId;
+    @TableId("UUID")
+    private String uuid;
+    /**
+     * 唯一标识符
+     */
+    @TableField("ROLE_CODE")
+    private String roleCode;
     /**
      * 角色名称
      */
@@ -74,12 +78,20 @@ public class SystemRole extends Model<SystemRole> {
     private Integer delFlag;
 
 
-    public String getRoleId() {
-        return roleId;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getRoleCode() {
+        return roleCode;
+    }
+
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode;
     }
 
     public String getRoleName() {
@@ -156,13 +168,14 @@ public class SystemRole extends Model<SystemRole> {
 
     @Override
     protected Serializable pkVal() {
-        return this.roleId;
+        return this.uuid;
     }
 
     @Override
     public String toString() {
         return "SystemRole{" +
-        ", roleId=" + roleId +
+        ", uuid=" + uuid +
+        ", roleCode=" + roleCode +
         ", roleName=" + roleName +
         ", roleType=" + roleType +
         ", status=" + status +

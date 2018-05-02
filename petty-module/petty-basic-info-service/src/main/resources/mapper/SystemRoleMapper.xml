@@ -4,7 +4,8 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.github.pettyfer.basic.basicinfoserver.entity.SystemRole">
-        <id column="ROLE_ID" property="roleId" />
+        <id column="UUID" property="uuid" />
+        <result column="ROLE_CODE" property="roleCode" />
         <result column="ROLE_NAME" property="roleName" />
         <result column="ROLE_TYPE" property="roleType" />
         <result column="STATUS" property="status" />
@@ -18,7 +19,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ROLE_ID AS roleId, ROLE_NAME AS roleName, ROLE_TYPE AS roleType, STATUS AS status, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
+        UUID AS uuid, ROLE_CODE AS roleCode, ROLE_NAME AS roleName, ROLE_TYPE AS roleType, STATUS AS status, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
     </sql>
 
 </mapper>
