@@ -25,7 +25,9 @@ public class PettyServiceCenterApplication {
 	}
 
 	public static void main(String[] args) {
+		System.out.println("The service to start.");
 		SpringApplication.run(PettyServiceCenterApplication.class, args);
+		System.out.println("The service has started.");
 	}
 }
 

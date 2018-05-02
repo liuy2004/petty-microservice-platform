@@ -17,7 +17,9 @@ import org.springframework.web.client.RestTemplate;
 public class PettyConfigServiceApplication {
 
 	public static void main(String[] args) {
+		System.out.println("The service to start.");
 		SpringApplication.run(PettyConfigServiceApplication.class, args);
+		System.out.println("The service has started.");
 	}
 
 	@Bean

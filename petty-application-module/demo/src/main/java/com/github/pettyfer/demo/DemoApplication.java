@@ -15,7 +15,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class DemoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        System.out.println("The service to start.");
+        SpringApplication.run(DemoApplication.class, args);
+        System.out.println("The service has started.");
+    }
 }

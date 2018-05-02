@@ -21,7 +21,9 @@ import org.springframework.web.client.RestTemplate;
 public class PettyBasicInfoServiceApplication {
 
 	public static void main(String[] args) {
+		System.out.println("The service to start.");
 		SpringApplication.run(PettyBasicInfoServiceApplication.class, args);
+		System.out.println("The service has started.");
 	}
 
 	@Bean

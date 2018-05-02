@@ -23,7 +23,9 @@ import org.springframework.web.client.RestTemplate;
 public class PettyMonitorServiceApplication {
 
 	public static void main(String[] args) {
+		System.out.println("The service to start.");
 		SpringApplication.run(PettyMonitorServiceApplication.class, args);
+		System.out.println("The service has started.");
 	}
 
 	@Bean

@@ -24,7 +24,9 @@ import org.springframework.web.client.RestTemplate;
 public class PettyOAuth2ServiceApplication {
 
 	public static void main(String[] args) {
+		System.out.println("The service to start.");
 		SpringApplication.run(PettyOAuth2ServiceApplication.class, args);
+		System.out.println("The service has started.");
 	}
 
 	@Bean
