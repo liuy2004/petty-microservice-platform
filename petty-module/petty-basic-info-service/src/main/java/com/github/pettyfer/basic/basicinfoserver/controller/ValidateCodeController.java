@@ -1,10 +1,8 @@
 package com.github.pettyfer.basic.basicinfoserver.controller;
 
 import com.github.pettyfer.basic.basicinfoserver.service.IValidateCodeService;
-import com.github.pettyfer.basic.common.exception.BaseException;
+import com.github.pettyfer.basic.common.web.BaseController;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +13,6 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 /**
  * 验证码服务
@@ -23,9 +20,8 @@ import java.io.IOException;
  * @author Petty
  */
 @Controller
-@Slf4j
 @RequestMapping("/code")
-public class ValidateCodeController {
+public class ValidateCodeController extends BaseController {
 
     private final IValidateCodeService validateCodeService;
 

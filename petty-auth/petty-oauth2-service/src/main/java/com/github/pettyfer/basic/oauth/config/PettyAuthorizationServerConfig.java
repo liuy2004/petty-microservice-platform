@@ -34,6 +34,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018年2月27日
  * 用户认证服务
  */
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Configuration
 @Order(Integer.MIN_VALUE)
 @EnableAuthorizationServer

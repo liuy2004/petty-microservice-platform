@@ -30,11 +30,15 @@ import java.util.Map;
 @RequestMapping("oauth")
 public class OAuth2Controller {
 
-    @Autowired
-    private ClientDetailsService clientDetailsService;
+    private final ClientDetailsService clientDetailsService;
+
+    private final ApprovalStore approvalStore;
 
     @Autowired
-    private ApprovalStore approvalStore;
+    public OAuth2Controller(ClientDetailsService clientDetailsService, ApprovalStore approvalStore) {
+        this.clientDetailsService = clientDetailsService;
+        this.approvalStore = approvalStore;
+    }
 
     @GetMapping("/confirm_access")
     public ModelAndView authorize(Map<String, Object> model, Principal principal) {

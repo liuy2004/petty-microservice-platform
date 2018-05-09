@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.rememberme.InMemoryTokenR
 /**
  * @author Petty
  */
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
