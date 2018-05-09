@@ -147,7 +147,7 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
     /**
      * 配置Jwt转换器
      *
-     * @return
+     * @return JwtAccessTokenConverter
      */
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
