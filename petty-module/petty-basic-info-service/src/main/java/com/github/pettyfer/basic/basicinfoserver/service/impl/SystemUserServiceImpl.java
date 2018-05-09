@@ -1,26 +1,14 @@
 package com.github.pettyfer.basic.basicinfoserver.service.impl;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.github.pettyfer.basic.basicinfoserver.entity.SystemRole;
 import com.github.pettyfer.basic.basicinfoserver.entity.SystemUser;
-import com.github.pettyfer.basic.basicinfoserver.entity.SystemUserRole;
-import com.github.pettyfer.basic.basicinfoserver.mapper.SystemRoleMapper;
 import com.github.pettyfer.basic.basicinfoserver.mapper.SystemUserMapper;
-import com.github.pettyfer.basic.basicinfoserver.mapper.SystemUserRoleMapper;
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
-import com.github.pettyfer.basic.common.model.auth.Role;
 import com.github.pettyfer.basic.common.model.auth.User;
 import com.github.pettyfer.basic.common.model.basic.UserInfo;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 
 /**
  * <p>

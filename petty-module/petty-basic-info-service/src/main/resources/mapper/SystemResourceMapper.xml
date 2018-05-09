@@ -18,9 +18,39 @@
         <result column="DEL_FLAG" property="delFlag" />
     </resultMap>
 
+    <resultMap id="ResourceInfo" type="com.github.pettyfer.basic.common.model.basic.ResourceInfo">
+        <result column="RESOURCE_CODE" property="resourceCode" />
+        <result column="RESOURCE_NAME" property="resourceName" />
+        <result column="REQUEST_URL" property="requestUrl" />
+        <result column="REQUEST_METHOD" property="requestMethod" />
+        <result column="REMARK" property="remark" />
+    </resultMap>
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         UUID AS uuid, RESOURCE_CODE AS resourceCode, RESOURCE_NAME AS resourceName, REQUEST_URL AS requestUrl, REQUEST_METHOD AS requestMethod, REMARK AS remark, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
     </sql>
+
+    <sql id="Select_Resource_Info">
+        SELECT
+	      `resource`.RESOURCE_CODE AS `RESOURCE_CODE`,
+	      `resource`.RESOURCE_NAME AS `RESOURCE_NAME`,
+	      `resource`.REQUEST_URL AS `REQUEST_URL`,
+	      `resource`.REQUEST_METHOD AS `REQUEST_METHOD`,
+	      `resource`.REMARK AS `REMARK`
+        FROM
+	      system_resource AS `resource`
+	      LEFT JOIN system_role_resource AS `role_resource` ON resource.RESOURCE_CODE = role_resource.RESOURCE_CODE
+	      LEFT JOIN system_role AS `role` ON role.ROLE_CODE = role_resource.ROLE_CODE
+    </sql>
+
+    <select id="selectResourceInfoByRole" resultMap="ResourceInfo">
+        <include refid="Select_Resource_Info" />
+        WHERE
+        `resource`.DEL_FLAG = 0
+        <if test="role != null and role != ''">
+            AND `role`.ROLE_NAME = #{role,jdbcType=VARCHAR}
+        </if>
+    </select>
 
 </mapper>
