@@ -1,6 +1,7 @@
 package com.github.pettyfer.basic.monitor;
 
 import de.codecentric.boot.admin.config.EnableAdminServer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -14,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author Petty
  */
+@Slf4j
 @EnableAdminServer
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -23,9 +25,9 @@ import org.springframework.web.client.RestTemplate;
 public class PettyMonitorServiceApplication {
 
 	public static void main(String[] args) {
-		System.out.println("The service to start.");
+		log.info("The service to start.");
 		SpringApplication.run(PettyMonitorServiceApplication.class, args);
-		System.out.println("The service has started.");
+		log.info("The service has started.");
 	}
 
 	@Bean

@@ -2,6 +2,7 @@ package com.github.pettyfer.basic.basicinfoserver;
 
 import com.github.pettyfer.basic.common.annotation.CommonApi;
 import com.github.pettyfer.basic.common.annotation.PettyConfigurer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -13,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author Petty
  */
+@Slf4j
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableHystrix
@@ -21,9 +23,9 @@ import org.springframework.web.client.RestTemplate;
 public class PettyBasicInfoServiceApplication {
 
 	public static void main(String[] args) {
-		System.out.println("The service to start.");
+		log.info("The service to start.");
 		SpringApplication.run(PettyBasicInfoServiceApplication.class, args);
-		System.out.println("The service has started.");
+		log.info("The service has started.");
 	}
 
 	@Bean

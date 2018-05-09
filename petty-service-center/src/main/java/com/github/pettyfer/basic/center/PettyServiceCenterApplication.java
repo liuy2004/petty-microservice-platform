@@ -1,5 +1,6 @@
 package com.github.pettyfer.basic.center;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -13,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
  * @author Pettyfer Alex
  * @create 2017年12月8日
  */
-
+@Slf4j
 @EnableEurekaServer
 @SpringBootApplication
 public class PettyServiceCenterApplication {
@@ -25,9 +26,9 @@ public class PettyServiceCenterApplication {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("The service to start.");
+		log.info("The service to start.");
 		SpringApplication.run(PettyServiceCenterApplication.class, args);
-		System.out.println("The service has started.");
+		log.info("The service has started.");
 	}
 }
 

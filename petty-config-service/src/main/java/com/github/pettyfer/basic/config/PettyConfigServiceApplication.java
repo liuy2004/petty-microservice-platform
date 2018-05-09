@@ -1,5 +1,6 @@
 package com.github.pettyfer.basic.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -11,15 +12,16 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author Petty
  */
+@Slf4j
 @EnableConfigServer
 @SpringBootApplication
 @EnableDiscoveryClient
 public class PettyConfigServiceApplication {
 
 	public static void main(String[] args) {
-		System.out.println("The service to start.");
+		log.info("The service to start.");
 		SpringApplication.run(PettyConfigServiceApplication.class, args);
-		System.out.println("The service has started.");
+		log.info("The service has started.");
 	}
 
 	@Bean

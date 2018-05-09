@@ -1,6 +1,7 @@
 package com.github.pettyfer.basic.oauth;
 
 import com.github.pettyfer.basic.common.annotation.PettyConfigurer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -15,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
  * 认证服务&资源服务
  * @author Petty
  */
+@Slf4j
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableResourceServer
@@ -24,9 +26,9 @@ import org.springframework.web.client.RestTemplate;
 public class PettyOAuth2ServiceApplication {
 
 	public static void main(String[] args) {
-		System.out.println("The service to start.");
+		log.info("The service to start.");
 		SpringApplication.run(PettyOAuth2ServiceApplication.class, args);
-		System.out.println("The service has started.");
+		log.info("The service has started.");
 	}
 
 	@Bean

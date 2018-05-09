@@ -4,6 +4,7 @@ import com.github.pettyfer.basic.common.annotation.PettyConfigurer;
 import com.github.pettyfer.basic.gateway.config.GateRateLimitKeyGenerator;
 import com.github.pettyfer.basic.gateway.ratelimit.EnablePettyGatewayRatelimit;
 import com.github.pettyfer.basic.gateway.ratelimit.config.RateLimitKeyGenerator;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -23,6 +24,7 @@ import org.springframework.web.filter.CorsFilter;
 /**
  * @author Petty
  */
+@Slf4j
 @EnableZuulProxy
 @SpringBootApplication
 @EnablePettyGatewayRatelimit
@@ -33,9 +35,9 @@ import org.springframework.web.filter.CorsFilter;
 public class PettyGatewayServiceApplication {
 
     public static void main(String[] args) {
-        System.out.println("The service to start.");
+        log.info("The service to start.");
         SpringApplication.run(PettyGatewayServiceApplication.class, args);
-        System.out.println("The service has started.");
+        log.info("The service has started.");
     }
 
     @Bean
