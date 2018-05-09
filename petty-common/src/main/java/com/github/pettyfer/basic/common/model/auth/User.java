@@ -23,6 +23,7 @@ public class User implements Serializable {
     private String userName;
     private String userPwd;
     private String fullName;
+    private String userTel;
     private Integer sortNo;
     private Integer isAdmin;
     private Integer status;

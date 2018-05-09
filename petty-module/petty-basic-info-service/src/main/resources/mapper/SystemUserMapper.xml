@@ -33,9 +33,66 @@
         <result column="DEL_FLAG" property="delFlag" />
     </resultMap>
 
+    <resultMap id="User" type="com.github.pettyfer.basic.common.model.auth.User">
+        <result column="USER_CODE" property="userCode" />
+        <result column="USER_NAME" property="userName" />
+        <result column="USER_PWD" property="userPwd" />
+        <result column="FULL_NAME" property="fullName" />
+        <result column="USER_TEL" property="userTel" />
+        <result column="IS_ADMIN" property="isAdmin" />
+        <result column="USER_STATUS" property="status" />
+        <result column="SORT_NO" property="sortNo" />
+        <result column="DEL_FLAG" property="delFlag" />
+        <collection property="roleList" ofType="com.github.pettyfer.basic.common.model.auth.Role">
+            <result column="ROLE_CODE" property="roleCode" />
+            <result column="ROLE_NAME" property="roleName" />
+            <result column="ROLE_TYPE" property="roleType" />
+            <result column="ROLE_STATUS" property="status" />
+        </collection>
+    </resultMap>
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         UUID AS uuid, USER_CODE AS userCode, USER_NAME AS userName, USER_PWD AS userPwd, FULL_NAME AS fullName, USER_SEX AS userSex, USER_BIRTHDAY AS userBirthday, IN_DATE AS inDate, PHOTO AS photo, USER_NUM AS userNum, EMAIL AS email, QQ_NUM AS qqNum, USER_TEL AS userTel, USER_ADDR AS userAddr, USER_DESC AS userDesc, USER_PHONE_TEL AS userPhoneTel, USER_SOURCE AS userSource, USER_IDEN_TYPE AS userIdenType, USER_IDEN AS userIden, IS_ADMIN AS isAdmin, STATUS AS status, SORT_NO AS sortNo, CREATOR AS creator, CREATE_DATE AS createDate, MODIFIER AS modifier, MODIFY_DATE AS modifyDate, DEL_FLAG AS delFlag
     </sql>
+
+    <sql id="Select_User">
+        SELECT
+          `user`.USER_CODE AS `USER_CODE`,
+          `user`.USER_NAME AS `USER_NAME`,
+          `user`.USER_PWD AS `USER_PWD`,
+          `user`.FULL_NAME AS `FULL_NAME`,
+          `user`.USER_TEL AS `USER_TEL`,
+          `user`.IS_ADMIN AS `IS_ADMIN`,
+          `user`.`STATUS` AS `USER_STATUS`,
+          `user`.SORT_NO AS `SORT_NO`,
+          `user`.DEL_FLAG AS `DEL_FLAG`,
+          `role`.ROLE_CODE AS `ROLE_CODE`,
+          `role`.ROLE_NAME AS `ROLE_NAME`,
+          `role`.ROLE_TYPE AS `ROLE_TYPE`,
+          `role`.`STATUS` AS `ROLE_STATUS`
+        FROM
+          system_user AS `user`
+          LEFT JOIN system_user_role AS `user_role` ON USER.USER_CODE = user_role.USER_CODE
+          LEFT JOIN system_role AS `role` ON role.ROLE_CODE = user_role.ROLE_CODE
+    </sql>
+
+    <select id="selectUserByUsername" resultMap="User">
+        <include refid="Select_User" />
+        WHERE
+         `user`.DEL_FLAG = 0
+          <if test="username != null and username != ''">
+              AND `user`.USER_NAME LIKE CONCAT('%',#{username,jdbcType=VARCHAR}, '%')
+          </if>
+    </select>
+
+    <select id="selectUserByMobile" resultMap="User">
+        <include refid="Select_User" />
+        WHERE
+        `user`.DEL_FLAG = 0
+        <if test="mobile != null and mobile != ''">
+            AND `user`.USER_TEL LIKE CONCAT('%',#{mobile,jdbcType=VARCHAR}, '%')
+        </if>
+    </select>
 
 </mapper>

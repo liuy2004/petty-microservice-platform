@@ -34,68 +34,16 @@ import java.util.List;
 @Service("systemUserService")
 public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemUser> implements ISystemUserService {
 
-    private final SystemUserRoleMapper systemUserRoleMapper;
-
-    private final SystemRoleMapper systemRoleMapper;
-
-    @Autowired
-    public SystemUserServiceImpl(SystemUserRoleMapper systemUserRoleMapper, SystemRoleMapper systemRoleMapper) {
-        this.systemUserRoleMapper = systemUserRoleMapper;
-        this.systemRoleMapper = systemRoleMapper;
-    }
-
     @Override
     @Cacheable(value = "basic:basic_user", key = "'basic:basic_system_user'.concat(':').concat(#username)")
     public User findUserByUsername(String username) {
-        User user = new User();
-        SystemUser systemUserQuery = new SystemUser();
-        systemUserQuery.setUserName(username);
-        SystemUser systemUser = baseMapper.selectOne(systemUserQuery);
-
-        SystemUserRole systemUserRoleQuery = new SystemUserRole();
-        systemUserRoleQuery.setUserCode(systemUser.getUserCode());
-        List<SystemUserRole> systemUserRoles = systemUserRoleMapper.selectList(new EntityWrapper<>(systemUserRoleQuery));
-
-        HashSet<Role> roleHashSet = new HashSet<>();
-        //角色信息一对多
-        searchRole(systemUserRoles, roleHashSet);
-        List<Role> roles = new ArrayList<>(roleHashSet);
-
-        BeanUtils.copyProperties(systemUser, user);
-        user.setRoleList(roles);
-        return user;
-    }
-
-    private void searchRole(List<SystemUserRole> systemUserRoles, HashSet<Role> roleHashSet) {
-        for (SystemUserRole systemUserRole : systemUserRoles) {
-            SystemRole systemRoleQuery = new SystemRole();
-            systemRoleQuery.setRoleCode(systemUserRole.getRoleCode());
-            SystemRole systemRole = systemRoleMapper.selectOne(systemRoleQuery);
-            Role role = new Role();
-            BeanUtils.copyProperties(systemRole, role);
-            roleHashSet.add(role);
-        }
+        return baseMapper.selectUserByUsername(username);
     }
 
     @Override
     @Cacheable(value = "basic:basic_user", key = "'basic:basic_system_user'.concat(':').concat(#mobile)")
     public User findUserByMobile(String mobile) {
-        User user = new User();
-        SystemUser systemUserQuery = new SystemUser();
-        systemUserQuery.setUserTel(mobile);
-        SystemUser systemUser = baseMapper.selectOne(systemUserQuery);
-
-        SystemUserRole systemUserRoleQuery = new SystemUserRole();
-        systemUserRoleQuery.setUserCode(systemUser.getUserCode());
-        List<SystemUserRole> systemUserRoles = systemUserRoleMapper.selectList(new EntityWrapper<>(systemUserRoleQuery));
-
-        HashSet<Role> roleHashSet = new HashSet<>();
-        //角色信息一对多
-        searchRole(systemUserRoles, roleHashSet);
-        List<Role> roles = new ArrayList<>(roleHashSet);
-        BeanUtils.copyProperties(systemUser, user);
-        user.setRoleList(roles);
-        return user;
+        return baseMapper.selectUserByMobile(mobile);
     }
 
     @Override
