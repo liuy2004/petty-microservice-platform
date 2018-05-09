@@ -42,7 +42,7 @@ public class ValidateCodeServiceImpl implements IValidateCodeService {
         } finally {
             //清空
             stringBuffer.setLength(0);
-            return result;
         }
+        return result;
     }
 }

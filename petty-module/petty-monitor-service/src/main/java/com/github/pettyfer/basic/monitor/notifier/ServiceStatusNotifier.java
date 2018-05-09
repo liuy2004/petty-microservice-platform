@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 @Slf4j
 public class ServiceStatusNotifier extends AbstractStatusChangeNotifier {
 
-    public static final String STATUS_CHANGE = "STATUS_CHANGE";
+    private static final String STATUS_CHANGE = "STATUS_CHANGE";
 
     private RabbitTemplate rabbitTemplate;
 

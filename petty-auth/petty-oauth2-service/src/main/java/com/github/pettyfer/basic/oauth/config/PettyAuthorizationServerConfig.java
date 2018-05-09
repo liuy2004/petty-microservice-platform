@@ -154,8 +154,8 @@ public class PettyAuthorizationServerConfig extends AuthorizationServerConfigure
         final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey(CommonConstant.SIGN_KEY);
         //非对称加密配置
-        /*KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("mytest.jks"), "mypass".toCharArray());
-        converter.setKeyPair(keyStoreKeyFactory.getKeyPair("mytest"));*/
+        //KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("mytest.jks"), "mypass".toCharArray());
+        //converter.setKeyPair(keyStoreKeyFactory.getKeyPair("mytest"));
         converter.setAccessTokenConverter(new CustomerAccessTokenConverter());
         return converter;
     }
