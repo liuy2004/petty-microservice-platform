@@ -23,16 +23,15 @@ public class HomeController {
      */
     @GetMapping(value = "dashboard")
     public String dashboard(Model model, Authentication authentication) {
-        String homeUrl = "";
         model.addAttribute("userInfo", RoleUtils.getUser());
-        if (RoleUtils.hasRole(authentication.getAuthorities(), SecurityConstant.ADMIN_ROLE)) {
+        /*if (RoleUtils.hasRole(authentication.getAuthorities(), SecurityConstant.ADMIN_ROLE)) {
             homeUrl = "/admin/index";
         } else if (RoleUtils.hasRole(authentication.getAuthorities(), SecurityConstant.DEVELOPER_ROLE)) {
             homeUrl = "/console/index";
         } else if (RoleUtils.hasRole(authentication.getAuthorities(), SecurityConstant.BASE_ROLE)) {
             homeUrl = "/user/index";
-        }
-        return homeUrl;
+        }*/
+        return "/index";
     }
 
 

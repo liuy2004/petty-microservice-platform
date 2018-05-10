@@ -67,6 +67,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             registry.antMatchers(url).permitAll();
         }
         registry.anyRequest().authenticated().and().logout();
+        http.headers().frameOptions().disable();
         http.apply(mobileSecurityConfigurer);
     }
 
