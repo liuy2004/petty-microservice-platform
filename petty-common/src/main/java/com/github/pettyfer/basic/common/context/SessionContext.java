@@ -5,9 +5,10 @@ import com.github.pettyfer.basic.common.model.auth.User;
 
 /**
  * 用户会话上下文
+ *
  * @author Petty
  */
-public class SessionContext extends BaseContextHandler{
+public class SessionContext extends BaseContextHandler {
 
     public static void setUser(User user) {
         set(CommonConstant.BASIC_USER_CONTEXT, user);

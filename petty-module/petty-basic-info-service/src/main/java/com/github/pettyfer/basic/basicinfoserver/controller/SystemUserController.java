@@ -1,6 +1,7 @@
 package com.github.pettyfer.basic.basicinfoserver.controller;
 
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
 import com.github.pettyfer.basic.common.annotation.UserContext;
 import com.github.pettyfer.basic.common.model.auth.User;
@@ -11,10 +12,10 @@ import com.github.pettyfer.basic.common.web.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -75,6 +76,18 @@ public class SystemUserController extends BaseController {
     @GetMapping("/findUserInfoByUsername/{username}")
     public UserInfo findUserInfoByUsername(@PathVariable String username) {
         return systemUserService.findUserInfoByUsername(username);
+    }
+
+    /**
+     * 查询用户列表
+     *
+     * @return 用户信息详情对象
+     */
+    @GetMapping("/pageUserInfo")
+    public List<UserInfo> pageUserInfo() {
+        List<UserInfo> userInfoPage = systemUserService.pageUserInfo(new Page<>(1, 10));
+        System.out.println(userInfoPage);
+        return userInfoPage;
     }
 }
 

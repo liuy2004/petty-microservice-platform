@@ -1,6 +1,5 @@
 package com.github.pettyfer.basic.oauth.controller.home;
 
-import com.github.pettyfer.basic.common.constant.SecurityConstant;
 import com.github.pettyfer.basic.oauth.utils.RoleUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -31,7 +30,7 @@ public class HomeController {
         } else if (RoleUtils.hasRole(authentication.getAuthorities(), SecurityConstant.BASE_ROLE)) {
             homeUrl = "/user/index";
         }*/
-        return "/index";
+        return "index";
     }
 
 

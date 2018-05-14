@@ -1,5 +1,7 @@
 package com.github.pettyfer.basic.basicinfoserver.service.impl;
 
+import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.github.pettyfer.basic.basicinfoserver.entity.SystemUser;
 import com.github.pettyfer.basic.basicinfoserver.mapper.SystemUserMapper;
@@ -9,6 +11,9 @@ import com.github.pettyfer.basic.common.model.basic.UserInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * <p>
@@ -45,4 +50,17 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
         BeanUtils.copyProperties(systemUser, userInfo);
         return userInfo;
     }
+
+    /**
+     * 查询分页数据
+     *
+     * @param userInfoPage 分页模型
+     * @return list
+     */
+    @Override
+    public List<UserInfo> pageUserInfo(Page<UserInfo> userInfoPage) {
+        return null;
+    }
+
+
 }
