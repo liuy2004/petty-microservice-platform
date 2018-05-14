@@ -38,5 +38,5 @@ public interface SystemUserMapper extends BaseMapper<SystemUser> {
      * @param pagination 分页模型
      * @return list
      */
-    SystemUser selectUserInfoForPage(Pagination pagination);
+    List<SystemUser> selectUserInfoForPage(Pagination pagination);
 }

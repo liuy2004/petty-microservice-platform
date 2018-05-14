@@ -8,6 +8,7 @@ import com.github.pettyfer.basic.basicinfoserver.mapper.SystemUserMapper;
 import com.github.pettyfer.basic.basicinfoserver.service.ISystemUserService;
 import com.github.pettyfer.basic.common.model.auth.User;
 import com.github.pettyfer.basic.common.model.basic.UserInfo;
+import com.github.pettyfer.basic.common.utils.ConverterUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -59,7 +60,11 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
      */
     @Override
     public List<UserInfo> pageUserInfo(Page<UserInfo> userInfoPage) {
-        return null;
+        List<SystemUser> systemUsers = baseMapper.selectUserInfoForPage(userInfoPage);
+        System.out.println(systemUsers);
+        List<UserInfo> userInfos = ConverterUtil.convertList(SystemUser.class,UserInfo.class,systemUsers);
+        System.out.println(userInfos);
+        return userInfos;
     }
 
 

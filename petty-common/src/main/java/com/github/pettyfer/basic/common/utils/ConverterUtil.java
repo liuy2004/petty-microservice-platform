@@ -2,10 +2,11 @@ package com.github.pettyfer.basic.common.utils;
 
 import com.baomidou.mybatisplus.toolkit.CollectionUtils;
 import com.github.pettyfer.basic.common.converter.ObjectConverter;
+import net.sf.cglib.beans.BeanCopier;
 import net.sf.cglib.core.Converter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cglib.beans.BeanCopier;
+import org.springframework.beans.BeansException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public final class ConverterUtil {
      * @return List 目标对象集合
      */
     public static <T, F> List<F> convertList(Class<T> source, Class<F> target, List<T> sourceList) {
-        return null;
+        return convertList(source, target, sourceList, null, null);
     }
 
     public static <T, F> List<F> convertList(Class<T> source, Class<F> target, List<T> sourceList, Converter converter,
@@ -84,7 +85,7 @@ public final class ConverterUtil {
     private static <T, F> void copy(T source, F target, Converter converter,
                                     Class<? extends ObjectConverter> customConverterClass) {
         BeanCopier beanCopier = getBeanCopierInstance(source, target.getClass(), converter);
-       /* beanCopier.copy(source, target, converter);
+       beanCopier.copy(source, target, converter);
         ObjectConverter customConverter = getCustomConverterInstance(customConverterClass);
         if (customConverter != null) {
             if (target.getClass().getName().endsWith("CMP")) {
@@ -92,9 +93,18 @@ public final class ConverterUtil {
             } else if (target.getClass().getName().endsWith("DTO")) {
                 customConverter.convertToDto(source, target);
             }
-        }*/
+        }
     }
 
+    /**
+     *
+     * @param source
+     * @param targetClass
+     * @param converter
+     * @param <T>
+     * @param <F>
+     * @return
+     */
     private static <T, F> BeanCopier getBeanCopierInstance(T source, Class<F> targetClass, Converter converter) {
         String key = source.getClass().getName() + "#" + targetClass.getName();
         BeanCopier beanCopier = CACHED_COPIER_MAP.get(key);
@@ -108,6 +118,44 @@ public final class ConverterUtil {
             }
         }
         return beanCopier;
+    }
+
+    /**
+     *
+     * @param customConverterClass
+     * @param <T>
+     * @param <F>
+     * @return
+     */
+    private static <T, F> ObjectConverter getCustomConverterInstance(
+            Class<? extends ObjectConverter> customConverterClass) {
+        if (customConverterClass == null) {
+            return null;
+        }
+        String key = customConverterClass.getName();
+        ObjectConverter converter = CACHED_CUSTOM_CONVERTER_MAP.get(key);
+        if (converter == null) {
+            synchronized (CACHED_CUSTOM_CONVERTER_MAP) {
+                try {
+                    converter = SpringContextHolder.getBean(customConverterClass);
+                } catch (BeansException e) {
+                    LOGGER.info(customConverterClass.getName() + " is not a component, need new instance.");
+                }
+                if (converter == null) {
+                    try {
+                        converter = customConverterClass.newInstance();
+                        CACHED_CUSTOM_CONVERTER_MAP.put(key, converter);
+                    } catch (InstantiationException e) {
+                        LOGGER.info(e.getMessage(), e);
+                        return null;
+                    } catch (IllegalAccessException e) {
+                        LOGGER.info(e.getMessage(), e);
+                        return null;
+                    }
+                }
+            }
+        }
+        return converter;
     }
 
     /**
