@@ -61,10 +61,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     @Override
     public List<UserInfo> pageUserInfo(Page<UserInfo> userInfoPage) {
         List<SystemUser> systemUsers = baseMapper.selectUserInfoForPage(userInfoPage);
-        System.out.println(systemUsers);
-        List<UserInfo> userInfos = ConverterUtil.convertList(SystemUser.class,UserInfo.class,systemUsers);
-        System.out.println(userInfos);
-        return userInfos;
+        return ConverterUtil.convertList(SystemUser.class,UserInfo.class,systemUsers);
     }
 
 
