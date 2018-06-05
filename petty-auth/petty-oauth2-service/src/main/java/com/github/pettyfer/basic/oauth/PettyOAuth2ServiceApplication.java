@@ -1,5 +1,6 @@
 package com.github.pettyfer.basic.oauth;
 
+import com.github.pettyfer.basic.common.annotation.CommonApi;
 import com.github.pettyfer.basic.common.annotation.PettyConfigurer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -23,6 +24,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients({"com.github.pettyfer.basic.common.feign","com.github.pettyfer.basic.oauth.feign"})
 @EnableHystrix
 @PettyConfigurer
+@CommonApi
 public class PettyOAuth2ServiceApplication {
 
 	public static void main(String[] args) {

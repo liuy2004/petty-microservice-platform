@@ -1,5 +1,6 @@
 package com.github.pettyfer.basic.oauth.service;
 
+import com.github.pettyfer.basic.common.feign.UserInfoService;
 import com.github.pettyfer.basic.common.model.auth.User;
 import com.github.pettyfer.basic.oauth.feign.UserService;
 import com.github.pettyfer.basic.oauth.utils.UserDetailsImpl;
@@ -17,16 +18,17 @@ import org.springframework.stereotype.Service;
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserService userService;
+    private final UserInfoService userInfoService;
 
     @Autowired
-    public UserDetailsServiceImpl(UserService userService) {
-        this.userService = userService;
+    public UserDetailsServiceImpl(UserInfoService userInfoService) {
+        this.userInfoService = userInfoService;
     }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userService.findUserByUsername(username);
+        User user = userInfoService.findUserByUsername(username);
         Preconditions.checkNotNull(user,"No user");
         return new UserDetailsImpl(user);
     }
