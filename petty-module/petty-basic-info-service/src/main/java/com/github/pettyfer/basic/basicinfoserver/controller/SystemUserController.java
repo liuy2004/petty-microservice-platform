@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -40,7 +39,7 @@ public class SystemUserController extends BaseController {
     @UserContext
     @ApiOperation(value = "测试接口", notes = "需要验证登陆令牌")
     @GetMapping("/info")
-    public BaseResponse user() {
+    public BaseResponse<Object> user() {
         System.out.println(UserUtils.getUserDetail());
         return new BaseResponse<>();
     }
@@ -84,10 +83,8 @@ public class SystemUserController extends BaseController {
      * @return 用户信息详情对象
      */
     @GetMapping("/pageUserInfo")
-    public List<UserInfo> pageUserInfo() {
-        List<UserInfo> userInfoPage = systemUserService.pageUserInfo(new Page<>(1, 10));
-        System.out.println(userInfoPage);
-        return userInfoPage;
+    public BaseResponse<List<UserInfo>> pageUserInfo() {
+        return new BaseResponse<>(systemUserService.pageUserInfo(new Page<>(1, 10)));
     }
 }
 

@@ -33,7 +33,7 @@
         <result column="DEL_FLAG" property="delFlag" />
     </resultMap>
 
-    <resultMap id="User" type="com.github.pettyfer.basic.common.model.auth.User">
+    <resultMap id="UserResultMap" type="com.github.pettyfer.basic.common.model.auth.User">
         <result column="USER_CODE" property="userCode" />
         <result column="USER_NAME" property="userName" />
         <result column="USER_PWD" property="userPwd" />
@@ -77,7 +77,7 @@
           LEFT JOIN system_role AS `role` ON role.ROLE_CODE = user_role.ROLE_CODE
     </sql>
 
-    <select id="selectUserByUsername" resultMap="User">
+    <select id="selectUserByUsername" resultMap="UserResultMap">
         <include refid="Select_User" />
         WHERE
          `user`.DEL_FLAG = 0
@@ -86,7 +86,7 @@
           </if>
     </select>
 
-    <select id="selectUserByMobile" resultMap="User">
+    <select id="selectUserByMobile" resultMap="UserResultMap">
         <include refid="Select_User" />
         WHERE
         `user`.DEL_FLAG = 0
@@ -95,7 +95,7 @@
         </if>
     </select>
 
-    <select id="selectUserInfoForPage" resultMap="BaseResultMap">
+    <select id="selectUserInfoForPage" resultType="SystemUser">
         SELECT
         <include refid="Base_Column_List"/>
         FROM system_user
