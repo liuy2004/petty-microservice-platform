@@ -1,3 +1,15 @@
 # Created by .ignore support plugin (hsz.mobi)
 *.iml
 /.idea/
+logs/
+petty-application-module/demo/target/
+petty-auth/petty-oauth2-service/target/
+petty-common/target/
+petty-config-service/target/
+petty-gateway/petty-gateway-ratelimit/target/
+petty-gateway/petty-gateway-service/src/main/java/com/github/pettyfer/basic/gateway/translator/
+petty-gateway/petty-gateway-service/target/
+petty-module/petty-basic-info-service/target/
+petty-module/petty-monitor-service/target/
+petty-module/petty-notice-service/target/
+petty-service-center/target/
